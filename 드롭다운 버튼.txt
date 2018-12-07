@@ -1,0 +1,950 @@
+드롭다운버튼dews-ui-dropdownbutton
+드롭다운버튼은 내부 버튼이 존재하는 구조로 버튼들의 개별 컨트롤이 가능합니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+div 태그에 dews-ui-dropdownbutton클래스를 지정하여 사용합니다.
+
+label 태그를 지정해 버튼 라벨을 지정하여 사용합니다.
+
+button 태그를 사용해 버튼리스트에 추가하여 사용합니다.
+
+옵션
+
+사이즈
+confirm 큰 사이즈
+default 중간 사이즈 ( 생략 시 기본값 )
+small 작은 사이즈
+활성화 (div, button 옵션)
+disabled 드롭다운버튼을 비활성화합니다.
+스크립트 초기화
+dews.ui.dropdownbutton([id], options)
+
+옵션
+
+text string 드롭다운버튼의 문구를 정해줍니다. (※ 필수)
+button array 드롭다운버튼에 들어갈 내용과 옵션을 설정합니다.
+id string 드롭다운버튼의 id 값을 설정합니다. (※ 필수)
+text string 드롭다운버튼의 문구를 설정합니다. (※ 필수)
+enable function 드롭다운버튼의 활성화/비활성화를 설정합니다.
+사용 방법usage
+기본 사용법 - HTML
+Confirm
+ 
+Defalut
+ 
+Small
+ 
+1
+<div class="dews-ui-dropdownbutton confirm dews-control-activate" id="dropdownbutton1">
+2
+  <label class="dews-dropdown-label">Confirm</label>
+3
+  
+4
+  
+5
+  
+6
+  
+7
+</div>
+8
+<div class="dews-ui-dropdownbutton dews-control-activate" id="dropdownbutton2">
+9
+  <label class="dews-dropdown-label">Defalut</label>
+10
+  
+11
+  
+12
+  
+13
+  
+14
+</div>
+15
+<div class="dews-ui-dropdownbutton small dews-control-activate" id="dropdownbutton3">
+16
+  <label class="dews-dropdown-label">Small</label>
+17
+  
+18
+  
+19
+  
+20
+  
+21
+</div>
+
+1
+<div class="dews-ui-dropdownbutton confirm" id="dropdownbutton1">
+2
+  <label>Confirm</label>
+3
+  <button type="button" id="btn1">왼쪽에 열 추가</button>
+4
+  <button type="button" id="btn2">오른쪽에 열 추가</button>
+5
+  <button type="button" id="btn3">위에 열 추가</button>
+6
+  <button type="button" id="btn4">아래에 열 추가</button>
+7
+</div>
+8
+<div class="dews-ui-dropdownbutton" id="dropdownbutton2">
+9
+  <label>Defalut</label>
+10
+  <button type="button" id="btn5">왼쪽에 열 추가</button>
+11
+  <button type="button" id="btn6">오른쪽에 열 추가</button>
+12
+  <button type="button" id="btn7">위에 열 추가</button>
+13
+  <button type="button" id="btn8">아래에 열 추가</button>
+14
+</div>
+15
+<div class="dews-ui-dropdownbutton small" id="dropdownbutton3">
+16
+  <label>Small</label>
+17
+  <button type="button" id="btn9">왼쪽에 열 추가</button>
+18
+  <button type="button" id="btn10">오른쪽에 열 추가</button>
+19
+  <button type="button" id="btn11">위에 열 추가</button>
+20
+  <button type="button" id="btn12">아래에 열 추가</button>
+21
+</div>
+Primary 버튼
+중요버튼. 작업영역의 최상단에 위치하고 화면 전체에 대한 기능버튼에 사용됩니다.
+
+dews-button-group에 클래스primary를 추가해서 사용하면 됩니다.
+Confirm
+Defalut
+Small
+
+1
+<div class="dews-button-group primary"><div class="dews-ui-dropdownbutton confirm dews-control-activate" id="primarydropdownbutton1"><label class="dews-dropdown-label">Confirm</label></div><div class="dews-ui-dropdownbutton dews-control-activate" id="primarydropdownbutton2"><label class="dews-dropdown-label">Defalut</label></div><div class="dews-ui-dropdownbutton small dews-control-activate" id="primarydropdownbutton3"><label class="dews-dropdown-label">Small</label></div></div>
+
+1
+<div class="dews-button-group primary">
+2
+  <div class="dews-ui-dropdownbutton confirm" id="primarydropdownbutton1">
+3
+    <label>Confirm</label>
+4
+    <button type="button" id="primarybtn1">왼쪽에 열 추가</button>
+5
+    <button type="button" id="primarybtn2">오른쪽에 열 추가</button>
+6
+  </div>
+7
+  <div class="dews-ui-dropdownbutton" id="primarydropdownbutton2">
+8
+    <label>Defalut</label>
+9
+    <button type="button" id="primarybtn3">왼쪽에 열 추가</button>
+10
+    <button type="button" id="primarybtn4">오른쪽에 열 추가</button>
+11
+  </div>
+12
+  <div class="dews-ui-dropdownbutton small" id="primarydropdownbutton3">
+13
+    <label>Small</label>
+14
+    <button type="button" id="primarybtn5">왼쪽에 열 추가</button>
+15
+    <button type="button" id="primarybtn6">오른쪽에 열 추가</button>
+16
+  </div>
+17
+</div>
+Emphasize 버튼
+사용자에게 중요한 액션을 하게끔 유도하기 위한 버튼에 사용됩니다.
+
+dews-ui-dropdownbutton에 클래스 emphasize를 추가해서 사용하면 됩니다.
+Confirm
+ 
+Defalut
+ 
+Small
+ 
+1
+<div class="dews-ui-dropdownbutton emphasize confirm dews-control-activate" id="emphasizedropdownbutton1">
+2
+  <label class="dews-dropdown-label">Confirm</label>
+3
+  
+4
+  
+5
+  
+6
+  
+7
+</div>
+8
+<div class="dews-ui-dropdownbutton emphasize dews-control-activate" id="emphasizedropdownbutton2">
+9
+  <label class="dews-dropdown-label">Defalut</label>
+10
+  
+11
+  
+12
+  
+13
+  
+14
+</div>
+15
+<div class="dews-ui-dropdownbutton emphasize small dews-control-activate" id="emphasizedropdownbutton3">
+16
+  <label class="dews-dropdown-label">Small</label>
+17
+  
+18
+  
+19
+  
+20
+  
+21
+</div>
+
+1
+<div class="dews-ui-dropdownbutton emphasize confirm" id="emphasizedropdownbutton1">
+2
+  <label>Confirm</label>
+3
+  <button type="button" id="emphasizebtn1">왼쪽에 열 추가</button>
+4
+  <button type="button" id="emphasizebtn2">오른쪽에 열 추가</button>
+5
+  <button type="button" id="emphasizebtn3">위에 열 추가</button>
+6
+  <button type="button" id="emphasizebtn4">아래에 열 추가</button>
+7
+</div>
+8
+<div class="dews-ui-dropdownbutton emphasize" id="emphasizedropdownbutton2">
+9
+  <label>Defalut</label>
+10
+  <button type="button" id="emphasizebtn5">왼쪽에 열 추가</button>
+11
+  <button type="button" id="emphasizebtn6">오른쪽에 열 추가</button>
+12
+  <button type="button" id="emphasizebtn7">위에 열 추가</button>
+13
+  <button type="button" id="emphasizebtn8">아래에 열 추가</button>
+14
+</div>
+15
+<div class="dews-ui-dropdownbutton emphasize small" id="emphasizedropdownbutton3">
+16
+  <label>Small</label>
+17
+  <button type="button" id="emphasizebtn9">왼쪽에 열 추가</button>
+18
+  <button type="button" id="emphasizebtn10">오른쪽에 열 추가</button>
+19
+  <button type="button" id="emphasizebtn11">위에 열 추가</button>
+20
+  <button type="button" id="emphasizebtn12">아래에 열 추가</button>
+21
+</div>
+기본 사용법 - 스크립트
+추가
+ 
+1
+<div id="dropdownbutton4" class="dews-ui-dropdownbutton dews-control-activate">
+2
+<label class="dews-dropdown-label">추가</label></div>
+
+1
+<div id="dropdownbutton4">
+2
+</div>
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var dropdownbutton = dews.ui.dropdownbutton('#dropdownbutton4', {
+4
+    text: '추가',
+5
+    button: [
+6
+      {
+7
+        id: 'btn5',
+8
+        text: '왼쪽에 열 추가',
+9
+        enable: function () {
+10
+          var value = true;
+11
+          return value;
+12
+        }
+13
+      },
+14
+      {
+15
+        id: 'btn6',
+16
+        text: '오른쪽에 열 추가',
+17
+        enable: function () {
+18
+          var value = false;
+19
+          return value;
+20
+        }
+21
+      },
+22
+      {
+23
+        id: 'btn7',
+24
+        text: '위쪽에 열 추가'
+25
+      },
+26
+      {
+27
+        id: 'btn8',
+28
+        text: '아래쪽에 열 추가',
+29
+        enable: function () {
+30
+          var value = false;
+31
+          return value;
+32
+        }
+33
+      }
+34
+    ]
+35
+  });
+36
+  dropdownbutton.buttons.getById('btn5').on('click', function (e) {
+37
+    alert('왼쪽에 열 추가');
+38
+  });
+39
+  dropdownbutton.buttons.getById('btn6').on('click', function (e) {
+40
+    alert('오른쪽에 열 추가');
+41
+  });
+42
+  dropdownbutton.buttons.getById('btn7').on('click', function (e) {
+43
+    alert('위에 열 추가');
+44
+  });
+45
+  dropdownbutton.buttons.getById('btn8').on('click', function (e) {
+46
+    alert('아래에 열 추가');
+47
+  });
+48
+});
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var dropdownbutton = dews.ui.dropdownbutton('#dropdownbutton4', {
+4
+    text: '추가',
+5
+    button: [
+6
+      {
+7
+        id: 'btn5',
+8
+        text: '왼쪽에 열 추가',
+9
+        enable: function () {
+10
+          var value = true;
+11
+          return value;
+12
+        }
+13
+      },
+14
+      {
+15
+        id: 'btn6',
+16
+        text: '오른쪽에 열 추가',
+17
+        enable: function () {
+18
+          var value = false;
+19
+          return value;
+20
+        }
+21
+      },
+22
+      {
+23
+        id: 'btn7',
+24
+        text: '위쪽에 열 추가'
+25
+      },
+26
+      {
+27
+        id: 'btn8',
+28
+        text: '아래쪽에 열 추가',
+29
+        enable: function () {
+30
+          var value = false;
+31
+          return value;
+32
+        }
+33
+      }
+34
+    ]
+35
+  });
+36
+  dropdownbutton.buttons.getById('btn5').on('click', function (e) {
+37
+    alert('왼쪽에 열 추가');
+38
+  });
+39
+  dropdownbutton.buttons.getById('btn6').on('click', function (e) {
+40
+    alert('오른쪽에 열 추가');
+41
+  });
+42
+  dropdownbutton.buttons.getById('btn7').on('click', function (e) {
+43
+    alert('위에 열 추가');
+44
+  });
+45
+  dropdownbutton.buttons.getById('btn8').on('click', function (e) {
+46
+    alert('아래에 열 추가');
+47
+  });
+48
+});
+드롭다운버튼 비활성화
+disabled 드롭다운버튼을 비활성화합니다.
+추가
+ 
+1
+<div class="dews-ui-dropdownbutton dews-state-disabled dews-control-activate" id="disablebutton" disabled="disabled">
+2
+  <label class="dews-dropdown-label">추가</label>
+3
+  
+4
+  
+5
+  
+6
+  
+7
+</div>
+
+1
+<div class="dews-ui-dropdownbutton" id="disablebutton" disabled="disabled">
+2
+  <label>추가</label>
+3
+  <button type="button" id="disable1">왼쪽에 열 추가</button>
+4
+  <button type="button" id="disable2">오른쪽에 열 추가</button>
+5
+  <button type="button" id="disable3">위에 열 추가</button>
+6
+  <button type="button" id="disable4">아래에 열 추가</button>
+7
+</div>
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var ddb = self.disablebutton;
+4
+?
+5
+  ddb.buttons.getById('disable1').on('click', function (e) {
+6
+    alert('왼쪽에 열 추가');
+7
+  });
+8
+  ddb.buttons.getById('disable2').on('click', function (e) {
+9
+    alert('오른쪽에 열 추가');
+10
+  });
+11
+  ddb.buttons.getById('disable3').on('click', function (e) {
+12
+    alert('위에 열 추가');
+13
+  });
+14
+  ddb.buttons.getById('disable4').on('click', function (e) {
+15
+    alert('아래에 열 추가');
+16
+  });
+17
+});
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var ddb = self.disablebutton;
+4
+?
+5
+  ddb.buttons.getById('disable1').on('click', function (e) {
+6
+    alert('왼쪽에 열 추가');
+7
+  });
+8
+  ddb.buttons.getById('disable2').on('click', function (e) {
+9
+    alert('오른쪽에 열 추가');
+10
+  });
+11
+  ddb.buttons.getById('disable3').on('click', function (e) {
+12
+    alert('위에 열 추가');
+13
+  });
+14
+  ddb.buttons.getById('disable4').on('click', function (e) {
+15
+    alert('아래에 열 추가');
+16
+  });
+17
+});
+드롭다운버튼의 내부버튼 접근
+해당 내부 버튼의 index로 접근
+ex) var ddb = dews.ui.dropdownbutton('#id');
+ddb.buttons[index].enable(true);
+해당 내부 버튼의 id로 접근
+ex) var ddb = dews.ui.dropdownbutton('#id');
+ddb.buttons.getById('id').text('내부버튼');
+내부 버튼 API
+enable 버튼 활성화/비활성화 설정
+text 버튼 문구 설정
+on 버튼 이벤트 추가
+off 버튼 이벤트 삭제
+     
+추가
+ 
+1
+<button class="dews-ui-button dews-control k-button dews-control-activate" id="enable" type="button" data-role="button" role="button" aria-disabled="false" tabindex="0">활성화 설정</button>
+2
+<button class="dews-ui-button dews-control k-button dews-control-activate" id="disabled" type="button" data-role="button" role="button" aria-disabled="false" tabindex="0">비활성화 설정</button>
+3
+<button class="dews-ui-button dews-control k-button dews-control-activate" id="text" type="button" data-role="button" role="button" aria-disabled="false" tabindex="0">버튼 문구</button>
+4
+<button class="dews-ui-button dews-control k-button dews-control-activate" id="on" type="button" data-role="button" role="button" aria-disabled="false" tabindex="0">이벤트 추가</button>
+5
+<button class="dews-ui-button dews-control k-button dews-control-activate" id="off" type="button" data-role="button" role="button" aria-disabled="false" tabindex="0">이벤트 삭제</button>
+6
+<div class="dews-ui-dropdownbutton dews-control-activate" id="innerButton">
+7
+  <label class="dews-dropdown-label">추가</label>
+8
+  
+9
+  
+10
+  
+11
+</div>
+
+1
+<button class="dews-ui-button" id="enable">활성화 설정</button>
+2
+<button class="dews-ui-button" id="disabled">비활성화 설정</button>
+3
+<button class="dews-ui-button" id="text">버튼 문구</button>
+4
+<button class="dews-ui-button" id="on">이벤트 추가</button>
+5
+<button class="dews-ui-button" id="off">이벤트 삭제</button>
+6
+<div class="dews-ui-dropdownbutton" id="innerButton">
+7
+  <label>추가</label>
+8
+  <button type="button" id="innerButtonadd">추가</button>
+9
+  <button type="button" id="innerButtonaddup">위에 추가</button>
+10
+  <button type="button" id="innerButtonadddown">아래에 추가</button>
+11
+</div>
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var ddb = self.innerButton;
+4
+?
+5
+  ddb.buttons.getById('innerButtonadd').on('click', function (e) {
+6
+    alert('추가');
+7
+  });
+8
+?
+9
+  ddb.buttons.getById('innerButtonaddup').on('click', function (e) {
+10
+    alert('위에 추가');
+11
+  });
+12
+?
+13
+  ddb.buttons.getById('innerButtonadddown').on('click', function (e) {
+14
+    alert('아래에 추가');
+15
+  });
+16
+?
+17
+  self.$enable.on('click', function () {
+18
+    ddb.buttons[1].enable(true);
+19
+  });
+20
+?
+21
+  self.$disabled.on('click', function () {
+22
+    ddb.buttons.getById('innerButtonaddup').enable(false);
+23
+  });
+24
+?
+25
+  self.$on.on('click', function () {
+26
+    ddb.buttons.getById('innerButtonadddown').on('click', function () {
+27
+      alert('이벤트가 추가되었습니다.');
+28
+    });
+29
+  });
+30
+?
+31
+  self.$off.on('click', function () {
+32
+    ddb.buttons.getById('innerButtonadddown').off('click');
+33
+  });
+34
+?
+35
+  self.$text.on('click', function () {
+36
+    ddb.buttons.getById('innerButtonadddown').text('아래 버튼 클릭');
+37
+  });
+38
+});
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var ddb = self.innerButton;
+4
+?
+5
+  ddb.buttons.getById('innerButtonadd').on('click', function (e) {
+6
+    alert('추가');
+7
+  });
+8
+?
+9
+  ddb.buttons.getById('innerButtonaddup').on('click', function (e) {
+10
+    alert('위에 추가');
+11
+  });
+12
+?
+13
+  ddb.buttons.getById('innerButtonadddown').on('click', function (e) {
+14
+    alert('아래에 추가');
+15
+  });
+16
+?
+17
+  self.$enable.on('click', function () {
+18
+    ddb.buttons[1].enable(true);
+19
+  });
+20
+?
+21
+  self.$disabled.on('click', function () {
+22
+    ddb.buttons.getById('innerButtonaddup').enable(false);
+23
+  });
+24
+?
+25
+  self.$on.on('click', function () {
+26
+    ddb.buttons.getById('innerButtonadddown').on('click', function () {
+27
+      alert('이벤트가 추가되었습니다.');
+28
+    });
+29
+  });
+30
+?
+31
+  self.$off.on('click', function () {
+32
+    ddb.buttons.getById('innerButtonadddown').off('click');
+33
+  });
+34
+?
+35
+  self.$text.on('click', function () {
+36
+    ddb.buttons.getById('innerButtonadddown').text('아래 버튼 클릭');
+37
+  });
+38
+});
+
+
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+속성 (DropdownButton)Properties
+buttons개별 항목 가져오기
+buttons[index] 드롭다운버튼의 내부 버튼에 접근합니다.
+
+파라미터
+
+index number 드롭다운버튼의 내부 버튼의 index
+리턴값
+
+object 드롭다운버튼 내부 버튼 객체
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var dropdownbutton = self.dropdownbutton1;
+4
+?
+5
+  //dropdownbutton을 활성화 상태로 설정합니다.
+6
+  dropdownbutton.buttons[0].enable(true); //index로 접근
+7
+  dropdownbutton.buttons.getById('innerBtn').enable(true); //id로 접근
+8
+?
+9
+  //dropdownbutton을 비활성화 상태로 설정합니다.
+10
+  dropdownbutton.buttons[0].enable(false); //index로 접근
+11
+  dropdownbutton.buttons.getById('innerBtn').enable(false); //id로 접근
+12
+});
+함수 (DropdownButton) Functions
+enable 활성화/비활성화 설정
+enable(value) 활성화 여부를 설정합니다.
+
+파라미터
+
+value boolean 설정할 활성화 여부 
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var dropdownbutton = self.dropdownbutton1;
+4
+?
+5
+  dropdownbutton.enable(true);
+6
+  dropdownbutton.enable(false);
+7
+});
+함수 (DropdownButton Buttons) Functions
+enable 활성화/비활성화 설정
+enable(value) 활성화 여부를 설정합니다.
+
+파라미터
+
+value boolean 설정할 활성화 여부 
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var dropdownbutton = self.dropdownbutton1;
+4
+?
+5
+  dropdownbutton.buttons[0].enable(true);
+6
+  dropdownbutton.buttons.getById('innerBtn').enable(false); //id로 접근
+7
+});
+text 드롭다운 버튼 내부 버튼 문구 설정 또는 호출
+text(text) 버튼 문구를 설정 또는 호출합니다.
+
+파라미터
+
+text string 설정할 버튼 문구 
+리턴값
+
+버튼 문구
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var dropdownbutton = self.dropdownbutton1;
+4
+?
+5
+  //dropdownbutton 내부 버튼의 문구를 'text'로 설정합니다.
+6
+  dropdownbutton.buttons[0].text('text'); //index로 접근
+7
+  dropdownbutton.buttons.getById('innerBtn').text('text'); //id로 접근
+8
+?
+9
+  //dropdownbutton 내부 버튼의 문구를 가져옵니다.
+10
+  dropdownbutton.buttons[0].text(); //index로 접근
+11
+  dropdownbutton.buttons.getById('innerBtn').text(); //id로 접근
+12
+});
+이벤트 (DropdownButton Buttons)Events
+on 드롭다운 버튼 내부 버튼 이벤트 추가
+on() 내부 버튼의 이벤트를 추가합니다.
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var dropdownbutton = dropdownbutton1;
+4
+?
+5
+  dropdownbutton.buttons[0].on('click', function () {
+6
+    //추가할 이벤트 구현 영역
+7
+  });
+8
+?
+9
+  dropdownbutton.buttons.getById('innerBtn').on('click', function () {
+10
+    //추가할 이벤트 구현 영역
+11
+  });
+12
+});
+off 드롭다운 버튼 내부 버튼 이벤트 삭제
+off() 내부 버튼의 이벤트를 삭제합니다.
+
+
+1
+dews.ready(function () {
+2
+  var dropdownbutton = dropdownbutton1;
+3
+?
+4
+  dropdownbutton.buttons[0].off('click');
+5
+  dropdownbutton.buttons.getById('innerBtn').off('click');
+6
+});

@@ -1,0 +1,403 @@
+드롭다운리스트dews-ui-dropdownlist
+드롭다운리스트에 값을 직접 입력하여 리스트를 생성하고 값을 선택할 수 있습니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+select 태그에 dews-ui-dropdownlist 클래스를 지정하여 사용합니다.
+
+option 태그에 value 속성과 텍스트를 입력하여 사용합니다.
+
+옵션
+
+data-dews-use-numkey 항목 리스트가 펼쳐져있을 때 순서 기반의 숫자키를 입력 시 항목이 선택됩니다. (※ 생략가능, 기본 값: true)
+data-dews-auto-open 드롭다운리스트에 포커스가 들어갔을 때 자동으로 항목 리스트가 열립니다. (※ 생략가능, 기본 값: false)
+data-dews-show-tooltip 드롭다운리스트의 특정항목의 텍스트가 길어 잘리는 경우 툴팁으로 텍스트를 표시합니다. (※ 생략가능, 기본 값: false)
+data-dews-option-label-text 드롭다운리스트의 기본적으로 설정할 text값을 설정합니다.
+data-dews-option-label-value 드롭다운리스트에 기본적으로 설정할 value값을 설정합니다.
+data-dews-option-localize-key 드롭다운리스트에 기본적으로 설정할 text값의 다국어를 지원합니다.
+상태
+required 필수입력사항 숫자텍스트박스로 설정합니다.
+disabled 비활성화 숫자텍스트박스로 설정합니다.
+readonly 읽기전용 숫자텍스트박스로 설정합니다.
+코드도움
+data-dews-help-code 코드도움 코드
+data-dews-data-url 데이터를 가져올 URL 경로
+data-dews-help-params 코드도움에 추가적으로 전달해야 하는 파라미터 (key1=value1&key2=value2 형식)
+data-dews-value-field 값으로 출력할 필드이고 호출한 데이터소스의 key값을 지정하여 사용합니다.
+data-dews-text-field 텍스트로 출력할 필드이고 호출한 데이터소스의 key값과 매칭되는 value값을 text로 출력합니다.
+사용 방법usage
+기본 사용법 - HTML
+text1
+
+disabled
+
+required
+
+
+1
+<p>
+2
+  <select id="ddl" class="dews-ui-dropdownlist" data-dews-show-tooltip="true">
+3
+    <option value="value1">text1</option>
+4
+    <option value="value2">text2text2text2text2text2text2text2</option>
+5
+    <option value="value3">text3</option>
+6
+    <option value="value4">text4</option>
+7
+  </select>
+8
+</p>
+9
+<p>
+10
+  <select id="dd2" class="dews-ui-dropdownlist" disabled="disabled">
+11
+    <option value="value1">disabled</option>
+12
+    <option value="value2">text2</option>
+13
+    <option value="value3">text3</option>
+14
+    <option value="value4">text4</option>
+15
+  </select>
+16
+</p>
+17
+<p>
+18
+  <select id="dd3" class="dews-ui-dropdownlist required" value="required" data-dews-auto-open="true">
+19
+    <option value="value1">required</option>
+20
+    <option value="value2">text2</option>
+21
+    <option value="value3">text3</option>
+22
+    <option value="value4">text4</option>
+23
+  </select>
+24
+</p>
+코드도움 데이터로 초기화
+data-dews-help-code 코드도움 코드
+
+data-dews-help-params 코드도움에 추가적으로 전달해야 하는 파라미터 (key1=value1&key2=value2 형식)
+
+data-dews-value-field 값으로 출력할 필드이고 호출한 데이터소스의 key값을 지정하여 사용합니다.
+
+data-dews-text-field 텍스트로 출력할 필드이고 호출한 데이터소스의 key값과 매칭되는 value값을 text로 출력합니다.
+
+
+
+1
+<p>
+2
+  <select id="ddl6" class="dews-ui-dropdownlist" data-dews-help-code="~/api/FI/MyService/EMP" data-dews-value-field="NO_EMP" data-dews-text-field="NM_EMP"></select>
+3
+</p>
+특정 URL에서 데이터를 받아와서 초기화
+data-dews-data-url 데이터를 가져올 URL 경로
+
+data-dews-value-field 값으로 출력할 필드
+
+data-dews-text-field 텍스트로 출력할 필드
+
+데이터1
+
+
+1
+<p>
+2
+  <select id="ddl3" class="dews-ui-dropdownlist" data-dews-data-url="~/api/FI/MyService/MyDDLDataUrl" data-dews-value-field="Value" data-dews-text-field="Text"></select>
+3
+</p>
+동적으로 데이터 바인딩
+setDataSource 데이터를 동적으로 바인딩합니다.
+ 
+
+
+1
+<p>
+2
+  <select id="ddl5" class="dews-ui-dropdownlist" data-dews-value-field="CD_PARTNER" data-dews-text-field="NM_PARTNER"></select>
+3
+  <button id="btnBind" class="dews-ui-button" type="button">데이터 바인딩</button>
+4
+</p>
+5
+?
+6
+<script>
+7
+  dews.ready(function () {
+8
+    var self = this;
+9
+?
+10
+    self.$btnBind.on('click', function (e) {
+11
+      var ddl5, bindData;
+12
+?
+13
+      bindData = [
+14
+        { CD_PARTNER: 'P001', NM_PARTNER: '더존비즈온', FG_PARTNER: 'I' },
+15
+        { CD_PARTNER: 'P002', NM_PARTNER: '더존다스', FG_PARTNER: 'I' },
+16
+        { CD_PARTNER: 'P003', NM_PARTNER: '뉴소프트기술', FG_PARTNER: 'E' }
+17
+      ];
+18
+?
+19
+      ddl5 = self.ddl5;
+20
+      ddl5.setDataSource(bindData);
+21
+    });
+22
+  });
+23
+</script>
+특정 항목으로 선택하기
+select(index) index로 드롭다운리스트의 특정항목을 선택합니다.
+select(function {...}) 함수를 동작시켜 값이나 텍스트를 비교하여 드롭다운리스트의 특정항목을 선택합니다.
+ 
+
+
+1
+<p>
+2
+  <select id="ddl1" class="dews-ui-dropdownlist" data-dews-help-code="EMP" data-dews-value-field="NO_EMP" data-dews-text-field="NM_EMP"></select>
+3
+  <button id="btn1" class="dews-ui-button">선택</button>
+4
+</p>
+5
+?
+6
+<script>
+7
+  dews.ready(function () {
+8
+    var self = this;
+9
+?
+10
+    self.$btn1.on('click', function (e) {
+11
+      self.ddl1.select(2);// 인덱스로 선택하기 (인덱스는 0부터 시작)
+12
+    });
+13
+  });
+14
+</script>
+ 
+
+
+1
+<p>
+2
+  <select id="ddl2" class="dews-ui-dropdownlist" data-dews-help-code="EMP" data-dews-value-field="NO_EMP" data-dews-text-field="NM_EMP"></select>
+3
+  <button id="btn2" class="dews-ui-button">선택</button>
+4
+</p>
+5
+?
+6
+<script>
+7
+  dews.ready(function () {
+8
+    var self = this;
+9
+?
+10
+    self.$btn2.on('click', function (e) {
+11
+      self.ddl2.select(function (data) {// 값이나 텍스트를 비교하여 선택하기
+12
+        return data.NM_EMP === '희동이';
+13
+        // return data.NO_EMP === '201503';
+14
+      });
+15
+    });
+16
+  });
+17
+</script>
+스크립트를 이용한 동기적인 초기화 및 기본값 선택
+
+
+1
+<p>
+2
+  <select id="ddl4" class="dews-ui-dropdownlist" data-dews-value-field="NO_EMP" data-dews-text-field="NM_EMP"></select>
+3
+</p>
+
+1
+dews.ready(function () {
+2
+  var ddl4, dataSource4;
+3
+  var self = this;
+4
+?
+5
+  dews.api.get(dews.url.getApiUrl('FI','MyService','EMP'), { async: false }).done(function (data) {
+6
+    dataSource4 = data;
+7
+    console.log(dataSource4);
+8
+?
+9
+  });
+10
+?
+11
+  ddl4 = self.ddl4;
+12
+  ddl4.setDataSource(dataSource4); //Url을 통해 가져온 데이터소스를 드롭다운리스트에 동적으로 바인딩합니다.
+13
+?
+14
+  ddl4.select(function (data) {
+15
+    return data.NM_EMP === '희동이'; //기본값을 NM_EMP가 '희동이' 인 데이터로 설정합니다.
+16
+  });
+17
+});
+
+함수 (DropdownList) Functions
+dataItem데이터 가져오기
+dataItem(index) 지정한 인덱스의 데이터를 가져옵니다.
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var item = self.ddl.dataItem(0); //ddl의 첫번째 데이터를 가져옵니다.
+4
+});
+readonly읽기전용 여부 설정 또는 반환
+readonly(value) 드롭다운리스트의 읽기전용 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+value boolean 설정할 읽기전용 여부 ※ 생략하면 설정된 읽기전용 여부를 가져옵니다. 
+리턴 값
+
+설정된 읽기전용 여부
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.ddl.readonly(true); //ddl을 읽기전용으로 설정합니다.
+5
+  self.ddl.readonly(); //ddl의 읽기전용 여부를 가져옵니다.
+6
+});
+enable활성화 여부 설정 또는 반환
+enable(value) 드롭다운리스트의 활성화 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+value boolean 설정할 활성화 여부 ※ 생략하면 설정된 활성화 여부를 가져옵니다. 
+리턴 값
+
+설정된 활성화 여부
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.ddl.enable(true); //ddl을 활성화 상태로 설정합니다.
+5
+  self.ddl.enable(); //ddl의 활성화 여부를 가져옵니다.
+6
+});
+focus포커스 설정
+focus 드롭다운리스트에 포커스를 설정해 줍니다.
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  self.ddl.focus(); //ddl의 포커스를 설정해 줍니다.
+4
+});
+text드롭다운리스트의 텍스트 설정
+text(value) 드롭다운리스트의 텍스트를 나타냅니다.
+
+파라미터
+
+value string생략하면 드롭다운리스트의 첫번째 텍스트를 나타냅니다. 
+리턴 값
+
+드롭다운리스트의 문자를 나타냅니다.
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.ddl.text("Apple"); //ddl의 텍스트를 'Apple'로 나타냅니다.
+5
+  self.ddl.text(); //ddl의 텍스트를 가져옵니다.
+6
+});
+value드롭다운리스트의 값 설정
+value(value) 드롭다운리스트의 값을 나타냅니다.
+
+파라미터
+
+value string생략하면 드롭다운리스트의 첫번째 값을 나타냅니다. 
+리턴 값
+
+드롭다운리스트의 문자를 나타냅니다.
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.ddl.value("Apple"); //ddl의 값을 'Apple'로 설정합니다.
+5
+  self.ddl.value(); //ddl의 값을 가져옵니다.
+6
+});

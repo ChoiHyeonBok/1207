@@ -1,0 +1,1081 @@
+컨디션패널은 데이터를 조회 시 조회조건을 입력받을 수 있는 영역을 위한 컨테이너 컴포넌트입니다.
+
+컴포넌트의 크기를 자동으로 조정하여 상하 라인을 정렬될 수 있도록 제공됩니다.
+
+컨디션패널에는 필수영역, 옵션영역이 존재하며. 필수영역의 우측에 있는 버튼으로 옵션영역을 보여주거나 감출 수 있습니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+div 태그에 dews-ui-condition-panel 클래스를 지정하여 사용합니다.
+
+ul 태그에 required-area, optional-area 클래스를 지정하여 필수영역/옵션영역을 지정하여 사용합니다.
+
+옵션
+
+data-dews-columnsnumber한 라인에 표시될 컬럼의 갯수를 지정합니다.(1 ~ 4 까지 가능) ※ 기본값: 3 (생략가능)
+data-dews-label-widthnumber라벨을 너비를 직접 지정합니다. ※ 기본값: 테마별 스타일시트에 정의된 값 (생략가능)
+라벨의 너비를 줄이면 컴포넌트 영역의 너비를 더 확보할 수 있지만,
+각 컴포넌트의 너비가 자동으로 늘어나지는 않으므로 컴포넌트 별로 너비를 직접 지정해야 합니다.
+data-dews-item-widthnumber컨디션패널의 개별 항목의 너비(라벨 너비 + 컴포넌트 영역 너비)를 직접 지정합니다. ※ 기본값: 테마별 스타일시트에 정의된 값 (생략가능)
+항목의 너비를 직접 지정하면 컨디션 패널의 너비를 조정할 수 있지만, 다음 라인으로 떨어지는 경우도 발생하므로 적절한 조절이 필요합니다.
+data-dews-optional-collapsedboolean옵션 영역을 초기화시에 접혀있는지 여부를 결정합니다. ※ 기본값: true (생략가능)
+기본값인 true는 옵션영역이 접혀있는 상태입니다.
+data-dews-label-alignstring라벨 문자열의 정렬을 결정합니다.(left|center|right) ※ 기본값: 테마별 스타일시트에 정의된 값 (생략가능)
+data-dews-required-checkboolean필수 입력 영역일 경우 엔터키 입력 시 포커스 이동을 결정합니다. ※ 기본값: false (생략가능)
+컬럼 병합
+한 개의 컬럼의 너비가 컴포넌트 배치에 적절하지 않을 경우 컬럼을 병합하여 사용할 수 있습니다.
+컬럼의 병합은 col-1, col-2, col-3 와 같이 col- 과 병합하고자 하는 컬럼의 갯수로 구성된 CSS 클래스를 개별 컨디션 항목인 li태그에 추가합니다.
+사용 방법usage
+기본 사용법 - HTML
+사원
+대상기간
+~
+분류전체 검색어
+필터 완료된 항목 비고
+ 
+
+1
+<div class="dews-ui-condition-panel">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>사원</label>
+5
+      <span>
+6
+        <input type="text" class="dews-ui-codepicker" data-dews-help-code="EMP">
+7
+      </span>
+8
+    </li>
+9
+    <li>
+10
+      <label>대상기간</label>
+11
+      <span>
+12
+        <span class="dews-ui-periodpicker required"></span>
+13
+      </span>
+14
+    </li>
+15
+    <li>
+16
+      <label>분류</label>
+17
+      <span>
+18
+        <select class="dews-ui-dropdownlist">
+19
+          <option value="value1">전체</option>
+20
+          <option value="value2">일부</option>
+21
+        </select>
+22
+      </span>
+23
+    </li>
+24
+    <li class="col-2">
+25
+      <label>검색어</label>
+26
+      <span>
+27
+        <input type="text" class="dews-ui-textbox" disabled="disabled">
+28
+      </span>
+29
+    </li>
+30
+    <li>
+31
+      <label>필터</label>
+32
+      <span>
+33
+        <input type="checkbox" class="dews-ui-checkbox">
+34
+        <label for="chk1">완료된 항목</label>
+35
+      </span>
+36
+    </li>
+37
+    <li class="col-3">
+38
+      <label>비고</label>
+39
+      <span>
+40
+        <textarea class="dews-ui-textbox"></textarea>
+41
+      </span>
+42
+    </li>
+43
+  </ul>
+44
+  <ul class="optional-area">
+45
+    <li>
+46
+      <label>성별</label>
+47
+      <span>
+48
+        <input type="radio" name="radio1" class="dews-ui-radio">
+49
+        <label for="rdo">남</label>
+50
+        <input type="radio" name="radio1" class="dews-ui-radio" checked="checked">
+51
+        <label for="rdo1">여</label>
+52
+      </span>
+53
+    </li>
+54
+    <li>
+55
+      <label>날짜</label>
+56
+      <span>
+57
+        <input type="text" class="dews-ui-datepicker">
+58
+      </span>
+59
+    </li>
+60
+    <li>
+61
+      <label>시간</label>
+62
+      <span>
+63
+        <input type="text" class="dews-ui-timepicker">
+64
+      </span>
+65
+    </li>
+66
+  </ul>
+67
+</div>
+옵션 영역이 없는 경우
+옵션 영역(optional-area)이 없을 때는 필수 영역(required-area)의 우측의 확장 버튼은 표시되지 않습니다.
+사업기간
+~
+ 
+1
+<div class="dews-ui-condition-panel">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>사업기간</label>
+5
+      <span>
+6
+          <span class="dews-ui-periodpicker required"></span>
+7
+      </span>
+8
+    </li>
+9
+  </ul>
+10
+</div>
+컬럼 병합
+컬럼의 병합은 li요소에 col-1, col-2, col-3 와 같은 클래스명을 지정하여 설정합니다.
+
+기본 컬럼 사이즈
+2 컬럼 병합
+ 
+
+1
+<div class="dews-ui-condition-panel">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>기본 컬럼 사이즈</label>
+5
+      <span>
+6
+        <input type="text" class="dews-ui-textbox">
+7
+      </span>
+8
+    </li>
+9
+    <li class="col-2">
+10
+      <label>2 컬럼 병합</label>
+11
+      <span>
+12
+        <input type="text" class="dews-ui-numerictextbox">
+13
+      </span>
+14
+    </li>
+15
+  </ul>
+16
+  <ul class="optional-area">
+17
+    <li class="col-3">
+18
+      <label>3 컬럼 병합</label>
+19
+      <span>
+20
+        <input type="text" class="dews-ui-textbox">
+21
+      </span>
+22
+    </li>
+23
+  </ul>
+24
+</div>
+컬럼 수 지정
+컨디션 패널의 한 라인에 표현되는 기본 컬럼 수는 3개 이나, 1개 부터 4개 까지 조정하여 사용할 수 있습니다.
+data-dews-columns 설정 옵션을 이용하여 지정이 가능합니다.
+
+기준 설정인 3개 이상을 사용할 경우 한 컬럼에 표현되지 않은 컴포넌트도 존재할 수 있으므로 적절한 병합 처리가 필요하며
+컴포넌트의 크기가 작아지거나 커질 수 있으므로 표준 컬럼 수인 3개를 사용하시길 권합니다.
+
+1 컬럼 컨디션 패널
+ 
+1
+<div class="dews-ui-condition-panel" data-dews-columns="1">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>1 컬럼 컨디션 패널</label>
+5
+      <span>
+6
+        <input type="text" class="dews-ui-textbox">
+7
+      </span>
+8
+    </li>
+9
+  </ul>
+10
+</div>
+2 컬럼 컨디션 요소 1
+2 컬럼 컨디션 요소 2
+ 
+1
+<div class="dews-ui-condition-panel" data-dews-columns="2">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>2 컬럼 컨디션 요소 1</label>
+5
+      <span>
+6
+        <input type="text" class="dews-ui-textbox">
+7
+      </span>
+8
+    </li>
+9
+    <li>
+10
+      <label>2 컬럼 컨디션 요소 2</label>
+11
+      <span>
+12
+        <input type="text" class="dews-ui-textbox">
+13
+      </span>
+14
+    </li>
+15
+  </ul>
+16
+</div>
+4 컬럼 요소 1
+4 컬럼 요소 2
+4 컬럼 요소 3
+4 컬럼 요소 4
+ 
+1
+<div class="dews-ui-condition-panel" data-dews-columns="4">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>4 컬럼 요소 1</label>
+5
+      <span>
+6
+        <input type="text" class="dews-ui-textbox">
+7
+      </span>
+8
+    </li>
+9
+    <li>
+10
+      <label>4 컬럼 요소 2</label>
+11
+      <span>
+12
+        <input type="text" class="dews-ui-textbox">
+13
+      </span>
+14
+    </li>
+15
+    <li>
+16
+      <label>4 컬럼 요소 3</label>
+17
+      <span>
+18
+        <input type="text" class="dews-ui-textbox">
+19
+      </span>
+20
+    </li>
+21
+    <li>
+22
+      <label>4 컬럼 요소 4</label>
+23
+      <span>
+24
+        <input type="text" class="dews-ui-textbox">
+25
+      </span>
+26
+    </li>
+27
+  </ul>
+28
+</div>
+라벨 및 컴포넌트 영역에 대한 너비 조정
+제공되는 설정 옵션인 data-dews-label-width 및 data-dews-item-width 를 이용하면 라벨 및 컴포넌트 영역에 대한 너비 조절이 가능합니다.
+설정에 대한 상세한 내용은 상단 설정 옵션 부분을 참고하세요.
+
+data-dews-label-width 나 data-dews-item-width 를 지정한다고 내부 컴포넌트의 너비가 자동적으로 변경되지는 않으므로 각 컴포넌트 별로 너비를 적절히 조절해 주어야 합니다.
+
+Others
+아이디
+hb0126336
+비밀번호
+?????????
+ 
+
+1
+<div class="dews-ui-container-panel">
+2
+  <div class="dews-container-item others" style="width: 160px">
+3
+    <span>Others</span>
+4
+  </div>
+5
+  <div class="dews-container-item">
+6
+    <div class="dews-ui-condition-panel" data-dews-columns="2" data-dews-label-width="80" data-dews-item-width="240" data-dews-label-align="left">
+7
+      <ul class="required-area">
+8
+        <li>
+9
+          <label>아이디</label>
+10
+          <span>
+11
+            <input type="text" class="dews-ui-textbox" style="width: 150px;">
+12
+          </span>
+13
+        </li>
+14
+        <li>
+15
+          <label>비밀번호</label>
+16
+          <span>
+17
+        <input type="password" class="dews-ui-textbox" style="width: 150px;">
+18
+      </span>
+19
+        </li>
+20
+      </ul>
+21
+      <ul class="optional-area">
+22
+        <li class="col-2">
+23
+          <label>옵션</label>
+24
+          <span>
+25
+        <input type="radio" class="dews-ui-radio"> <label>옵션1</label>
+26
+        <input type="radio" class="dews-ui-radio"> <label>옵션2</label>
+27
+      </span>
+28
+        </li>
+29
+      </ul>
+30
+    </div>
+31
+  </div>
+32
+</div>
+필수항목 입력 확인
+컨디션패널에서 제공하는 validate() 함수를 이용하면 필수입력 항목들에 값이 입력되었는지 여부를 확인하여 툴팁 메시지를 출력할 수 있습니다.
+필수입력 체크 기능은 required-area 와 optional-area 에 존재하는 폼 요소들 중 required 로 설정된 폼 컴포넌트들 대상으로 합니다.
+
+사원
+대상기간
+~
+분류전체 필터 완료된 항목 비고
+ 
+ 
+1
+<div class="dews-ui-condition-panel" id="validateForm">
+2
+  <form class="dews-condition-panel-form">
+3
+    <ul class="required-area">
+4
+      <li>
+5
+        <label>사원</label>
+6
+        <span>
+7
+          <input type="text" id="codepicker1" name="codepicker1" class="dews-ui-codepicker required" data-dews-help-code="EMP">
+8
+        </span>
+9
+      </li>
+10
+      <li>
+11
+        <label>대상기간</label>
+12
+        <span>
+13
+          <span class="dews-ui-periodpicker required" id="periodpicker1" name="periodpicker1"></span>
+14
+        </span>
+15
+      </li>
+16
+      <li>
+17
+        <label>분류</label>
+18
+        <span>
+19
+          <select class="dews-ui-dropdownlist" id="dropdwonlist1">
+20
+            <option value="value1">전체</option>
+21
+            <option value="value2">일부</option>
+22
+          </select>
+23
+        </span>
+24
+      </li>
+25
+      <li>
+26
+        <label>필터</label>
+27
+        <span>
+28
+          <input type="checkbox" id="chk1" name="chk1" class="dews-ui-checkbox">
+29
+          <label for="chk1">완료된 항목</label>
+30
+        </span>
+31
+      </li>
+32
+      <li class="col-3">
+33
+        <label>비고</label>
+34
+        <span>
+35
+          <input type="text" class="dews-ui-textbox" id="textbox1" name="textbox1">
+36
+        </span>
+37
+      </li>
+38
+    </ul>
+39
+    <ul class="optional-area">
+40
+      <li>
+41
+        <label>성별</label>
+42
+        <span>
+43
+          <input type="radio" id="rdo" name="radio1" class="dews-ui-radio">
+44
+          <label for="rdo">남</label>
+45
+          <input type="radio" id="rdo1" name="radio1" class="dews-ui-radio" checked="checked">
+46
+          <label for="rdo1">여</label>
+47
+        </span>
+48
+      </li>
+49
+      <li>
+50
+        <label>날짜</label>
+51
+        <span>
+52
+          <input type="text" id="date1" name="time1" class="dews-ui-datepicker required" value="20170329">
+53
+        </span>
+54
+      </li>
+55
+      <li>
+56
+        <label>시간</label>
+57
+        <span>
+58
+          <input type="text" id="time1" name="time1" class="dews-ui-timepicker required">
+59
+        </span>
+60
+      </li>
+61
+    </ul>
+62
+  </form>
+63
+</div>
+64
+<button type="button" class="dews-ui-button" id="validateBtn">필수항목 입력 점검</button>
+65
+<script>
+66
+  dews.ready(function () {
+67
+    var self = this;
+68
+?
+69
+    self.$validateBtn.on('click', function (e) {
+70
+      self.validateForm.validate({tooltip: true, message: '필수항목을 입력하세요.'});
+71
+    });
+72
+  });
+73
+</script>
+컨디션패널의 입력 데이터를 직렬화하여 JSON 형태로 가져오기
+컨디션패널의 serialize() 함수는 컨디션패널 내에 있는 폼 컴포넌트 요소들의 값을 JSON 형태로 변환합니다.
+전자세금계산서
+세금서
+업종유형
+일자
+
+2017-03-29
+ 
+ 
+1
+<div class="dews-ui-condition-panel" id="serializeForm">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>전자세금계산서</label>
+5
+      <span>
+6
+        <input type="text" class="dews-ui-textbox" id="textbox3" value="세금서">
+7
+      </span>
+8
+    </li>
+9
+    <li>
+10
+      <label>업종유형</label>
+11
+      <span>
+12
+        <input type="text" class="dews-ui-textbox" id="textbox4">
+13
+      </span>
+14
+    </li>
+15
+    <li>
+16
+      <label>일자</label>
+17
+      <span>
+18
+        <input type="text" class="dews-ui-datepicker" id="datepicker2" value="20170329">
+19
+      </span>
+20
+    </li>
+21
+  </ul>
+22
+  <ul class="optional-area">
+23
+    <li class="col-2">
+24
+      <label>검색어</label>
+25
+      <span>
+26
+        <input type="text" class="dews-ui-textbox" id="searchKeyword">
+27
+      </span>
+28
+    </li>
+29
+    <li class="col-3">
+30
+      <label>비고</label>
+31
+      <span>
+32
+        <input type="text" class="dews-ui-textbox" id="etc">
+33
+      </span>
+34
+    </li>
+35
+  </ul>
+36
+</div>
+37
+<button type="button" class="dews-ui-button" id="serializeBtn">입력값 직렬화</button>
+38
+<code id="serializeResult"></code>
+39
+<script>
+40
+  dews.ready(function () {
+41
+    var self = this;
+42
+?
+43
+    self.$serializeBtn.on('click', function (e) {
+44
+      var obj = self.serializeForm.serialize();
+45
+      self.$content.find('#serializeResult').text(JSON.stringify(obj));
+46
+    });
+47
+  });
+48
+</script>
+컨디션패널 개별 항목에 대한 접근
+컨디션패널 컴포넌트 내부의 개별 항목에 접근하고자 할 때는 itemsArray 를 이용해서 개별 아이템에 접근할 수 있습니다.
+
+items 속성은 배열이므로 인덱스를 이용한 접근이 가능하지만, 개별 li 태그에 id 속성을 지정하고 getById(id) 함수를 이용하는 것을 권장합니다.
+
+전자세금계산서
+업종유형
+일자
+
+2017-03-29
+ 
+ 
+1
+<div class="dews-ui-condition-panel" id="panelItems">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>전자세금계산서</label>
+5
+      <span>
+6
+        <input type="text" class="dews-ui-textbox">
+7
+      </span>
+8
+    </li>
+9
+    <li id="second">
+10
+      <label>업종유형</label>
+11
+      <span>
+12
+        <input type="text" class="dews-ui-textbox">
+13
+      </span>
+14
+    </li>
+15
+    <li>
+16
+      <label>일자</label>
+17
+      <span>
+18
+        <input type="text" class="dews-ui-datepicker" name="datepicker2" value="20170329">
+19
+      </span>
+20
+    </li>
+21
+  </ul>
+22
+  <ul class="optional-area">
+23
+    <li class="col-2">
+24
+      <label>검색어</label>
+25
+      <span>
+26
+        <input type="text" class="dews-ui-textbox" name="searchKeyword">
+27
+      </span>
+28
+    </li>
+29
+    <li class="col-3">
+30
+      <label>비고</label>
+31
+      <span>
+32
+        <input type="text" class="dews-ui-textbox" name="etc">
+33
+      </span>
+34
+    </li>
+35
+  </ul>
+36
+</div>
+37
+?
+38
+<button id="itemsBtn" class="dews-ui-button">개별 아이템 접근</button>
+39
+?
+40
+<script>
+41
+  dews.ready(function () {
+42
+    var self = this;
+43
+?
+44
+    self.$itemsBtn.on('click', function (e) {
+45
+      self.panelItems.items[0].text('first');             // label 텍스트 설정
+46
+      alert(self.panelItems.items.getById('second').text());   // label 텍스트 가져오기
+47
+    });
+48
+  });
+49
+?
+50
+</script>
+컨디션패널의 컴포넌트 중 마지막 컴포넌트에서 enter 키 입력시의 이벤트 처리
+컨디션패널 내부에서 enter 키를 이용하여 폼 컴포넌트들의 순회 중에 마지막 컴포넌트에서 enter 키가 입력되었을 때 특정한 처리가 필요한 경우에는
+컨디션패널의 lastFocus 이벤트를 활용할 수 있습니다.
+
+사원
+대상기간
+~
+분류전체 검색어
+필터 완료된 항목 비고
+ 
+
+1
+<div class="dews-ui-condition-panel" id="lastControl">
+2
+  <ul class="required-area">
+3
+    <li>
+4
+      <label>사원</label>
+5
+      <span>
+6
+        <input type="text" class="dews-ui-codepicker" data-dews-help-code="EMP">
+7
+      </span>
+8
+    </li>
+9
+    <li>
+10
+      <label>대상기간</label>
+11
+      <span>
+12
+        <span class="dews-ui-periodpicker required"></span>
+13
+      </span>
+14
+    </li>
+15
+    <li>
+16
+      <label>분류</label>
+17
+      <span>
+18
+        <select class="dews-ui-dropdownlist">
+19
+          <option value="value1">전체</option>
+20
+          <option value="value2">일부</option>
+21
+        </select>
+22
+      </span>
+23
+    </li>
+24
+    <li class="col-2">
+25
+      <label>검색어</label>
+26
+      <span>
+27
+        <input type="text" class="dews-ui-textbox" disabled="disabled">
+28
+      </span>
+29
+    </li>
+30
+    <li>
+31
+      <label>필터</label>
+32
+      <span>
+33
+        <input type="checkbox" class="dews-ui-checkbox">
+34
+        <label for="chk1">완료된 항목</label>
+35
+      </span>
+36
+    </li>
+37
+    <li class="col-3">
+38
+      <label>비고</label>
+39
+      <span>
+40
+        <input type="text" class="dews-ui-textbox">
+41
+      </span>
+42
+    </li>
+43
+  </ul>
+
+
+속성 (ConditionPanel)Properties
+items개별 항목 가져오기
+items Array<PanelItem> 컨디션패널 내부의 개별 항목 배열을 반환합니다.
+
+
+1
+dews.ready(function() {
+2
+  var self = this;
+3
+  var myItem = self.conditionPanel.items[0];
+4
+});
+items.getById(id) 아이디를 이용하여 개별 항목을 가져옵니다.
+
+파라미터
+
+id string 개별 항목을 나타내는 li 요소의 아이디
+리턴 값
+
+PanelItem 개별 항목 객체
+
+
+1
+dews.ready(function() {
+2
+  var self = this;
+3
+  var myItem = self.conditionPanel.items.getById('myId');
+4
+});
+함수 (ConditionPanel)Functions
+validate필수 입력 항목에 대한 체크
+validate() 컨디션패널 내의 필수항목의 입력 여부를 확인하고 툴팁을 출력합니다.
+
+파라미터
+
+options object valudation 체크 옵션
+tooltip boolean tooltip 사용 여부
+message string 툴팁 메시지 (생략가능)
+리턴 값
+
+Boolean validation 여부
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$validate.on('click', function (e) {
+5
+    self.conditionPanel.validate(); //conditionpanelForm의 필수 항목 validation을 여부를  체크합니다.
+6
+  });
+7
+});
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$validate.click(function () {
+5
+    //conditionpanelForm의 validation 옵션을 설정합니다.
+6
+    self.conditionPanel.validate({tooltip: true, message: '필수항목은 입력하세요.'});
+7
+  });
+8
+});
+serialize입력된 데이터 직렬화
+serialize() 컨디션패널 내의 폼 컴포넌트에 입력된 값을 JSON 형태로 직렬화합니다.
+
+리턴 값
+
+Object 직렬화된 JSON 데이터
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$serialize.click(function () {
+5
+    self.conditionPanel.serialize();
+6
+  });
+7
+});
+함수 (ConditionPanel Items)Functions
+text컨디션패널 항목의 라벨 텍스트 가져오기/설정
+text(text) 컨디션패널 항목의 라벨의 텍스트를 변경합니다.
+
+파라미터
+
+text string 변경할 label 문구
+text() 컨디션패널 항목의 라벨의 텍스트를 가져옵니다.
+
+리턴 값
+
+String 현재 라벨에 설정된 텍스트
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.$text.on('click', function (e) {
+5
+self.conditionPanel.items.getById('first').text('라벨'); //conditionpanelForm의 첫번째 아이템의 label 문구를 '라벨'로 변경합니다.
+6
+var text = self.conditionPanel.items.getById('second').text(); //conditionpanelForm의 첫번째 아이템의 label 문구를 가져옵니다.
+7
+});
+8
+});
+이벤트 (ConditionPanel)Events
+lastFoucs마지막 요소에서의 포커스가 떠날 때의 이벤트
+lastFocus 컨디션패널 내에서 보이는 폼 컴포넌트 중 마지막 컴포넌트에서 엔터키의 입력에 의해서 포커스가 떠날 때 일어나는 이벤트입니다.
+
+
+dews.ready(function () {
+  var self = this;
+
+  self.conditionPanel.on('lastFocus', function() {
+    dews.ui.mainbuttons.search.click();
+  });
+});
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.conditionPanel.on('lastFocus', function() {
+5
+    dews.ui.mainbuttons.search.click();
+6
+  });
+7
+});

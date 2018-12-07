@@ -1,0 +1,198 @@
+버튼dews-ui-button
+사이즈 별 버튼을 만들 수 있는 컨트롤입니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+button 태그에 dews-ui-button클래스를 지정하여 사용합니다.
+
+옵션
+
+사이즈
+confirm 큰 사이즈
+default 중간 사이즈 ( 생략 시 기본값 )
+small 작은 사이즈
+상태
+disabled 비활성화 설정
+아이콘
+ico-search
+위치
+ico-left 버튼의 왼쪽에 배치됩니다.
+ico-right 버튼의 오른쪽에 배치됩니다.
+사용 방법usage
+기본 사용법
+ 
+
+ 
+
+ 
+
+
+1
+<p>
+2
+  <button class="dews-ui-button confirm">Confirm</button>
+3
+  <button class="dews-ui-button confirm disabled" disabled="disabled">Confirm Disabled</button>
+4
+</p>
+5
+<p>
+6
+  <button class="dews-ui-button">Default</button>
+7
+  <button class="dews-ui-button disabled" disabled="disabled">Default Disabled</button>
+8
+</p>
+9
+<p>
+10
+  <button class="dews-ui-button small">Small</button>
+11
+  <button class="dews-ui-button small disabled" disabled="disabled">Small Disabled</button>
+12
+</p>
+Primary 버튼 (버튼그룹)
+중요버튼. 작업영역의 최상단에 위치하고 화면 전체에 대한 기능버튼에 사용됩니다.
+
+dews-button-group에 클래스primary를 추가해서 사용하면 됩니다.
+
+
+1
+<div class="dews-button-group primary">
+2
+  <button class="dews-ui-button confirm">Confirm button</button>
+3
+  <button class="dews-ui-button confirm disabled" disabled="disabled">Confirm button</button>
+4
+</div>
+5
+<div class="dews-button-group primary">
+6
+  <button class="dews-ui-button">Default button</button>
+7
+  <button class="dews-ui-button disabled" disabled="disabled">Default button</button>
+8
+</div>
+9
+<div class="dews-button-group primary">
+10
+  <button class="dews-ui-button small">Small button</button>
+11
+  <button class="dews-ui-button small disabled" disabled="disabled">Small button</button>
+12
+</div>
+Emphasize 버튼
+사용자에게 중요한 액션을 하게끔 유도하기 위한 버튼에 사용됩니다.
+
+dews-ui-button에 클래스 emphasize를 추가해서 사용하면 됩니다.
+
+ 
+
+ 
+
+ 
+
+             
+
+
+1
+<p>
+2
+  <button class="dews-ui-button emphasize confirm">Confirm</button>
+3
+  <button class="dews-ui-button emphasize confirm disabled" disabled="disabled">Confirm Disabled</button>
+4
+</p>
+5
+<p>
+6
+  <button class="dews-ui-button emphasize">Default</button>
+7
+  <button class="dews-ui-button emphasize disabled" disabled="disabled">Default Disabled</button>
+8
+</p>
+9
+<p>
+10
+  <button class="dews-ui-button emphasize small">Small</button>
+11
+  <button class="dews-ui-button emphasize small disabled" disabled="disabled">Small Disabled</button>
+12
+</p>
+13
+<p>
+14
+  <button class="dews-ui-button emphasize ico-search"></button>
+15
+  <button class="dews-ui-button emphasize ico-set"></button>
+16
+  <button class="dews-ui-button emphasize ico-save"></button>
+17
+  <button class="dews-ui-button emphasize ico-add"></button>
+18
+  <button class="dews-ui-button emphasize ico-delete"></button>
+19
+  <button class="dews-ui-button emphasize ico-download"></button>
+20
+  <button class="dews-ui-button emphasize ico-upload"></button>
+21
+  <button class="dews-ui-button emphasize ico-up"></button>
+22
+  <button class="dews-ui-button emphasize ico-down"></button>
+23
+  <button class="dews-ui-button emphasize ico-treeExpand"></button>
+24
+  <button class="dews-ui-button emphasize ico-treeCollapse"></button>
+25
+  <button class="dews-ui-button emphasize ico-print"></button>
+26
+  <button class="dews-ui-button emphasize ico-excel"></button>
+27
+  <button class="dews-ui-button emphasize ico-edit"></button>
+28
+</p>
+Sprite Image 버튼
+  
+
+            
+
+1
+<p>
+2
+  <button class="dews-ui-button ico-search"></button>
+3
+  <button class="dews-ui-button ico-search ico-left">SpriteIcon Button with text</button>
+4
+  <button class="dews-ui-button ico-search ico-right">SpriteIcon Button with text</button>
+5
+</p>
+6
+<p>
+7
+  <button class="dews-ui-button ico-set"></button>           <!-- 설정 -->
+8
+  <button class="dews-ui-button ico-save"></button>          <!-- 저장 -->
+9
+  <button class="dews-ui-button ico-add"></button>           <!-- 추가 -->
+10
+  <button class="dews-ui-button ico-delete"></button>        <!-- 삭제 -->
+11
+  <button class="dews-ui-button ico-download"></button>      <!-- 다운로드 -->
+12
+  <button class="dews-ui-button ico-upload"></button>        <!-- 업로드 -->
+13
+  <button class="dews-ui-button ico-up"></button>            <!-- 위로 -->
+14
+  <button class="dews-ui-button ico-down"></button>          <!-- 아래로 -->
+15
+  <button class="dews-ui-button ico-treeExpand"></button>    <!-- 하위레벨펼치기 -->
+16
+  <button class="dews-ui-button ico-treeCollapse"></button>  <!-- 하위레벨접기 -->
+17
+  <button class="dews-ui-button ico-print"></button>         <!-- 인쇄 -->
+18
+  <button class="dews-ui-button ico-excel"></button>         <!-- 엑셀 -->
+19
+  <button class="dews-ui-button ico-edit"></button>          <!-- 편집 -->

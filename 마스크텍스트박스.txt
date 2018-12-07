@@ -1,0 +1,434 @@
+마스크텍스트박스dews-ui-masktextbox
+마스크텍스트박스는 특정 문자열에 포맷을 지정해줄 때에 사용합니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+input 태그에 dews-ui-numerictextbox 클래스를 지정하여 사용합니다. ( ※ type 속성은 text를 사용합니다.)
+
+옵션
+
+data-dews-mask 마스크 문자열
+data-dews-prompt 프롬프트 문자열을 지정합니다. (기본값: _)
+data-dews-unmask-on-post POST 시 마스크문자열을 제거할 지 여부 true|false (기본값: true)
+상태
+required 필수입력사항 숫자텍스트박스로 설정합니다.
+disabled 비활성화 숫자텍스트박스로 설정합니다.
+readonly 읽기전용 숫자텍스트박스로 설정합니다.
+※ 마스크 문자열을 자세한 내용은 튜토리얼 > 포맷 지정 > 마스크 문자열을 참고하세요. 
+사용 방법usage
+기본 사용법 - HTML
+
+201-501
+
+
+02-192-1225
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-maskedtextbox" data-dews-mask="000-000" value="201501">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-maskedtextbox" data-dews-mask="##-###-####" value="021921225">
+6
+</p>
+프롬프트 문자 변경
+
+
+
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-maskedtextbox" data-dews-prompt="*" data-dews-mask="LL-0000">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-maskedtextbox" data-dews-prompt=" " data-dews-mask="LL-0000">
+6
+</p>
+POST 전송 시 마스크문자열 제거 설정
+
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-maskedtextbox" data-dews-mask="LL-0000" data-dews-unmask-on-post="false">
+3
+</p>
+상태 스타일 지정하는 방법
+class에 스타일을 지정해줍니다.
+
+
+required
+
+
+readonly
+
+
+disabled
+
+
+error
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-maskedtextbox required" value="required">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-maskedtextbox" readonly="readonly" value="readonly">
+6
+</p>
+7
+<p>
+8
+  <input type="text" class="dews-ui-maskedtextbox" disabled="disabled" value="disabled">
+9
+</p>
+10
+<p>
+11
+  <input type="text" class="dews-ui-maskedtextbox error" value="error">
+12
+</p>
+포맷 지정
+data-dews-mask 마스크 포맷 지정
+
+
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-maskedtextbox" id="format" data-dews-mask="LL-00">
+3
+</p>
+값 가져오기
+value() 마스크 포맷이 적용되어 있는 값을 가져옵니다.
+
+raw() 마스크 포맷이 적용되지 않은 값을 가져옵니다.
+
+
+201-501
+
+ 
+
+
+1
+<p>
+2
+  <input type="text" id="mtext3" class="dews-ui-maskedtextbox" data-dews-mask="000-000" value="201501">
+3
+</p>
+4
+<p>
+5
+  <button id="btnGetValue" class="dews-ui-button" type="button">포맷이 적용된 값 가져오기: value</button>
+6
+  <button id="btnGetRaw" class="dews-ui-button" type="button">포맷이 적용되지 않은 값 가져오기: raw</button>
+7
+</p>
+8
+?
+9
+<script>
+10
+  dews.ready(function () {
+11
+    var self = this;
+12
+?
+13
+    self.$btnGetValue.on('click', function (e) {
+14
+      alert(self.mtext3.value());
+15
+    });
+16
+    self.$btnGetRaw.on('click', function (e) {
+17
+      alert(self.mtext3.raw());
+18
+    });
+19
+  });
+20
+</script>
+값 설정하기
+value(val) 마스크텍스트박스로 값을 설정합니다.
+
+※ 값은 마스크 포맷이 적용되어 있는지 여부에 관계없이 적용이 가능합니다.
+
+
+
+ 
+
+
+1
+<p>
+2
+  <input type="text" id="mtext4" class="dews-ui-maskedtextbox" data-dews-mask="000-000">
+3
+</p>
+4
+<p>
+5
+  <button id="btnSetRaw" class="dews-ui-button" type="button">마스크 포맷이 적용되지 않은 원본 값 설정하기</button>
+6
+  <button id="btnSetFormated" class="dews-ui-button" type="button">마스크 포맷이 적용된 값 설정하기</button>
+7
+</p>
+8
+?
+9
+<script>
+10
+  dews.ready(function () {
+11
+    var self = this;
+12
+?
+13
+    self.$btnSetRaw.on('click', function (e) {
+14
+      // 마스크포맷이 적용되지 않은 값 설정
+15
+      self.mtext4.value('123456');
+16
+    });
+17
+    self.$btnSetFormated.on('click', function (e) {
+18
+      // 마스크포맷이 미리 적용된 값 설정
+19
+      self.mtext4.value('987-654');
+20
+    });
+21
+  });
+22
+</script>
+읽기전용 여부 설정 및 가져오기
+readonly() 를 사용하며 매개변수로는 true, false 가 있습니다.
+
+읽기전용 여부
+
+true 읽기전용으로 설정합니다.
+false 읽기전용을 해제합니다.
+
+
+  
+
+
+1
+<p>
+2
+  <input id="mtext1" type="text" class="dews-ui-maskedtextbox" data-dews-mask="LL-0000">
+3
+</p>
+4
+<p>
+5
+  <button id="btnSetReadonly" class="dews-ui-button">읽기전용 설정</button>
+6
+  <button id="btnRemoveReadonly" class="dews-ui-button">읽기전용 해제</button>
+7
+  <button id="btnReadonlyState" class="dews-ui-button">읽기전용 상태</button>
+8
+</p>
+9
+<script>
+10
+  dews.ready(function () {
+11
+    var self = this;
+12
+?
+13
+    self.$btnSetReadonly.on('click', function (e) {
+14
+      self.mtext1.readonly(true);
+15
+    });
+16
+    self.$btnRemoveReadonly.on('click', function (e) {
+17
+      self.mtext1.readonly(false);
+18
+    });
+19
+    self.$btnReadonlyState.on('click', function (e) {
+20
+      alert(self.mtext1.readonly());
+21
+    });
+22
+  });
+23
+</script>
+활성화 여부 설정 및 가져오기
+enable() 를 사용하며 매개변수로는 true, false 가 있습니다.
+
+활성화 상태
+
+true 활성화 상태입니다.
+false 비활성화 상태입니다.
+
+
+  
+
+
+1
+<p>
+2
+  <input type="text" id="mtext2" class="dews-ui-maskedtextbox" data-dews-mask="LL-0000">
+3
+</p>
+4
+<p>
+5
+  <button id="btnEnable" type="button" class="dews-ui-button">활성화</button>
+6
+  <button id="btnDisable" type="button" class="dews-ui-button">비활성화</button>
+7
+  <button id="btnEnableState" type="button" class="dews-ui-button">활성화 여부</button>
+8
+</p>
+9
+?
+10
+<script>
+11
+  dews.ready(function () {
+12
+    var self = this;
+13
+?
+14
+    self.$btnEnable.on('click', function (e) {
+15
+      self.mtext2.enable(true);
+16
+    });
+17
+    self.$btnDisable.on('click', function (e) {
+18
+      self.mtext2.enable(false);
+19
+    });
+20
+    self.$btnEnableState.on('click', function (e) {
+21
+      alert(self.mtext2.enable());
+22
+    });
+23
+  });
+
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+함수 (MaskTextbox) Functions
+value값 설정 및 반환
+value(val) 값을 설정하거나 마스크 포맷이 적용되어 있는 값을 가져옵니다.
+
+파라미터
+
+val string 설정할 값 ( ※ 생략하면 설정된 값을 가져옵니다.) ※ 설정 값은 마스크 포맷의 적용에 관계없이 설정가능합니다. 
+리턴 값
+
+마스크 포맷이 적용되어 있는 값
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.mtext4.value('123456'); //mtext4에 마스크포맷이 적용되지 않은 값을 설정합니다.
+5
+  self.mtext4.value('987-654'); //mtext4에 마스크포맷이 미리 적용된 값 설정합니다.
+6
+});
+raw마스크 포맷이 적용되지 않은 값 반환
+raw() 마스크 포맷이 적용되지 않은 문자열 값을 가져옵니다.
+
+리턴 값
+
+마스크 포맷이 적용되지 않은 값
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  self.mtext3.raw(); //mtext3의 마스크 포맷이 적용되지 않은 값을 가져옵니다.
+4
+});
+enable활성화 여부의 설정 및 반환
+enable(value) 활성화 여부를 가져오거나 설정합니다.
+
+파라미터
+
+value boolean 활성화 여부 ( ※ 생략하면 현재 활성화 여부를 가져옵니다.) 
+반환 값
+
+boolean 활성화 여부
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.mtext2.enable(true); //mtext2를 활성화로 상태로 설정합니다.
+5
+  self.mtext2.enable(false); //mtext2를 비활성화로 상태로 설정합니다.
+6
+  self.mtext2.enable(); //mtext2의 활성화 여부를 가져옵니다.
+7
+});
+readonly읽기전용 여부의 설정 및 반환
+readonly(value) 읽기전용 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+value boolean 읽기전용 여부 ( ※ 생략하면 현재의 읽기전용 여부를 가져옵니다.) 
+반환 값
+
+boolean 읽기전용 여부
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.mtext1.readonly(true); //mtext1를 읽기전용으로 설정합니다.
+5
+  self.mtext1.readonly(false); //mtext1의 읽기전용을 해제합니다.
+6
+  self.mtext1.readonly(); //mtext1의 읽기전용 여부를 가져옵니다.
+7
+});

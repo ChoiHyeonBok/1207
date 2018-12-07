@@ -1,0 +1,376 @@
+자동완성텍스트박스dews-ui-autocomplete
+입력창에 url에서 가져온 데이터의 text값을 입력합니다. 입력한 값이 해당 url에서 가져온 데이터에 존재하는 값이면 자동완성 글자가 보여집니다.
+ex)고길동,둘리,또치,희동이,도우너
+
+초기화 방법init
+HTML 초기화
+초기화
+
+input 태그에 dews-ui-autocomplete 클래스를 지정하여 사용합니다.
+
+옵션
+
+data-dews-text-field 텍스트 값
+data-dews-code-field 코드 값
+data-dews-visible-code 리스트에 코드값 표시 유무 설정 ( ※ 생략시 기본값 true )
+data-dews-data-url 데이터를 가져올 URL 경로
+data-dews-list-width 리스트의 길이 지정( 최소 길이는 검색어 필드의 길이 )
+data-dews-list-maxheight 리스트의 최대 높이 지정
+data-dews-filter 첫글자부터 일치(startswith), 글자내 포함(contains) ( ※ 생략시 기본값 startswith )
+data-dews-min-length 사용자가 입력해야하는 최소 글자수 설정 ( ※ 생략시 기본값 1 )
+data-dews-params 자동완성에 추가적으로 전달할 데이터 ※ 여러 항목을 전달할 때는 URL 파라미터 형식을 따릅니다.( key1=value1&key2=value2 )
+상태
+required 필수입력사항 자동완성텍스트박스로 설정합니다.
+readonly 읽기전용 자동완성텍스트박스로 설정합니다.
+disabled 비활성화 자동완성텍스트박스로 설정합니다.
+사용 방법usage
+기본 사용법
+
+ 
+1
+<input type="text" class="dews-ui-autocomplete" data-dews-data-url="~/api/FI/MyService/auto" data-dews-text-field="Name">
+자동완성(코드값)
+
+ 
+1
+<input type="text" id="autocomplete">
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var data = [
+4
+    {"Name": "고길동", "Age": '40'},
+5
+    {"Name": "둘리", "Age": '30'},
+6
+    {"Name": "또치", "Age": '20'},
+7
+    {"Name": "희동이", "Age": '3'},
+8
+    {"Name": "도우너", "Age": '15'},
+9
+    {"Name": "고길자", "Age": '35'},
+10
+    {"Name": "둘이", "Age": '27'},
+11
+    {"Name": "또치이", "Age": '19'},
+12
+    {"Name": "흰동이", "Age": '13'},
+13
+    {"Name": "도우넛", "Age": '38'},
+14
+    {"Name": "고길형", "Age": '37'},
+15
+    {"Name": "둘째", "Age": '26'},
+16
+    {"Name": "또치2", "Age": '20'},
+17
+    {"Name": "검동이", "Age": '5'},
+18
+    {"Name": "도우너3", "Age": '22'}
+19
+  ];
+20
+  dews.ui.autocomplete('#autocomplete', {
+21
+    dataSource: data,
+22
+    dataTextField: 'Name',
+23
+    template: 'Age',
+24
+    filter: 'contains'
+25
+  });
+26
+});
+자동완성(파라미터 사용)
+입력창에 url에서 가져온 데이터를 입력합니다. ex)'고','둘'
+
+
+ 
+1
+<input type="text" class="dews-ui-autocomplete" id="autocomplete1" data-dews-filter="contains" data-dews-params="Age=40" data-dews-data-url="~/api/FI/MyService/params" data-dews-text-field="Name" data-dews-code-field="Age">
+자동완성(사이즈 조정)
+리스트의 넓이, 최대 높이를 지정합니다.
+
+
+ 
+1
+<input type="text" id="size1" class="dews-ui-autocomplete" data-dews-list-width="300px" data-dews-list-maxheight="400px" data-dews-code-field="Age" data-dews-data-url="~/api/FI/MyService/auto" data-dews-text-field="Name" style="width: 188px;">
+자동완성(최소 입력 글자수 지정)
+
+ 
+1
+<input type="text" id="length1" class="dews-ui-autocomplete" data-dews-min-length="2" data-dews-code-field="Age" data-dews-data-url="~/api/FI/MyService/auto" data-dews-text-field="Name">
+상태 옵션 지정하는 방법
+필수(required)  
+
+읽기전용(readonly)  
+
+비활성화(disabled)  
+
+
+1
+<p>
+2
+  <label>필수(required)</label>
+3
+  <input type="text" class="dews-ui-autocomplete required" id="required" data-dews-text-field="Name" data-dews-data-url="~/api/FI/MyService/auto">
+4
+</p>
+5
+<p>
+6
+  <label>읽기전용(readonly)</label>
+7
+  <input type="text" class="dews-ui-autocomplete readonly" id="readonly" data-dews-text-field="Name" data-dews-data-url="~/api/FI/MyService/auto">
+8
+</p>
+9
+<p>
+10
+  <label>비활성화(disabled)</label>
+11
+  <input type="text" class="dews-ui-autocomplete disabled" id="disabled" data-dews-text-field="Name" data-dews-data-url="~/api/FI/MyService/auto">
+12
+</p>
+
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+함수 (Autocomplete) Functions
+text, code텍스트/고유키 가져오기
+text() 텍스트값을 가져옵니다.
+
+code() 코드값을 가져옵니다.
+
+
+  
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  var data = [
+5
+    {"Name": "고길동", "Age": '40'},
+6
+    {"Name": "둘리", "Age": '30'},
+7
+    {"Name": "또치", "Age": '20'},
+8
+    {"Name": "희동이", "Age": '3'},
+9
+    {"Name": "도우너", "Age": '15'}
+10
+  ];
+11
+?
+12
+  var auto = dews.ui.autocomplete('#autocomplete2', {
+13
+    dataSource: data
+14
+  });
+15
+?
+16
+  self.$text1.on('click', function (e) {
+17
+    alert(auto.text());
+18
+  });
+19
+  self.$code1.on('click', function (e) {
+20
+    alert(auto.code());
+21
+  });
+22
+?
+23
+});
+setParams추가적으로 전달할 데이터 설정
+setParams(value) 추가적으로 전달할 데이터를 설정합니다.
+
+파라미터
+
+value object 추가적으로 전달할 데이터 
+
+ 
+1
+dews.ready(function () {
+2
+  var auto = dews.ui.autocomplete("#params");
+3
+  auto.setParams(
+4
+    {
+5
+      'Age': function (value) {
+6
+        value = 40;
+7
+        return value;
+8
+      }
+9
+    }
+10
+  );
+11
+});
+readonly읽기전용 여부 설정
+readonly(value) 읽기전용 여부를 설정합니다.
+
+파라미터
+
+value boolean 설정할 읽기전용 여부 
+
+  
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  var data = [
+5
+    {"Name": "고길동", "Age": '40'},
+6
+    {"Name": "둘리", "Age": '30'},
+7
+    {"Name": "또치", "Age": '20'},
+8
+    {"Name": "희동이", "Age": '3'},
+9
+    {"Name": "도우너", "Age": '15'}
+10
+  ];
+11
+?
+12
+  var auto = dews.ui.autocomplete('#autocomplete3', {
+13
+    dataSource: data
+14
+  });
+15
+?
+16
+  self.$btnReaonly.on('click', function (e) {
+17
+    auto.readonly(true);
+18
+  });
+19
+  self.$btnReaonly2.on('click', function (e) {
+20
+    auto.readonly(false);
+21
+  });
+22
+});
+enable활성화 여부 설정
+enable(value) 활성화 여부를 설정합니다.
+
+파라미터
+
+value boolean 설정할 활성화 여부 
+
+  
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  var data = [
+5
+    {"Name": "고길동", "Age": '40'},
+6
+    {"Name": "둘리", "Age": '30'},
+7
+    {"Name": "또치", "Age": '20'},
+8
+    {"Name": "희동이", "Age": '3'},
+9
+    {"Name": "도우너", "Age": '15'}
+10
+  ];
+11
+?
+12
+  var auto = dews.ui.autocomplete('#autocomplete4', {
+13
+    dataSource: data
+14
+  });
+15
+?
+16
+  self.$btnEnable.on('click', function (e) {
+17
+    auto.enable(true);
+18
+  });
+19
+  self.$btnEnable2.on('click', function (e) {
+20
+    auto.enable(false);
+21
+  });
+22
+});
+focus포커스 설정
+focus 자동완성에 포커스를 설정해 줍니다.
+
+
+ 
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var data = [
+4
+    {"Name": "고길동", "Age": '40'},
+5
+    {"Name": "둘리", "Age": '30'},
+6
+    {"Name": "또치", "Age": '20'},
+7
+    {"Name": "희동이", "Age": '3'},
+8
+    {"Name": "도우너", "Age": '15'}
+9
+  ];
+10
+?
+11
+  var auto = dews.ui.autocomplete("#autocomplete5", {
+12
+    dataSource: data
+13
+  });
+14
+?
+15
+  self.$btnFocus.on('click', function (e) {
+16
+    auto.focus();
+17
+  });
+18
+});

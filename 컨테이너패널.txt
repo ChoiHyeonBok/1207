@@ -1,0 +1,1259 @@
+컨테이너 패널dews-ui-containerpanel
+컨테이너 패널은 그리드와 폼패널이 합쳐진 패널로써 그리드형태의 패널에서 행을 선택하여 폼패널형태의 패널에서 값을 조회하거나 변경할 수 있습니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+div 태그에 dews-ui-containerpanel 클래스를 지정하여 사용합니다.
+
+div 태그에 dews-container-item 클래스를 지정하여 컨테이너 아이템을 사용합니다.
+
+옵션 ( 패널 속성 )
+
+data-dews-container-height number 컨테이너 패널의 높이 설정
+data-dews-fit-bottom boolean 컨테이너 패널 자동 높이 조정 
+옵션 ( 패널 아이템 속성 )
+
+data-dews-position string 컨테이너 아이템의 위치 설정
+left, right, normal (※ normal은 1개만 설정)
+data-dews-width number 컨테이너 아이템의 너비 설정
+사용 방법usage
+기본 사용법 - HTML
+회사코드
+회사명
+국가코드 화사명(영)
+언어선택 통화코드 법인구분 법인유형
+회사코드
+회사명
+국가코드 화사명(영)
+회사코드
+회사명
+국가코드
+
+1
+<div class="dews-container-panel" style="height: 300px">
+2
+  <div class="dews-container-item" data-dews-position="left" data-dews-width="300">
+3
+    <div class="dews-ui-grid" id="gridbasic"></div>
+4
+  </div>
+5
+  <div class="dews-container-item" data-dews-position="normal">
+6
+    <div class="dews-form-panel">
+7
+      <form class="dews-form-panel-form">
+8
+        <ul>
+9
+          <li>
+10
+            <label>회사코드</label>
+11
+            <span>
+12
+              <input type="text" class="dews-ui-textbox">
+13
+            </span>
+14
+          </li>
+15
+          <li>
+16
+            <label>회사명</label>
+17
+            <span>
+18
+              <input type="text" class="dews-ui-textbox">
+19
+            </span>
+20
+          </li>
+21
+          <li>
+22
+            <label>국가코드</label>
+23
+            <span>
+24
+              <select class="dews-ui-dropdownlist"></select>
+25
+            </span>
+26
+          </li>
+27
+          <li>
+28
+            <label>화사명(영)</label>
+29
+            <span>
+30
+              <input type="text" class="dews-ui-textbox">
+31
+            </span>
+32
+          </li>
+33
+          <li>
+34
+            <label>언어선택</label>
+35
+            <span>
+36
+              <select class="dews-ui-dropdownlist"></select>
+37
+            </span>
+38
+          </li>
+39
+          <li>
+40
+            <label>통화코드</label>
+41
+            <span>
+42
+              <select class="dews-ui-dropdownlist"></select>
+43
+            </span>
+44
+          </li>
+45
+          <li>
+46
+            <label>법인구분</label>
+47
+            <span>
+48
+              <select class="dews-ui-dropdownlist"></select>
+49
+            </span>
+50
+          </li>
+51
+          <li>
+52
+            <label>법인유형</label>
+53
+            <span>
+54
+              <select class="dews-ui-dropdownlist"></select>
+55
+            </span>
+56
+          </li>
+57
+        </ul>
+58
+        <ul>
+59
+          <li>
+60
+            <label>회사코드</label>
+61
+            <span>
+62
+              <input type="text" class="dews-ui-textbox">
+63
+            </span>
+64
+          </li>
+65
+          <li>
+66
+            <label>회사명</label>
+67
+            <span>
+68
+              <input type="text" class="dews-ui-textbox">
+69
+            </span>
+70
+          </li>
+71
+          <li>
+72
+            <label>국가코드</label>
+73
+            <span>
+74
+              <select class="dews-ui-dropdownlist"></select>
+75
+            </span>
+76
+          </li>
+77
+          <li>
+78
+            <label>화사명(영)</label>
+79
+            <span>
+80
+              <input type="text" class="dews-ui-textbox">
+81
+            </span>
+82
+          </li>
+83
+        </ul>
+84
+        <ul>
+85
+          <li>
+86
+            <label>회사코드</label>
+87
+            <span>
+88
+              <input type="text" class="dews-ui-textbox">
+89
+            </span>
+90
+          </li>
+91
+          <li>
+92
+            <label>회사명</label>
+93
+            <span>
+94
+              <input type="text" class="dews-ui-textbox">
+95
+            </span>
+96
+          </li>
+97
+          <li class="col-2">
+98
+            <label>국가코드</label>
+99
+            <span>
+100
+              <select class="dews-ui-dropdownlist"></select>
+101
+            </span>
+102
+          </li>
+103
+        </ul>
+104
+      </form>
+105
+    </div>
+106
+  </div>
+107
+</div>
+108
+<script>
+109
+  dews.ready(function () {
+110
+    var grid, dataSource, self = this;
+111
+?
+112
+    dataSource = dews.ui.dataSource('dataSource', {
+113
+      grid: true,
+114
+      transport: {
+115
+        read: {
+116
+          url: dews.url.getApiUrl('FI', 'MyService', 'List')
+117
+        }
+118
+      },
+119
+      schema: {
+120
+        model: {
+121
+          id: 'data',
+122
+          fields: [
+123
+            {field: 'ID'},
+124
+            {field: 'Name'},
+125
+            {field: 'Age'},
+126
+            {field: 'Address'}
+127
+          ]
+128
+        }
+129
+      }
+130
+    });
+131
+?
+132
+    grid = dews.ui.grid(self.$gridbasic, {
+133
+      dataSource: dataSource,
+134
+      selectable: true, //행 선택 가능
+135
+      editable: true, //데이터 수정 가능
+136
+      sortable: true, //컬럼 정렬 가능
+137
+      height: 290,
+138
+      columns: [
+139
+        {
+140
+          field: "ID",
+141
+          title: "아이디",
+142
+          width: 100
+143
+        },
+144
+        {
+145
+          field: "Name",
+146
+          title: "이름",
+147
+          width: 200
+148
+        },
+149
+        {
+150
+          field: 'Age',
+151
+          title: '나이',
+152
+          width: 100
+153
+        },
+154
+        {
+155
+          field: 'Address',
+156
+          title: '주소'
+157
+        }
+158
+      ]
+159
+    });
+160
+  });
+161
+</script>
+그리드 행 추가 기능 적용
+컨테이너 패널에서 행을 선택하거나, 컨테이너 아이템 영역에서 타입을 선택 시 컨테이너 아이템 영역에 행의 값들이 표시됩니다.
+컨테이너 아이템 영역에서 선택된 행의 값 들을 변경할 수 있습니다.
+행추가 버튼 클릭 시 컨테이너 패널 마지막 줄에 행이 1개 추가됩니다.
+타입 아이디
+이름
+나이
+주소
+기간피커
+~
+ 행추가
+
+1
+<div class="dews-container-panel" data-dews-container-height="300">
+2
+            <div class="dews-container-item" style="width: 300px">
+3
+              <div class="dews-ui-grid" id="grid"></div>
+4
+            </div>
+5
+            <div class="dews-container-item">
+6
+              <div class="dews-form-panel" id="panel">
+7
+                <form class="dews-form-panel-form">
+8
+                  <ul>
+9
+                    <li>
+10
+                      <label>타입</label>
+11
+            <span>
+12
+              <select class="dews-ui-multidropdownlist" id="type" data-dews-bind-text="drop_text" data-dews-bind-value="drop_value">
+13
+                <option value="z">하</option>
+14
+                <option value="y">파</option>
+15
+                <option value="x">타</option>
+16
+                <option value="w">카</option>
+17
+                <option value="v">자</option>
+18
+              </select>
+19
+            </span>
+20
+          </li>
+21
+          <li>
+22
+            <label>아이디</label>
+23
+            <span>
+24
+                <input type="text" class="dews-ui-textbox" id="id" data-dews-bind-column="ID">
+25
+            </span>
+26
+          </li>
+27
+          <li>
+28
+            <label>이름</label>
+29
+            <span>
+30
+              <input type="text" class="dews-ui-textbox" id="Name" data-dews-panel-bind="false/">
+31
+            </span>
+32
+          </li>
+33
+          <li>
+34
+            <label>나이</label>
+35
+            <span>
+36
+              <input type="text" class="dews-ui-numerictextbox" data-dews-bind-column="Age" id="age">
+37
+            </span>
+38
+          </li>
+39
+          <li>
+40
+            <label>주소</label>
+41
+            <span>
+42
+              <input type="text" class="dews-ui-textbox" id="address" data-dews-bind-column="Address">
+43
+            </span>
+44
+          </li>
+45
+          <li>
+46
+            <label>기간피커</label>
+47
+            <span>
+48
+              <span class="dews-ui-periodpicker" id="period1" data-dews-bind-startdate="Start" data-dews-bind-enddate="End"></span>
+49
+            </span>
+50
+          </li>
+51
+        </ul>
+52
+      </form>
+53
+    </div>
+54
+  </div>
+55
+</div>
+56
+<button type="button" id="addRowButton">행추가</button>
+57
+<script>
+58
+  dews.ready(function () {
+59
+    var grid, dataSource, self = this;
+60
+?
+61
+    dataSource = dews.ui.dataSource('dataSource', {
+62
+      grid: true,
+63
+      data: [
+64
+        {
+65
+          drop_value: 'z',
+66
+          drop_text: '하',
+67
+          ID: '1',
+68
+          Name: '가나다',
+69
+          Age: '10',
+70
+          Address: '서울',
+71
+          nm_code: 'a',
+72
+          nm_text: '가',
+73
+          Start: '20170601',
+74
+          End: '20170720'
+75
+        },
+76
+        {
+77
+          drop_value: 'y',
+78
+          drop_text: '파',
+79
+          ID: '2',
+80
+          Name: '나가다',
+81
+          Age: '20',
+82
+          Address: '부산',
+83
+          nm_code: 'b',
+84
+          nm_text: '나',
+85
+          Start: '20170701',
+86
+          End: '20170820'
+87
+        },
+88
+        {
+89
+          drop_value: 'x',
+90
+          drop_text: '타',
+91
+          ID: '3',
+92
+          Name: '가다나',
+93
+          Age: '30',
+94
+          Address: '대구',
+95
+          nm_code: 'c',
+96
+          nm_text: '다',
+97
+          Start: '20170801',
+98
+          End: '20170920'
+99
+        },
+100
+        {
+101
+          drop_value: 'w',
+102
+          drop_text: '카',
+103
+          ID: '4',
+104
+          Name: '나다가',
+105
+          Age: '40',
+106
+          Address: '대전',
+107
+          nm_code: 'd',
+108
+          nm_text: '라',
+109
+          Start: '20170901',
+110
+          End: '20171020'
+111
+        },
+112
+        {
+113
+          drop_value: 'v',
+114
+          drop_text: '자',
+115
+          ID: '5',
+116
+          Name: '다나가',
+117
+          Age: '50',
+118
+          Address: '광주',
+119
+          nm_code: 'e',
+120
+          nm_text: '마',
+121
+          Start: '20171001',
+122
+          End: '20171120'
+123
+        }
+124
+      ],
+125
+      schema: {
+126
+        model: {
+127
+          id: 'data',
+128
+          fields: [
+129
+            {field: 'drop_value'},
+130
+            {field: 'drop_text'},
+131
+            {field: 'ID'},
+132
+            {field: 'Name'},
+133
+            {field: 'Age'},
+134
+            {field: 'Address'},
+135
+            {field: 'nm_code'},
+136
+            {field: 'nm_text'},
+137
+            {field: 'Start'},
+138
+            {field: 'End'}
+139
+?
+140
+          ]
+141
+        }
+142
+      }
+143
+    });
+144
+?
+145
+    grid = dews.ui.grid(self.$grid, {
+146
+      dataSource: dataSource,
+147
+      selectable: true,
+148
+      editable: true,
+149
+      sortable: true,
+150
+      height: 290,
+151
+      columns: [
+152
+        {
+153
+          field: "drop_value",
+154
+          title: "드롭코드",
+155
+          width: 50
+156
+        },
+157
+        {
+158
+          field: "drop_text",
+159
+          title: "드롭텍스트",
+160
+          width: 50
+161
+        },
+162
+        {
+163
+          field: "ID",
+164
+          title: "아이디",
+165
+          width: 100
+166
+        },
+167
+        {
+168
+          field: "Name",
+169
+          title: "이름",
+170
+          width: 100
+171
+        },
+172
+        {
+173
+          field: 'Age',
+174
+          title: '나이',
+175
+          width: 100
+176
+        },
+177
+        {
+178
+          field: 'Address',
+179
+          title: '주소'
+180
+        },
+181
+        {
+182
+          field: 'nm_code',
+183
+          title: '코드',
+184
+          width: 50
+185
+        },
+186
+        {
+187
+          field: 'nm_text',
+188
+          title: '텍스트',
+189
+          width: 50
+190
+        },
+191
+        {
+192
+          field: 'Start',
+193
+          title: '시작일',
+194
+          width: 100
+195
+        },
+196
+        {
+197
+          field: 'End',
+198
+          title: '종료일',
+199
+          width: 50
+200
+        }
+201
+      ]
+202
+    });
+203
+?
+204
+    grid.on('change', function (e) {
+205
+      if (e.row.isChange) {
+206
+        grid.bindPanel(self.panel);
+207
+      }
+208
+    });
+209
+?
+210
+    self.panel.on('change', function (e) {
+211
+      self.panel.bindTo(grid);
+212
+    });
+213
+?
+214
+    $('#addRowButton').on('click', function() {
+215
+      self.grid.addRow();
+216
+    });
+217
+  });
+218
+</script>
+컨테이너 아이템 접근
+해당 컨테이너 아이템의 index로 접근
+ex) var container = dews.ui.container('#id');
+container.items[index].display('none');
+해당 컨테이너 아이템의 id로 접근
+ex) var container = dews.ui.container('#id');
+container.items.getById('id').display('block');
+컨테이너 패널 내 컨테이너 아이템 API
+display 컨테이너 아이템 출력 유무 설정
+아래 예제에서는 보이기 버튼을 클릭하면 grid2가 나타나고 숨기기 버튼을 클릭하면 grid2가 숨겨집니다.
+
+ 
+회사코드
+회사명
+국가코드 화사명(영)
+언어선택 통화코드 법인구분 법인유형
+회사코드
+회사명
+국가코드 화사명(영)
+회사코드
+회사명
+국가코드
+
+1
+<button class="dews-ui-button" id="show">보이기</button>
+2
+<button class="dews-ui-button" id="hide">숨기기</button>
+3
+<div class="dews-container-panel" id="containerPanel" style="height: 300px">
+4
+  <div class="dews-container-item" data-dews-position="left" data-dews-width="200">
+5
+    <div class="dews-ui-grid" id="gridlist"></div>
+6
+  </div>
+7
+  <div class="dews-container-item" id="container-item" data-dews-position="left" data-dews-width="200">
+8
+    <div class="dews-ui-grid" id="gridlist2"></div>
+9
+  </div>
+10
+  <div class="dews-container-item" data-dews-position="normal">
+11
+    <div class="dews-form-panel">
+12
+      <form class="dews-form-panel-form">
+13
+        <ul>
+14
+          <li>
+15
+            <label>회사코드</label>
+16
+            <span>
+17
+              <input type="text" class="dews-ui-textbox">
+18
+            </span>
+19
+          </li>
+20
+          <li>
+21
+            <label>회사명</label>
+22
+            <span>
+23
+              <input type="text" class="dews-ui-textbox">
+24
+            </span>
+25
+          </li>
+26
+          <li>
+27
+            <label>국가코드</label>
+28
+            <span>
+29
+              <select class="dews-ui-dropdownlist"></select>
+30
+            </span>
+31
+          </li>
+32
+          <li>
+33
+            <label>화사명(영)</label>
+34
+            <span>
+35
+              <input type="text" class="dews-ui-textbox">
+36
+            </span>
+37
+          </li>
+38
+          <li>
+39
+            <label>언어선택</label>
+40
+            <span>
+41
+              <select class="dews-ui-dropdownlist"></select>
+42
+            </span>
+43
+          </li>
+44
+          <li>
+45
+            <label>통화코드</label>
+46
+            <span>
+47
+              <select class="dews-ui-dropdownlist"></select>
+48
+            </span>
+49
+          </li>
+50
+          <li>
+51
+            <label>법인구분</label>
+52
+            <span>
+53
+              <select class="dews-ui-dropdownlist"></select>
+54
+            </span>
+55
+          </li>
+56
+          <li>
+57
+            <label>법인유형</label>
+58
+            <span>
+59
+              <select class="dews-ui-dropdownlist"></select>
+60
+            </span>
+61
+          </li>
+62
+        </ul>
+63
+        <ul>
+64
+          <li>
+65
+            <label>회사코드</label>
+66
+            <span>
+67
+              <input type="text" class="dews-ui-textbox">
+68
+            </span>
+69
+          </li>
+70
+          <li>
+71
+            <label>회사명</label>
+72
+            <span>
+73
+              <input type="text" class="dews-ui-textbox">
+74
+            </span>
+75
+          </li>
+76
+          <li>
+77
+            <label>국가코드</label>
+78
+            <span>
+79
+              <select class="dews-ui-dropdownlist"></select>
+80
+            </span>
+81
+          </li>
+82
+          <li>
+83
+            <label>화사명(영)</label>
+84
+            <span>
+85
+              <input type="text" class="dews-ui-textbox">
+86
+            </span>
+87
+          </li>
+88
+        </ul>
+89
+        <ul>
+90
+          <li>
+91
+            <label>회사코드</label>
+92
+            <span>
+93
+              <input type="text" class="dews-ui-textbox">
+94
+            </span>
+95
+          </li>
+96
+          <li>
+97
+            <label>회사명</label>
+98
+            <span>
+99
+              <input type="text" class="dews-ui-textbox">
+100
+            </span>
+101
+          </li>
+102
+          <li class="col-2">
+103
+            <label>국가코드</label>
+104
+            <span>
+105
+              <select class="dews-ui-dropdownlist"></select>
+106
+            </span>
+107
+          </li>
+108
+        </ul>
+109
+      </form>
+110
+    </div>
+111
+  </div>
+112
+</div>
+113
+<script>
+114
+  dews.ready(function () {
+115
+    var grid, grid2, dataSource, containerpanel;
+116
+    var self = this;
+117
+?
+118
+    containerpanel = self.containerPanel;
+119
+    containerpanel.items[1].display('none');
+120
+?
+121
+    dataSource = dews.ui.dataSource('dataSource', {
+122
+      grid: true,
+123
+      transport: {
+124
+        read: {
+125
+          url: dews.url.getApiUrl('FI', 'MyService', 'List')
+126
+        }
+127
+      },
+128
+      schema: {
+129
+        model: {
+130
+          id: 'data',
+131
+          fields: [
+132
+            {field: 'ID'},
+133
+            {field: 'Name'},
+134
+            {field: 'Age'},
+135
+            {field: 'Address'}
+136
+          ]
+137
+        }
+138
+      }
+139
+    });
+140
+?
+141
+    grid = dews.ui.grid(self.$gridlist, {
+142
+      dataSource: dataSource,
+143
+      selectable: true,
+144
+      editable: true,
+145
+      sortable: true,
+146
+      height: 290,
+147
+      columns: [
+148
+        {
+149
+          field: "Name",
+150
+          title: "이름",
+151
+          width: 200
+152
+        },
+153
+        {
+154
+          field: 'Age',
+155
+          title: '나이',
+156
+          width: 100
+157
+        },
+158
+        {
+159
+          field: 'Address',
+160
+          title: '주소'
+161
+        }
+162
+      ]
+163
+    });
+164
+?
+165
+    grid2 = dews.ui.grid(self.$gridlist2, {
+166
+      dataSource: dataSource,
+167
+      selectable: true,
+168
+      editable: true,
+169
+      sortable: true,
+170
+      rowNo: false, //행 번호를 출력하지 않습니다.
+171
+      height: 290,
+172
+      columns: [
+173
+        {
+174
+          field: "ID",
+175
+          title: "아이디",
+176
+          width: 100
+177
+        },
+178
+        {
+179
+          field: "Name",
+180
+          title: "이름",
+181
+          width: 200
+182
+        }
+183
+      ]
+184
+    });
+185
+?
+186
+    self.$show.on('click', function () {
+187
+      containerpanel.items[1].display('block');
+188
+    });
+189
+?
+190
+    self.$hide.on('click', function () {
+191
+      containerpanel.items.getById('container-item').display('none');
+192
+    });
+193
+  });
+194
+</script>
+
+속성 (ContainerPanel)Properties
+items개별 항목 가져오기
+items[index] 컨테이너 패널 내 컨테이너 아이템에 접근합니다.
+
+파라미터
+
+index number 컨테이너 아이템의 index
+getById(id) 사용 시 id 값으로 접근이 가능 (※ index 값 설정하지 않습니다.)
+리턴값
+
+object 컨테이너 아이템 객체
+
+1
+dews.ready(function() {
+2
+  var self = this;
+3
+  var myItem = self.containerPanel.items[0];
+4
+});
+함수 (ContainerPanel Items) Functions
+display 컨테이너 패널 내 컨테이너 아이템의 출력 유무를 설정
+display(value) 컨테이너 패널 내 해당 컨테이너 아이템의 출력 유무를 설정합니다.
+
+파라미터
+
+value block | none
+block해당 컨테이너 아이템을 출력합니다.
+none해당 컨테이너 아이템을 출력하지 않습니다.
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  var container = self.container;
+4
+?
+5
+  container.items[1].display('block'); // 배열 형태로 설정하는 방법
+6
+  container.items.getById('container-item').display('block'); // 컨테이너 패널 내의 컨테이너 아이템의 아이디 값으로 찾는 방법
+7
+});

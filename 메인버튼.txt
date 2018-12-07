@@ -1,0 +1,658 @@
+현재 페이지 상단 오른쪽에 7종류의 메인버튼이 있습니다.
+페이지 상단 오른쪽에 있는 버튼은 기본 이미지이고 아래 메인버튼 종류에 있는 이미지 해당 버튼을 hover했을 때의 버튼 이미지입니다.
+
+메인버튼 종류
+
+ approval
+ add
+ search
+ delete
+ print
+ save
+ favorite
+특이사항
+
+delete (삭제) 버튼은 기본 삭제 확인 메시지를 출력합니다. 기본 확인 메시지를 사용하지 않으려면 useDefaultConfirm 속성을 false로 설정하십시오.
+
+함수 (MainButton) Functions
+show 버튼 표시
+show() 해당 버튼을 표시합니다.
+
+아래에 버튼표시 버튼을 클릭하면 페이지 상단의 버튼을 표시합니다.
+
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnShow.on('click', function (e) {
+5
+    dews.ui.mainbuttons.approval.show();
+6
+    dews.ui.mainbuttons.add.show();
+7
+    dews.ui.mainbuttons.delete.show();
+8
+    dews.ui.mainbuttons.search.show();
+9
+    dews.ui.mainbuttons.print.show();
+10
+    dews.ui.mainbuttons.save.show();
+11
+    dews.ui.mainbuttons.favorite.show();
+12
+  });
+13
+});
+hide 버튼 숨기기
+hide() 해당 버튼을 숨깁니다.
+
+아래에 버튼숨기기 버튼을 클릭하면 페이지 상단의 버튼을 숨깁니다.
+
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnHide.on('click', function (e) {
+5
+    dews.ui.mainbuttons.approval.hide();
+6
+    dews.ui.mainbuttons.add.hide();
+7
+    dews.ui.mainbuttons.delete.hide();
+8
+    dews.ui.mainbuttons.search.hide();
+9
+    dews.ui.mainbuttons.print.hide();
+10
+    dews.ui.mainbuttons.save.hide();
+11
+    dews.ui.mainbuttons.favorite.hide();
+12
+  });
+13
+});
+disable 버튼 활성화 여부 설정
+disable(value) 해당 버튼의 활성화 여부를 설정합니다.
+
+파라미터
+
+value boolean 버튼 활성화 여부
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnDisable.on('click', function (e) {
+5
+    dews.ui.mainbuttons.approval.disable(true);
+6
+    dews.ui.mainbuttons.add.disable(false);
+7
+    dews.ui.mainbuttons.delete.disable(true);
+8
+    dews.ui.mainbuttons.print.disable(true);
+9
+    dews.ui.mainbuttons.search.disable(false);
+10
+    dews.ui.mainbuttons.save.disable(true);
+11
+    dews.ui.mainbuttons.favorite.disable(false);
+12
+  });
+13
+});
+이벤트 (MainButton)Events
+on 버튼 이벤트 적용
+on(string, handler) 해당 버튼의 이벤트 핸들러를 적용합니다.
+
+파라미터
+
+string string 사용할 이벤트 명
+handler function 이벤트 핸들러
+
+1
+dews.ready(function () {
+2
+  dews.ui.mainbuttons.approval.on('click', function (e) {
+3
+    alert('승인');
+4
+  });
+5
+  dews.ui.mainbuttons.add.on('click', function (e) {
+6
+    alert('추가');
+7
+  });
+8
+  dews.ui.mainbuttons.delete.on('dblclick', function (e) {
+9
+    alert('삭제');
+10
+  });
+11
+});
+click 버튼 click 이벤트 적용
+click() 해당 버튼을 click 합니다. (handler 생략 시)
+click(handler) 해당 버튼을 click 시 이벤트 핸들러를 작동합니다.
+파라미터
+
+handler function 버튼 클릭시 작동할 이벤트 핸들러 
+
+1
+dews.ready(function () {
+2
+  dews.ui.mainbuttons.print.click(); //print 버튼을 클릭합니다.
+3
+  dews.ui.mainbuttons.add.on('click', function (e) { // add 버튼을 클릭 시 작동할 이벤트 핸들러를 적용합니다.
+4
+    // alert('추가');
+5
+  });
+6
+});
+속성 (MainConfirmButton) Properties
+useDefaultConfirm기본 확인 메시지를 사용 여부
+useDefaultConfirm boolean
+삭제 버튼에만 존재
+사용자에게 기본으로 설정된 확인 메시지를 출력 후 확인 받았을 경우에만 핸들러를 실행합니다.
+기본 값은 true이며 사용하지 않으려면 false로 설정합니다.
+autoMainButtonIsDisabled지정한 데이터소스에 따른 활성화/비활성화 자동 설정
+autoMainButtonIsDisabled boolean
+
+지정한 데이터소스에 따른 활성화/비활성화를 자동 설정합니다. 기본 값은 true이며 사용하지 않으려면 false로 설정합니다.
+autoMainButtonDataSource dataSource 객체
+
+메인버튼 활성화/비활성화를 자동 설정할 데이터소스
+autoMainButtonComponent component 객체
+
+메인버튼 활성화/비활성화를 자동 설정할 컴포넌트 
+(※ autoMainButtonDataSource, autoMainButtonComponent 둘 중 하나만 설정합니다.)
+
+1
+<div>
+2
+  <div class="dews-ui-grid" id="grid"></div>
+3
+</div>
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  var mstGridDataSource = dews.ui.dataSource('mstGridDataSource', {
+5
+    grid: true,
+6
+    transport: {
+7
+      read: {
+8
+        url: dews.url.getApiUrl('FI', 'MyService', 'List'),
+9
+        data: function () {
+10
+          return{
+11
+            id: "",
+12
+            name: "",
+13
+            adress: ""
+14
+          }
+15
+        }
+16
+      }
+17
+    },
+18
+    schema: {
+19
+      model: {
+20
+        id: 'ID',
+21
+        fields: [
+22
+          {field: 'ID'},
+23
+          {field: 'Name'},
+24
+          {field: 'Age'},
+25
+          {field: 'Address'}
+26
+        ]
+27
+      }
+28
+    }
+29
+  });
+30
+?
+31
+  var grid = dews.ui.grid(self.$grid, {
+32
+    dataSource: mstGridDataSource,
+33
+    autoBind: false,
+34
+    editable: true,
+35
+    rowNo: true,
+36
+    selectable: true,
+37
+    height: 300,
+38
+    columns: [
+39
+      {
+40
+        field: "ID",
+41
+        title: "아이디",
+42
+        width: 100
+43
+      },
+44
+      {
+45
+        field: "Name",
+46
+        title: "이름",
+47
+        width: 200
+48
+      },
+49
+      {
+50
+        field: 'Age',
+51
+        title: '나이',
+52
+        width: 100,
+53
+        align: 'right',
+54
+        formats: {
+55
+          'type': 'number',
+56
+          'format': '#,##0.##'
+57
+        },
+58
+        editor: {
+59
+          'type': 'number',
+60
+          'format': '#,##0.##'
+61
+        }
+62
+      },
+63
+      {
+64
+        field: 'Address',
+65
+        title: '주소',
+66
+        align: 'left'
+67
+      }
+68
+    ]
+69
+  });
+70
+?
+71
+  self.autoMainButtonIsDisabled = true;
+72
+  // self.autoMainButtonDataSource = mstGridDataSource;
+73
+  self.autoMainButtonComponent = grid;
+74
+});
+useAutoPrint기본 프린트 버튼 자동화 인쇄 진행
+useAutoPrint boolean
+프린트 버튼에만 존재
+기본적으로 프린트 버튼 클릭 이벤트를 설정하지 않았을 경우에 자동화 인쇄를 진행합니다.
+기본 값은 true이며 사용하지 않으려면 false로 설정합니다.
+autoPrintOptions object
+해당 옵션 미 설정 시 첫번째 컨디션 패널, 첫번째 그리드, 트리그리드로 설정
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  dews.ui.mainbuttons.print.useAutoPrint = true;      // 기본값 true, true로 설정해도 click 이벤트 존재시 클릭 이벤트로 설정
+5
+  dews.ui.mainbuttons.print.autoPrintOptions = {      // 해당 옵션 미 설정 시 첫번째 컨디션 패널, 첫번째 그리드, 트리그리드로 설정
+6
+    grid: self.grid,
+7
+    condition: self.condition,
+8
+    excelOption: {                                    // 그리드 엑셀 옵션 참고
+9
+      lookupDisplay: true
+10
+    }
+11
+  };
+12
+});
+
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+커스텀 버튼Custom Button
+페이지 오른쪽 상단 메인 버튼 왼쪽에 커스텀 버튼을 추가할 수 있습니다.
+함수 (CustomButton) Functions
+커스텀 버튼 추가하기 커스텀 버튼 추가하기
+add(id, option) 버튼을 추가합니다.
+
+파라미터
+
+id string 생성할 버튼의 id를 지정합니다.
+option object 생성할 버튼의 기본 설정을 지정합니다.
+tooltip string 버튼이 마우스 오버되었을 때 표시되는 툴팁을 지정합니다.
+icon string 버튼의 이미지를 지정합니다.
+hoverIcon string 버튼이 마우스 오버 되었을 때 이미지를 지정합니다.
+click function 버튼이 클릭되었을때 실행할 핸들러 함수를 지정합니다.
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$addBtn.on('click', function (e) {
+5
+    dews.ui.custombuttons.add('calc', {
+6
+      tooltip: '계산기',
+7
+      icon: CALC_NORMAL_URL,
+8
+      hoverIcon: CALC_FOCUS_URL,
+9
+      click: function (e) {
+10
+        alert('계산기가 클릭되었습니다.');
+11
+      }
+12
+    });
+13
+  });
+14
+});
+커스텀 버튼 제거하기 커스텀 버튼 제거하기
+remove(id) 해당 ID의 버튼을 제거합니다.
+
+파라미터
+
+id string 삭제할 버튼의 ID를 지정합니다
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$removeBtn.on('click', function (e) {
+5
+    dews.ui.custombuttons.remove('calc');
+6
+  });
+7
+?
+8
+});
+커스텀 버튼 선택하기 커스텀 버튼 선택하기
+getById(id) 해당 ID의 버튼을 선택합니다.
+
+remove(id) 해당 ID의 버튼을 제거합니다.
+
+파라미터
+
+id string 선택할 버튼의 ID를 지정합니다
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$selectBtn.on('click', function (e) {
+5
+    var calcBtn = dews.ui.custombuttons.getById('calc');
+6
+    calcBtn.tooltip('변경된 툴팁');
+7
+  });
+8
+});
+커스텀 버튼 제어하기
+tooltip 커스텀 버튼 툴팁 지정하기
+tooltip(value) 해당 버튼에 마우스 오버했을 때 표시되는 툴팁을 지정합니다. 비어있으면 현재 툴팁이 리턴됩니다.
+
+파라미터
+
+value string 새로운 툴팁
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btntooltip.on('click', function (e) {
+5
+    var calcBtn = dews.ui.custombuttons.getById('calc');
+6
+    calcBtn.tooltip('새로운 툴팁입니다.');
+7
+  });
+8
+});
+icon 커스텀 버튼 아이콘 지정하기
+icon(value) 해당 버튼 아이콘을 지정합니다. 비어있으면 현재 아이콘이 리턴됩니다.
+
+파라미터
+
+value string 새로운 아이콘
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnicon.on('click', function (e) {
+5
+    var calcBtn = dews.ui.custombuttons.getById('calc');
+6
+    calcBtn.icon(CALC_NORMAL_URL);
+7
+  });
+8
+});
+hoverIcon 커스텀 버튼 호버 아이콘 지정하기
+hoverIcon(value) 해당 버튼에 마우스 오버했을 때 표시되는 아이콘을 지정합니다.
+
+파라미터
+
+value string 새로운 아이콘
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnhoverIcon.on('click', function (e) {
+5
+    var calcBtn = dews.ui.custombuttons.getById('calc');
+6
+    calcBtn.hoverIcon(CALC_NORMAL_URL);
+7
+  });
+8
+});
+hide 커스텀 버튼 숨기기
+hide() 해당 버튼을 숨깁니다.
+
+아래에 버튼 숨기기 버튼을 클릭하면 페이지 상단의 버튼을 숨깁니다.
+
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnHide.on('click', function (e) {
+5
+    var calcBtn = dews.ui.custombuttons.getById('calc');
+6
+    calcBtn.hide();
+7
+  });
+8
+});
+show 커스텀 버튼 표시
+show() 해당 버튼을 표시합니다.
+
+아래에 버튼표시 버튼을 클릭하면 페이지 상단의 버튼을 표시합니다.
+
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnShow.on('click', function (e) {
+5
+    var calcBtn = dews.ui.custombuttons.getById('calc');
+6
+    calcBtn.show();
+7
+  });
+8
+});
+disable 커스텀 버튼 활성화 여부 설정
+disable(value) 해당 버튼의 비활성화 여부를 설정합니다.
+
+파라미터
+
+value boolean 버튼 활성화 여부
+아래 버튼 활성화 여부 설정 버튼을 누르면 활성화로 토글됩니다.
+
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnDisable.on('click', function (e) {
+5
+    dews.ui.custombuttons.getById('calc')
+6
+      .disable(true);
+7
+  });
+8
+});
+이벤트 (CustomButton)Events
+on 커스텀 버튼 이벤트 적용
+on() 해당 버튼에 이벤트 핸들러를 적용합니다.
+
+파라미터
+
+string string 사용할 이벤트 명
+handler function 이벤트 핸들러
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnOn.on('click', function (e) {
+5
+    var calcBtn = dews.ui.custombuttons.getById('calc');
+6
+    calcBtn.on('mouseenter', function (e) {
+7
+      alert('mouseenter');
+8
+    });
+9
+  });
+10
+});
+click 커스텀 버튼 click 이벤트 적용
+click(handler) 해당 커스텀 버튼에 이벤트 핸들러를 적용합니다.
+
+파라미터
+
+handler function 커스텀 버튼에 적용될 이벤트 핸들러입니다. 비어있으면 버튼이 클릭됩니다.
+ 
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.$btnClick.on('click', function (e) {
+5
+    var calcBtn = dews.ui.custombuttons.getById('calc');
+6
+    calcBtn.click(function (e) {
+7
+      alert('click!!!');
+8
+    });
+9
+  });
+10
+});

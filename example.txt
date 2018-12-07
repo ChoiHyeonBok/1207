@@ -1,0 +1,369 @@
+<div class="dews-ui-condition-panel" data-dews-columns="4">
+  <ul class="required-area">
+    <li class="col-2" style="width:380px">
+      <label class="dews-ui-multilingual"></label>
+      <span>
+        <select id="SEARCH_MODE" name="전체" class="dews-ui-dropdownlist 기본" style="width: 100px;">
+          <option value="0">전체</option>
+          <option value="1">고객사명</option>
+          <option value="2">국가</option>
+          <option value="3">업태</option>
+          <option value="4">업종</option>
+        </select>
+        <input id="SEARCH_KEY" name="전체" type="text" class="dews-ui-textbox" style="width: 193px;" />
+      </span>
+    </li>
+    <li style="width: 280px;">
+      <label class="dews-ui-multilingual" style="width: 80px;">고객사 구분</label>
+      <span>
+        <select id="SEARCH_CUST_TP_CD" name="Dropdownlist1" class="dews-ui-dropdownlist basic" data-dews-value-field="value" data-dews-text-field="text"></select>
+      </span>
+    </li>
+    <li>
+      <label class="dews-ui-multilingual"></label>
+      <span>
+        <input id="SEARCH_FLAG_MY_CUSTOMER" type="checkbox" class="dews-ui-checkbox" />
+        <label>내고객사</label>
+      </span>
+    </li>
+  </ul>
+  <ul class="optional-area">
+    <li style="margin-left:55px">
+      <label class="dews-ui-multilingual">기업규모</label>
+      <span>
+        <select id="SEARCH_CUST_SCL_CD" name="SEARCH_CUST_SCL_CD" class="dews-ui-dropdownlist basic" data-dews-value-field="value" data-dews-text-field="text"></select>
+      </span>
+    </li>
+    <li>
+      <label class="dews-ui-multilingual">사용여부</label>
+      <span>
+        <select id="SEARCH_USE_YN" name="SEARCH_USE_YN" class="dews-ui-dropdownlist basic">
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+      </span>
+    </li>
+  </ul>
+</div>
+<div class="dews-ui-container-panel" style="overflow: visible;"  data-dews-fit-bottom="true" >
+  <div class="dews-container-item" data-dews-position="left" data-dews-width="300">
+    <div id="CardList1" class="dews-ui-cardlist"></div>
+  </div>
+  <div class="dews-container-item" data-dews-position="normal">
+    <div class="dews-ui-tab-panel">
+      <ul class="dews-tab-items">
+        <li class="dews-tab-item" data-dews-title="기본정보"  data-dews-fit-bottom="true">
+          <div class="dews-button-group" style="text-align: right;">
+            <button id="BTN_CUSTOMER_ADD" class="dews-ui-button">내고객사등록</button>
+            <button id="BTN_CUSTOMER_DELETE" class="dews-ui-button">내고객사삭제</button>
+          </div>
+          <div id="form_panel" class="dews-ui-form-panel">
+            <ul>
+              <li>
+                <label>고객사코드</label>
+                <span>
+                  <input id="CUST_CD" name="CUST_CD" type="text" data-dews-bind-column="CUST_CD" class="dews-ui-textbox required" maxlength="20" />
+                </span>
+              </li>
+              <li>
+                <label>고객사명</label>
+                <span>
+                  <input id="CUST_NM" name="CUST_NM" type="text" data-dews-bind-column="CUST_NM" class="dews-ui-textbox required" maxlength="50" />
+                </span>
+              </li>
+              <li>
+                <label>고객사구분</label>
+                <span>
+                  <select id="CUST_TP_CD" name="CUST_TP_CD" class="dews-ui-dropdownlist bindingDropdown required" data-dews-value-field="value"
+                    data-dews-text-field="text" data-dews-bind-value="CUST_TP_CD"></select>
+                </span>
+              </li>
+              <li>
+                <label>거래상태</label>
+                <span>
+                  <select id="TRAN_ST_CD" name="TRAN_ST_CD" class="dews-ui-dropdownlist bindingDropdown required" data-dews-value-field="value"
+                    data-dews-text-field="text" data-dews-bind-value="TRAN_ST_CD"></select>
+                </span>
+              </li>
+              <li>
+                <label>고객사분류</label>
+                <span>
+                  <select id="PARTNER_CSF_CD" name="PARTNER_CSF_CD" class="dews-ui-dropdownlist bindingDropdown required" data-dews-value-field="value"
+                    data-dews-text-field="text" data-dews-bind-value="PARTNER_CSF_CD"></select>
+                </span>
+              </li>
+              <li>
+                <label>국가명</label>
+                <span>
+                  <select id="NATION_CD" name="NATION_CD" class="dews-ui-dropdownlist bindingDropdown required" data-dews-value-field="SYSDEF_CD"
+                    data-dews-text-field="SYSDEF_NM" data-dews-bind-value="NATION_CD"></select>
+                </span>
+              </li>
+              <li>
+                <label>사업자등록번호</label>
+                <span>
+                  <input id="SUBO_NO" name="SUBO_NO" type="text" data-dews-bind-column="SUBO_NO" data-dews-mask='###-##-#####' maxlength='20'
+                    class="dews-ui-maskedtextbox bindingMaskedText" />
+                </span>
+              </li>
+              <li>
+                <label>대표자명</label>
+                <span>
+                  <input id="CEO_NM" name="CEO_NM" type="text" data-dews-bind-column="CEO_NM" class="dews-ui-textbox basic" maxlength="50"
+                  />
+                </span>
+              </li>
+              <li>
+                <label>주민번호</label>
+                <span>
+                  <input id="CEO_RES_NO" name="CEO_RES_NO" type="text" data-dews-bind-column="CEO_RES_NO" class="dews-ui-maskedtextbox bindingMaskedText"
+                    data-dews-mask="000000-0000000" maxlength="32" />
+                </span>
+              </li>
+              <li>
+                <label>내/외국인</label>
+                <span>
+                  <select id="CEO_FRGNR_CD" name="CEO_FRGNR_CD" class="dews-ui-dropdownlist basic" data-dews-value-field="value" data-dews-text-field="text"
+                    data-dews-bind-value="CEO_FRGNR_CD"></select>
+                </span>
+              </li>
+              <li>
+                <label>업태</label>
+                <span>
+                  <input id="BIZC_NM" name="BIZC_NM" type="text" data-dews-bind-column="BIZC_NM" class="dews-ui-textbox basic" maxlength='50'
+                  />
+                </span>
+              </li>
+              <li>
+                <label>업종</label>
+                <span>
+                  <input id="BIZTP_NM" name="BIZTP_NM" type="text" data-dews-bind-column="BIZTP_NM" class="dews-ui-textbox basic" maxlength='50'
+                  />
+                </span>
+              </li>
+              <li class="col-2">
+                <label>주소</label>
+                <span>
+                  <input type="text" id="POST_NO" class="dews-ui-zipcodepicker" data-dews-address-bind="BASE_ADDR" style="width: 100px;" maxlength='10'>
+                  <input type='text' class='dews-ui-textbox' id='BASE_ADDR' style='width:404px' maxlength='100'>
+                </span>
+              </li>
+              <li class="col-2">
+                <label>상세주소</label>
+                <span>
+                  <input id="BASE2_ADDR" name="BASE2_ADDR" type="text" data-dews-bind-column="BASE2_ADDR" class="dews-ui-textbox basic" maxlength='100'
+                  />
+                </span>
+              </li>
+              <li>
+                <label>거래시작일</label>
+                <span>
+                  <input type="text" id="TRAN_START_DT" name="TRAN_START_DT" class="dews-ui-datepicker basic" data-dews-bind-column="TRAN_START_DT"
+                  />
+                </span>
+              </li>
+              <li>
+                <label>거래종료일</label>
+                <span>
+                  <input type="text" id="TRAN_END_DT" name="TRAN_END_DT" class="dews-ui-datepicker basic" data-dews-bind-column="TRAN_END_DT"
+                  />
+                </span>
+              </li>
+              <li>
+                <label>대표전화번호</label>
+                <span>
+                  <input id="CUST_ASGNR_TEL_NO" name="CUST_ASGNR_TEL_NO" type="text" data-dews-bind-column="CUST_ASGNR_TEL_NO" class="dews-ui-textbox basic" maxlength='20'
+                  />
+                </span>
+              </li>
+              <li>
+                <label>대표팩스번호</label>
+                <span>
+                  <input id="CUST_ASGNR_FAX_NO" name="CUST_ASGNR_FAX_NO" type="text" data-dews-bind-column="CUST_ASGNR_FAX_NO" class="dews-ui-textbox basic" maxlength='20'
+                  />
+                </span>
+              </li>
+              <li>
+                <label>고객사URL</label>
+                <span>
+                  <input id="PARTNER_URL" name="PARTNER_URL" type="text" data-dews-bind-column="PARTNER_URL" class="dews-ui-textbox basic"
+                    maxlength='256' />
+                </span>
+              </li>
+              <li>
+                <label>사용여부</label>
+                <span>
+                  <select id="USE_YN" name="USE_YN" class="dews-ui-dropdownlist basic" data-dews-value-field="USE_YN">
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                  </select>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div id="form_detail_panel" class="dews-ui-form-panel">
+            <ul>
+              <li>
+                <label>기준통화</label>
+                <span>
+                  <select id="CRNC_CD" name="CRNC_CD" class="dews-ui-dropdownlist basic" data-dews-value-field="value" data-dews-text-field="text"
+                    data-dews-bind-value="CRNC_CD"></select>
+                </span>
+              </li>
+              <li>
+                <label>고객그룹</label>
+                <span>
+                  <select id="CUST_GRP_CD" name="CUST_GRP_CD" class="dews-ui-dropdownlist basic" data-dews-value-field="value" data-dews-text-field="text"
+                    data-dews-bind-value="CUST_GRP_CD"></select>
+                </span>
+              </li>
+              <li>
+                <label>법인등록번호</label>
+                <span>
+                  <input id="COR_NO" name="COR_NO" type="text" data-dews-bind-column="COR_NO" data-dews-mask='###-##-#####'
+                    maxlength='20' class="dews-ui-maskedtextbox bindingMaskedText" />
+                </span>
+              </li>
+              <li>
+                <label>고객규모</label>
+                <span>
+                  <select id="CUST_SCL_CD" name="CUST_SCL_CD" class="dews-ui-dropdownlist basic" data-dews-value-field="value" data-dews-text-field="text"
+                    data-dews-bind-value="CUST_SCL_CD"></select>
+                </span>
+              </li>
+              <li class="col-2">
+                <label>메모</label>
+                <span>
+                  <textarea id="RMK_DC" name="RMK_DC" data-dews-bind-column="RMK_DC" class="dews-ui-textbox basic" rows="0" maxlength='200'></textarea>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="dews-tab-item" data-dews-title="영업활동"  data-dews-fit-bottom="true">
+          <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+            <div class="dews-container-item" data-dews-position="normal">
+              <div class="dews-button-group" style="text-align: right;">
+                <button id="BTN_CIDKYM" class="dews-ui-button">고객담당등록</button>
+                <h2 class="dews-ui-title">고객담당정보</h2>
+              </div>
+              <div id="GridCustomerEmpInfo" class="dews-ui-grid"></div>
+              <div class="dews-button-group" style="text-align: right;">
+                <button id="BTN_ACTIVITY_ADD" class="dews-ui-button">활동실적등록</button>
+                <h2 class="dews-ui-title">접촉이력정보</h2>
+              </div>
+              <div id="GridContactHistory" class="dews-ui-grid"></div>
+              <div class="dews-button-group" style="text-align: right;">
+                <h2 class="dews-ui-title">기회/수주정보</h2>
+                </div>
+                <div class="dews-ui-container-panel" style="overflow: visible;" data-dews-fit-bottom="true">
+                  <div class="dews-container-item" data-dews-position="normal">
+                    <div id="GridOrderingInfo" class="dews-ui-grid"></div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </li>
+        <li class="dews-tab-item" data-dews-title="재무/신용" data-dews-fit-bottom="true">
+          <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+            <div class="dews-container-item" data-dews-position="normal">
+              <div class="dews-button-group" style="text-align: right;">
+                <button id="BTN_FINANCIAL_ADD" class="dews-ui-button">재무정보등록</button>
+                <h2 class="dews-ui-title">재무정보</h2>
+              </div>
+              <div id="GridFinancial" class="dews-ui-grid"></div>
+              <div class="dews-button-group" style="text-align: right;">
+                <button id="BTN_CREDIT_ADD" class="dews-ui-button">신용정보등록</button>
+                <h2 class="dews-ui-title">신용정보</h2>
+              </div>
+              <div class="dews-ui-container-panel" style="overflow: visible;" data-dews-fit-bottom="true">
+                <div class="dews-container-item" data-dews-position="normal">
+                  <div id="GridCredit" class="dews-ui-grid"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="dews-tab-item" data-dews-title="히스토리" data-dews-fit-bottom="true">
+          <div class="dews-button-group" style="text-align: right;">
+            <h2 class="dews-ui-title">히스토리</h2>
+            <button class="dews-ui-button">선택삭제</button>
+          </div>
+          <div class="dews-ui-container-panel" style="overflow: visible;" data-dews-fit-bottom="true">
+              <div class="dews-container-item" data-dews-position="normal">
+                  <div id="GridHistory" class="dews-ui-grid"></div>
+              </div>
+            </div>
+        </li>
+        <li class="dews-tab-item" data-dews-title="추가정보" data-dews-fit-bottom="true">
+            <div class="dews-button-group" style="text-align: right;">
+                <h2 class="dews-ui-title">관련자료</h2>
+            </div>
+            <div id="FILE_GRID" class="dews-ui-multifile"></div>
+            <div class="dews-button-group" style="text-align:right;">
+                <h2 class="dews-ui-title">부가정보</h2>
+            </div>
+            <div class="dews-ui-form-panel">
+                <ul>
+                    <li>
+                        <label>생산자직원수</label>
+                        <span>
+                            <input type="text" id="TextBox13" name="TextBox13" class="dews-ui-textbox basic" value="3" data-dews-bind-column="TextBox13"/>
+                        </span> 
+                    </li>
+                    <li>
+                        <label>관리자직원수</label>
+                        <span>
+                            <input type="text" id="textBox14" name="TextBox14" class="dews-ui-textbox basic" value="2" data-dews-bind-column="TextBox14"/>
+                        </span>
+                    </li>
+                    <li>
+                        <label>창립기념일</label>
+                        <span>
+                            <input type="text" id="dateBox1" name="dateBox1" class="dews-ui-datepicker basic" value="2013/12/03">        
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+</style>
+<script>
+        dews.ready(function(){
+    
+            var self=this;
+            var search_cust_tp_data, search_cust_scl_cd_data;
+            var customer_tp_data, nation_data, exchbase_data;
+            var cls_parter_data, trade_status_data, pation_cd_data;
+            var csbrp_cd_data, csscl_cd_data;
+            var RMK_DC_list = [];
+            var pending = false;
+            var dtChecked = true;
+            var juminChecked = true;
+            var pagingSize = 20;
+    
+            dews.ui.mainbuttons.approval.hide();
+            dews.ui.mainbuttons.print.hide();
+            dews.ui.mainbuttons.delete.hide();
+    
+            dews.api.get(dews.url.getApiUrl('CR','CustomerRelationshipManagementCSTService', 'cidcst00100_list_code'), {
+                async: false,
+                data : {
+                    module_cd: 'MA',
+                    field_cd_pipe: 'P00170',
+                    syscode_yn: '',
+                    base_yn: '',
+                    foreign_yn: '',
+                    end_dt: '',
+                    keyword: '',
+                }
+            }).done(function(data) {
+                nation_data = data;
+            });
+        });
+    </script>

@@ -1,0 +1,848 @@
+멀티드롭다운리스트dews-ui-multidropdownlist
+멀티드롭다운리스트는 드롭다운리스트와 유사한 동작을 하는 컨트롤입니다.
+
+드롭다운리스트는 하나의 값 만을 선택하지만 멀티드롭다운리스트는 체크박스를 이용하여 여러 개의 값을 선택할 수 있습니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+select 태그에 dews-ui-multidropdownlist 클래스를 지정하여 사용합니다.
+
+option 태그를 추가하여 기본 선택값을 입력할 수 있습니다.
+
+옵션
+
+상태
+required 필수입력사항 멀티드롭다운리스트로 설정합니다.
+readonly 읽기전용 멀티드롭다운리스트로 설정합니다.
+disabled 비활성화 멀티드롭다운리스트로 설정합니다.
+코드도움
+data-dews-help-code 코드도움 코드
+ex) data-dews-help-code="EMP" EMP라는 데이터소스의 데이터를 가져옵니다.
+data-dews-code-field 코드도움 코드의 code 필드값
+data-dews-text-field 코드도움 코드의 text 필드값
+코드도움
+data-dews-help-title 도움창 다이얼로그 타이틀을 지정합니다.
+data-dews-help-width 도움창 다이얼로그 너비
+data-dews-help-height 도움창 다이얼로그 높이
+사용 방법usage
+기본 사용법 - HTML
+기본 사용법 
+
+
+1
+<p>
+2
+  <label>기본 사용법</label>
+3
+  <span>
+4
+    <select name="normal" id="normal" class="dews-ui-multidropdownlist" data-dews-value-field="NO_EMP" data-dews-text-field="NM_EMP"></select>
+5
+  </span>
+6
+</p>
+상태 스타일 지정하는 방법
+필수 입력 상태 
+
+읽기 전용 상태  읽기 전용 상태 
+
+비활성화 상태  비활성화 상태 
+
+
+1
+<p>
+2
+  <label>필수 입력 상태</label>
+3
+  <span>
+4
+    <select id="multiSelect2" class="dews-ui-multidropdownlist required"></select>
+5
+  </span>
+6
+</p>
+7
+<p>
+8
+  <label>읽기 전용 상태</label>
+9
+  <span>
+10
+    <select id="multiSelect3" class="dews-ui-multidropdownlist readonly" data-dews-data-url="~/api/FI/MyService/EMP" data-dews-value-field="NO_EMP" data-dews-text-field="NM_EMP"></select>
+11
+  </span>
+12
+?
+13
+  <label>읽기 전용 상태</label>
+14
+  <span>
+15
+    <select id="multiSelect4" class="dews-ui-multidropdownlist" readonly="readonly" data-dews-help-code="H_CI_UOM_INFO_S" data-dews-value-field="CD_UNIT" data-dews-text-field="NM_UNIT"></select>
+16
+  </span>
+17
+</p>
+18
+<p>
+19
+  <label>비활성화 상태</label>
+20
+  <span>
+21
+    <select id="multiSelect5" class="dews-ui-multidropdownlist disabled" data-dews-help-code="EMP"></select>
+22
+  </span>
+23
+  <label>비활성화 상태</label>
+24
+  <span>
+25
+   <select id="multiSelect6" class="dews-ui-multidropdownlist" disabled="disabled" data-dews-help-code="EMP"></select>
+26
+  </span>
+27
+</p>
+코드 기본값 설정
+value 기본값으로 설정할 코드값
+text 기본값으로 설정할 텍스트
+selected="selected" 멀티드롭다운리스트에서 선택된 값으로 설정할 때 사용합니다.
+코드값 설정 
+
+
+1
+<p>
+2
+  <label>코드값 설정</label>
+3
+  <span>
+4
+  <select id="multiSelect10" class="dews-ui-multidropdownlist" data-dews-help-code="~/api/FI/MyService/EMP" data-dews-value-field="NO_EMP" data-dews-text-field="NM_EMP">
+5
+    <option value="value1" selected="selected">text1</option>
+6
+    <option value="value2" selected="selected">text2</option>
+7
+    <option value="value3" selected="selected">text3</option>
+8
+    <option value="value4" selected="selected">text4</option>
+9
+  </select>
+10
+  </span>
+11
+</p>
+많은 항목이 선택되었을 때의 스크롤 처리
+
+
+1
+<p>
+2
+  <select id="multidropdownlist" class="dews-ui-multidropdownlist" data-dews-code-field="CD_PARTNER" data-dews-text-field="NM_PARTNER">
+3
+    <option value="value001" selected="selected">text001</option>
+4
+    <option value="value002" selected="selected">text002</option>
+5
+    <option value="value003" selected="selected">text003</option>
+6
+    <option value="value004" selected="selected">text004</option>
+7
+    <option value="value005" selected="selected">text005</option>
+8
+    <option value="value006" selected="selected">text006</option>
+9
+    <option value="value007" selected="selected">text007</option>
+10
+    <option value="value008" selected="selected">text008</option>
+11
+    <option value="value009" selected="selected">text009</option>
+12
+    <option value="value010" selected="selected">text010</option>
+13
+    <option value="value011" selected="selected">text011</option>
+14
+    <option value="value012" selected="selected">text012</option>
+15
+    <option value="value013" selected="selected">text013</option>
+16
+    <option value="value014" selected="selected">text014</option>
+17
+    <option value="value015" selected="selected">text015</option>
+18
+    <option value="value016" selected="selected">text016</option>
+19
+    <option value="value017" selected="selected">text017</option>
+20
+    <option value="value018" selected="selected">text018</option>
+21
+    <option value="value019" selected="selected">text019</option>
+22
+    <option value="value020" selected="selected">text020</option>
+23
+    <option value="value021" selected="selected">text021</option>
+24
+    <option value="value022" selected="selected">text022</option>
+25
+    <option value="value023" selected="selected">text023</option>
+26
+    <option value="value024" selected="selected">text024</option>
+27
+    <option value="value025" selected="selected">text025</option>
+28
+    <option value="value026" selected="selected">text026</option>
+29
+    <option value="value027" selected="selected">text027</option>
+30
+    <option value="value028" selected="selected">text028</option>
+31
+    <option value="value029" selected="selected">text029</option>
+32
+    <option value="value030" selected="selected">text030</option>
+33
+    <option value="value031" selected="selected">text031</option>
+34
+    <option value="value032" selected="selected">text032</option>
+35
+    <option value="value033" selected="selected">text033</option>
+36
+    <option value="value034" selected="selected">text034</option>
+37
+    <option value="value035" selected="selected">text035</option>
+38
+    <option value="value036" selected="selected">text036</option>
+39
+    <option value="value037" selected="selected">text037</option>
+40
+    <option value="value038" selected="selected">text038</option>
+41
+    <option value="value039" selected="selected">text039</option>
+42
+    <option value="value040" selected="selected">text040</option>
+43
+    <option value="value041" selected="selected">text041</option>
+44
+    <option value="value042" selected="selected">text042</option>
+45
+    <option value="value043" selected="selected">text043</option>
+46
+    <option value="value044" selected="selected">text044</option>
+47
+    <option value="value045" selected="selected">text045</option>
+48
+    <option value="value046" selected="selected">text046</option>
+49
+    <option value="value047" selected="selected">text047</option>
+50
+    <option value="value048" selected="selected">text048</option>
+51
+  </select>
+52
+</p>
+컨테이너패널 내애서 데이터 바인딩과 직렬화 샘플
+주중
+
+1
+<div class="dews-container-panel" data-dews-container-height="300">
+2
+  <div class="dews-container-item" style="width: 300px">
+3
+    <div class="dews-ui-grid" id="grid"></div>
+4
+  </div>
+5
+  <div class="dews-container-item">
+6
+    <div class="dews-form-panel" id="panel">
+7
+      <form class="dews-form-panel-form">
+8
+        <ul>
+9
+          <li>
+10
+            <label>주중</label>
+11
+            <span>
+12
+              <select class="dews-ui-multidropdownlist" id="weekday" data-dews-bind-text="drop_text">
+13
+                <option value="1">성북구</option>
+14
+                <option value="2">강북구</option>
+15
+                <option value="3">강남구</option>
+16
+                <option value="4">관악구</option>
+17
+                <option value="5">영등포구</option>
+18
+                <option value="6">강동구</option>
+19
+                <option value="7">용산구</option>
+20
+                <option value="8">노원구</option>
+21
+                <option value="9">강서구</option>
+22
+              </select>
+23
+            </span>
+24
+          </li>
+25
+        </ul>
+26
+      </form>
+27
+    </div>
+28
+  </div>
+29
+</div>
+30
+?
+31
+<script>
+32
+  dews.ready(function () {
+33
+    var grid, dataSource, self = this;
+34
+?
+35
+    dataSource = dews.ui.dataSource('dataSource', {
+36
+      grid: true,
+37
+      data: [
+38
+        {
+39
+          first: '성북구',
+40
+          second: '강북구',
+41
+          third: '강남구'
+42
+        },
+43
+        {
+44
+          first: '관악구',
+45
+          second: '',
+46
+          third: ''
+47
+        },
+48
+        {
+49
+          first: '영등포구',
+50
+          second: '강동구',
+51
+          third: ''
+52
+        },
+53
+        {
+54
+          first: '용산구',
+55
+          second: '노원구',
+56
+          third: '강서구'
+57
+        }
+58
+      ],
+59
+      schema: {
+60
+        model: {
+61
+          id: 'first',
+62
+          fields: [
+63
+            {field: 'first'},
+64
+            {field: 'second'},
+65
+            {field: 'third'}
+66
+          ]
+67
+        }
+68
+      }
+69
+    });
+70
+?
+71
+    // 그리드
+72
+    grid = dews.ui.grid(self.$grid, {
+73
+      dataSource: dataSource,
+74
+      selectable: true,
+75
+      checkable: false,
+76
+      height: 300,
+77
+      columns: [
+78
+        {
+79
+          title: '희망근무지',
+80
+          width: 255,
+81
+          columns: [
+82
+            {
+83
+              field: 'first',
+84
+              title: '1희망',
+85
+              width: 85
+86
+            },
+87
+            {
+88
+              field: 'second',
+89
+              title: '2희망',
+90
+              width: 85
+91
+            },
+92
+            {
+93
+              field: 'third',
+94
+              title: '3희망',
+95
+              width: 85
+96
+            }
+97
+          ]
+98
+        }
+99
+      ]
+100
+    });
+101
+?
+102
+    grid.on('change', function (e) {
+103
+      if (e.row.isChange) {
+104
+        grid.bindPanel(self.panel);
+105
+      }
+106
+    });
+107
+?
+108
+    self.panel.on('change', function (e) {
+109
+      self.panel.bindTo(grid);
+110
+    });
+111
+?
+112
+    /*바인딩 로직을 설정합니다.*/
+113
+    self.weekday.setBindFormPanelLogic( function (data) { //data : 그래드 현재 행 데이터
+114
+      var texts = [];
+115
+      self.weekday.deselectAll();
+116
+?
+117
+      if (data.first) {
+118
+        texts.push(data.first);
+119
+      }
+120
+?
+121
+      if (data.second) {
+122
+        texts.push(data.second);
+123
+      }
+124
+?
+125
+      if (data.third) {
+126
+        texts.push(data.third);
+127
+      }
+128
+?
+129
+      self.weekday.texts(texts);
+130
+    });
+131
+?
+132
+    self.weekday.setSerializeForPanelLogic(function () {
+133
+      var texts = self.weekday.texts(),
+134
+        data = {};
+135
+?
+136
+      if (texts[0]) {
+137
+        data.first = texts[0];
+138
+      } else {
+139
+        data.first = "";
+140
+      }
+141
+?
+142
+      if (texts[1]) {
+143
+        data.second = texts[1];
+144
+      } else {
+145
+        data.second = "";
+146
+      }
+147
+?
+148
+      if (texts[2]) {
+149
+        data.third = texts[2];
+150
+      } else {
+151
+        data.third = "";
+152
+      }
+153
+?
+154
+      return data;
+155
+    });
+156
+?
+157
+?
+158
+  });
+159
+</script>
+
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+멀티 드롭다운 리스트 함수 (Multimultidropdownlist) Functions
+dataItem데이터 가져오기
+dataItem(index) 지정한 인덱스의 데이터를 가져옵니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+var item = self.ddl.dataItem(0); //ddl의 첫번째 데이터를 가져옵니다.
+4
+});
+setDataSource데이터 바인딩하기
+setDataSource(index) 지정한 인덱스의 데이터를 가져옵니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+var dataSource;
+4
+?
+5
+dataSource = dews.ui.dataSource('dataSource', {
+6
+?
+7
+data: [
+8
+{"NO_EMP":"201501","NM_EMP":"고길동"},{"NO_EMP":"201502","NM_EMP":"둘리"},{"NO_EMP":"201503","NM_EMP":"희동이"}
+9
+]
+10
+});
+readonly읽기전용 여부 설정 또는 반환
+readonly(value) 멀티멀티드롭다운리스트의 읽기전용 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+value boolean 설정할 읽기전용 여부 ※ 생략하면 설정된 읽기전용 여부를 가져옵니다. 
+리턴 값
+
+설정된 읽기전용 여부
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.readonly(true); //ddl을 읽기전용으로 설정합니다.
+5
+self.ddl.readonly(); //ddl의 읽기전용 여부를 가져옵니다.
+6
+});
+enable활성화 여부 설정 또는 반환
+enable(value) 멀티드롭다운리스트의 활성화 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+enable boolean 설정할 활성화 여부 ※ 생략하면 설정된 활성화 여부를 가져옵니다. 
+리턴 값
+
+설정된 활성화 여부
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.enable(true); //ddl을 활성화 상태로 설정합니다.
+5
+self.ddl.enable(); //ddl의 활성화 여부를 가져옵니다.
+6
+});
+focus포커스 설정
+focus 멀티드롭다운리스트에 포커스를 설정해 줍니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+self.ddl.focus(); //ddl의 포커스를 설정해 줍니다.
+4
+});
+values멀티드롭다운리스트의 모든 선택된 아이템의 value를 반환하거나 해당 아이템을 선택합니다.
+values(value) 멀멀티드롭다운리스트의 모든 선택된 아이템의 value를 반환하거나 해당 아이템을 선택합니다.
+
+파라미터
+
+values string생략하면 멀티드롭다운리스트의 선택된 아이템의 value값을 배열로 반환합니다.. 
+리턴 값
+
+멀티드롭다운리스트의 문자를 나타냅니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.values("Apple"); //'Apple' 문구를 가진 아이템을 선택합니다.
+5
+self.ddl.values(); //선택된 아이템의 value값을 배열로 가져옵니다.
+6
+});
+selectAll멀티드롭다운리스트의 리스트 전체 선택
+selectAll(value) 멀티드롭다운리스트의 리스트를 모두 선택합니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.selectAll(); //ddl의 리스트를 모두 선택합니다.
+5
+});
+deselectAll멀티드롭다운리스트의 리스트 전체 해제
+deselectAll(value) 멀티드롭다운리스트의 리스트를 모두 해제합니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.deselectAll(); //ddl의 리스트를 모두 해제합니다.
+5
+});
+open멀티드롭다운리스트 열기
+open(value) 멀티드롭다운리스트을 열어줍니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.open(); //ddl의 리스트를 열어줍니다.
+5
+});
+close멀티드롭다운리스트 닫기
+close(value) 멀티드롭다운리스트을 닫아줍니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.close(); //ddl의 리스트를 닫아줍니다.
+5
+});
+select멀티드롭다운리스트의 지정한 인덱스의 아이템을 선택해 줍니다.
+select(value) 멀티드롭다운리스트의 지정한 인덱스의 아이템을 선택해 줍니다.
+
+파라미터
+
+select number 선택할 아이템의 인덱스 ※ 필수 
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.select(index); //ddl의 해당 인덱스를 선택합니다.
+5
+});
+deselect멀티드롭다운리스트의 지정한 인덱스의 아이템을 해제해 줍니다.
+deselect(value) 멀티드롭다운리스트의 지정한 인덱스의 아이템을 해제해 줍니다.
+
+파라미터
+
+deselect number 해제할 아이템의 인덱스 ※ 필수 
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.deselect(index); //ddl의 해당 인덱스를 해제합니다.
+5
+});
+selectedItems멀티드롭다운리스트 선택된 아이템을 모두 반환합니다.
+selectedItems(selectedItems) 멀티드롭다운리스트 선택된 아이템을 모두 반환합니다.
+
+리턴값
+
+selectedItems Array 멀티 드롭다운 리스트의 모든 선택된 아이템 
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.selectedItems(); //ddl의 선택된 모든 아이템을 반환합니다.
+5
+});
+texts멀티 드롭다운 리스트의 선택된 아이템의 text를 반환하거나 해당 아이템을 선택합니다.
+texts(value) 멀티 드롭다운 리스트의 선택된 아이템의 text를 반환하거나 해당 아이템을 선택합니다.
+
+리턴값
+
+texts Array 멀티 드롭다운 리스트의 선택된 아이템의 text 
+파라미터
+
+value string || array 
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.mddl.texts(); //멀티 드롭다운 리스트의 선택된 아이템의 text를 반환합니다.
+5
+});
+items멀티 드롭다운 리스트의
+요소로 이루어진 아이템 배열을 반환합니다.
+items(items) 멀티 드롭다운 리스트의
+
+요소로 이루어진 아이템 배열을 반환합니다.
+리턴값
+
+items Array 멀티 드롭다운 리스트의 모든 선택된 아이템 
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.items(); //ddl의 아이템 배열을 반환합니다.
+5
+});
+dataItems멀티 드롭다운 리스트의 모든 아이템을 반환합니다.
+dataItems(dataItems) 멀티 드롭다운 리스트의 모든 아이템을 반환합니다.
+
+리턴값
+
+dataItems Array 멀티 드롭다운 리스트의 모든 아이템 
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.ddl.dataitems(); //ddl의 모든 아이템을 반환합니다.
+5
+});

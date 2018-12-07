@@ -1,0 +1,510 @@
+숫자텍스트박스 dews-ui-numerictextbox
+숫자텍스트박스는 숫자만 입력이 가능하며, 천 단위마다 콤마(,)가 찍히는 포맷이 지정되어있습니다.
+
+초기화 방법 init
+HTML 초기화
+초기화
+
+input 태그에 dews-ui-numerictextbox 클래스를 지정하여 사용합니다. ( ※ type 속성은 text를 사용합니다.)
+
+옵션
+
+data-dews-spinners 스피너 버튼 출력 여부 (기본값: false)
+data-dews-step 방향 키(위/아래) 입력시 지정한 숫자 만큼 증가되거나 감소됩니다.
+data-dews-increase-value + 키를 입력 시 지정한 숫자 만큼 값이 증가됩니다.
+data-dews-increase-type + 키를 입력 시 지정한 숫자 만큼 타입(plus/multiple)에 따라 값이 증가됩니다.(기본값: plus)
+data-dews-format 포맷 문자열(기본값: #,##0.##)
+data-dews-decimals 소수점 이하로 입력가능한 자릿수(기본값: null)
+data-dews-restrict-decimalsdecimals 옵션 설정 시 해당 소수점 자리까지 입력을 제한합니다.
+상태
+required 필수입력사항 숫자텍스트박스로 설정합니다.
+disabled 비활성화 숫자텍스트박스로 설정합니다.
+readonly 읽기전용 숫자텍스트박스로 설정합니다.
+사용 방법 usage
+기본 사용법 - HTML
+
+
+
+100,000
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" data-dews-select-on-focus="true" data-dews-decimals="2">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-numerictextbox" value="100000">
+6
+</p>
+상태 스타일 지정하는 방법
+
+0
+
+
+300
+
+
+0
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox required" value="0">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-numerictextbox disabled" value="300">
+6
+</p>
+7
+<p>
+8
+  <input type="text" class="dews-ui-numerictextbox readonly" value="0">
+9
+</p>
+스피너 버튼 출력
+data-dews-spinners 스피너 버튼 출력 여부 (기본값: false)
+
+
+
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" data-dews-spinners="true">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-numerictextbox" data-dews-spinners="true" disabled="disabled">
+6
+</p>
+스피너 버튼 또는 방향키를 이용한 숫자 증가/감소 값 설정
+data-dews-step 방향 키(위/아래) 입력시 지정한 숫자 만큼 증가되거나 감소됩니다.
+
+※ 값을 0으로 지정 시에 방향키를 이용한 증가 및 감소를 사용하지 않습니다.
+
+스피너 버튼이 있는 경우:  
+1
+
+스피너 버튼이 없는 경우 - 방향키(위/아래) 이용:  
+2
+
+방향키를 이용한 증가 및 감소 사용하지 않도록 설정:  
+10
+
+
+1
+<p>
+2
+  <label>스피너 버튼이 있는 경우: </label>
+3
+  <input type="text" class="dews-ui-numerictextbox" data-dews-spinners="true" data-dews-step="0.1" value="1">
+4
+</p>
+5
+<p>
+6
+  <label>스피너 버튼이 없는 경우 - 방향키(위/아래) 이용: </label>
+7
+  <input type="text" class="dews-ui-numerictextbox" data-dews-step="0.1" value="2">
+8
+</p>
+9
+<p>
+10
+  <label>방향키를 이용한 증가 및 감소 사용하지 않도록 설정: </label>
+11
+  <input type="text" class="dews-ui-numerictextbox" data-dews-step="0" value="10">
+12
+</p>
++ 키를 이용한 숫자 증가 값 설정
+data-dews-increase-value + 키를 입력 시 지정한 숫자 만큼 값이 증가됩니다. (기본값: 1000)
+
+
+1,000
+
+
+100
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" value="1000">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-numerictextbox" value="100" data-dews-step="1" data-dews-increase-value="500">
+6
+</p>
++ 키를 이용한 숫자 증가 값 타입 설정
+data-dews-increase-type + 키를 입력 시 지정한 숫자 만큼 타입(plus/multiple)에 따라 값이 증가됩니다. (기본값: plus)
+
+
+1,000
+
+
+100
+
+
+100
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" value="1000">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-numerictextbox" value="100" data-dews-step="1" data-dews-increase-value="500">
+6
+</p>
+7
+<p>
+8
+  <input type="text" class="dews-ui-numerictextbox" value="100" data-dews-step="1" data-dews-increase-value="500" data-dews-increase-type="multiple">
+9
+</p>
+포맷 지정
+data-dews-format 포맷 문자열(기본값: #,##0.##)
+
+※ 포맷 문자열에 대한 자세한 정보는 튜토리얼 > 숫자/날짜 포맷 지정 > 포맷 문자열을 참고하세요.
+
+
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" data-dews-format="#,##0.00">
+3
+</p>
+공통 포맷 지정
+data-dews-format 공통 포맷 Alias (page의 env 속성에 지정된 공통 포맷의 Alias)
+data-dews-format-predefined 공통 포맷 사용 여부(기본값: false)
+
+※ data-dews-format-predefined와 data-dews-format 2개 모두 지정해야 하며, 
+만약 포맷이 존재하지 않는 Alias를 입력 시 숫자텍스트박스의 기본 포맷값(#,##0.##)이 적용됩니다.
+
+
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" data-dews-format="MA00001" data-dews-format-predefined="true">
+3
+</p>
+소수점 이하 입력 가능 자릿수 설정
+data-dews-decimals 소수점 이하로 입력가능한 자릿수(기본값: null)
+
+※ 포맷을 N4, n4, N04, n04, #,##0.0000, #,##0.#### 와 같이 지정하였을 경우 입력 시에도 
+   소수점 이하 4자리까지 입력할 수 있어야 하므로 decimals를 4로 지정합니다.
+
+
+0.0001
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" value="0.0001" data-dews-format="#,##0.0000" data-dews-decimals="4">
+3
+</p>
+소수점 자리까지 입력 제한 설정
+data-dews-restrict-decimals 소수점 자리까지 입력 제한 설정(기본값: false)
+
+
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" data-dews-decimals="2" data-dews-restrict-decimals="true">
+3
+</p>
+읽기전용 설정 및 가져오기
+readonly() 를 사용하며 매개변수로는 true, false 가 있습니다.
+
+읽기전용 여부
+
+true 읽기전용으로 설정합니다.
+false 읽기전용을 해제합니다.
+
+
+  
+
+
+1
+<p>
+2
+  <input type="text" id="ntext1" class="dews-ui-numerictextbox">
+3
+</p>
+4
+<p>
+5
+  <button id="btnSetReadonly" class="dews-ui-button">읽기전용 설정</button>
+6
+  <button id="btnRemoveReadonly" class="dews-ui-button">읽기전용 해제</button>
+7
+  <button id="btnReadonlyState" class="dews-ui-button">읽기전용 상태</button>
+8
+</p>
+9
+?
+10
+<script>
+11
+  dews.ready(function () {
+12
+    var self = this;
+13
+?
+14
+    self.$btnSetReadonly.on('click', function (e) {
+15
+      self.ntext1.readonly(true);
+16
+    });
+17
+    self.$btnRemoveReadonly.on('click', function (e) {
+18
+      self.ntext1.readonly(false);
+19
+    });
+20
+    self.$btnReadonlyState.on('click', function (e) {
+21
+      alert(self.ntext1.readonly());
+22
+    });
+23
+  });
+24
+</script>
+활성화 설정 및 가져오기
+enable() 를 사용하며 매개변수로는 true, false 가 있습니다.
+
+활성화 상태
+
+true 활성화 상태입니다.
+false 비활성화 상태입니다.
+
+
+  
+
+
+1
+<p>
+2
+  <input type="text" id="ntext2" class="dews-ui-numerictextbox">
+3
+</p>
+4
+<p>
+5
+  <button id="btnEnable" class="dews-ui-button">활성화</button>
+6
+  <button id="btnDisable" class="dews-ui-button">비활성화</button>
+7
+  <button id="btnEnabled" class="dews-ui-button">활성화 상태</button>
+8
+</p>
+9
+?
+10
+<script>
+11
+  dews.ready(function () {
+12
+    var self = this;
+13
+?
+14
+    self.$btnEnable.on('click', function (e) {
+15
+      self.ntext2.enable(true);
+16
+    });
+17
+    self.$btnDisable.on('click', function (e) {
+18
+      self.ntext2.enable(false);
+19
+    });
+20
+    self.$btnEnabled.on('click', function (e) {
+21
+      alert(self.ntext2.enable());
+22
+    });
+23
+  });
+24
+</script>
+포커스 시 전체 선택
+data-dews-select-on-focus 포커스 시 전체 선택 여부(true|false) ※ 기본값: false
+
+
+10,000
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" data-dews-select-on-focus="true" value="10000" data-dews-step="0">
+3
+</p>
+강제 너비 지정
+
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-numerictextbox" style="width:96px;">
+3
+</p>
+
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+함수 (NumericTextbox) Functions
+value값 설정 및 반환
+value(val) 값을 설정하거나 가져옵니다.
+
+파라미터
+
+val number|string 설정할 값 입니다. ( ※ 생략하면 기존에 설정된 값을 가져옵니다.) 
+리턴 값
+
+설정된 값
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.ntext1.value(100000); //ntext1의 값을 100000로 설정합니다.
+5
+  var val =self.ntext1.value(); //ntext1의 값을 가져옵니다.
+6
+});
+readonly읽기전용 여부 설정 또는 반환
+readonly(value) 숫자텍스트박스의 읽기전용 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+value boolean 설정할 읽기전용 여부 ( ※ 생략하면 설정된 읽기전용 여부를 가져옵니다.) 
+리턴 값
+
+설정된 읽기전용 여부
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.ntext2.readonly(true); //ntext2를 읽기전용으로 설정합니다.
+5
+  var readonly = self.ntext2.readonly()); //ntext2의 읽기전용 여부를 가져옵니다.
+6
+});
+enable활성화 여부 설정 또는 반환
+enable(value) 숫자텍스트박스의 활성화 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+value boolean 설정할 활성화 여부 ( ※ 생략하면 설정된 활성화 여부를 가져옵니다.) 
+리턴 값
+
+설정된 활성화 여부
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.ntext3.enable(true); //ntext3를 활성화로 상태로 설정합니다.
+5
+  self.ntext3.enable()); //ntext3의 활성화 여부를 가져옵니다.
+6
+});
+text포맷이 적용되어 있는 텍스트
+text() 숫자텍스트박스에서 포맷이 적용되어 있는 텍스트를 가져옵니다.
+
+리턴 값
+
+포맷이 적용되어 있는 텍스트
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  self.ntext3.text(); //ntext3의 포맷이 적용되어 있는 텍스트를 가져옵니다.
+4
+});
+max최대값 설정
+max(value) 최대값을 설정합니다.
+
+파라미터
+
+value string|number 설정할 최대값
+반환 값
+
+string 설정된 최대값을 number형식으로 반환합니다.
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  self.ntext5.max('2015'); //ntext5의 최대값을 설정합니다.
+4
+});
+min최소값 설정
+min(value) 최소값을 설정합니다.
+
+파라미터
+
+value string|number 설정할 최소값
+반환 값
+
+string 설정된 최소값을 number형식으로 반환합니다.
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+  self.ntext6.min('2015'); //ntext6의 최소값을 설정합니다.
+4
+});

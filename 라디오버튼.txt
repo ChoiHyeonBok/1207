@@ -1,0 +1,64 @@
+라디오버튼dews-ui-radio
+라디오 버튼은 선택 요소 중 하나의 옵션을 선택할 수 있는 컨트롤입니다.
+
+버튼은 개별적으로 추가가 가능하며 name속성을 통해 그룹화하여 사용할 수 있습니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+input 태그에 dews-ui-radio클래스를 지정하여 사용합니다.
+
+label 태그에 for 속성을 이용하여 사용합니다.
+
+옵션
+
+checked 라디오버튼을 체크된 상태로 설정합니다.
+disabled 라디오버튼을 비활성화합니다.
+사용 방법usage
+기본 사용법
+ 라디오#1   라디오#2
+
+ 라디오#1 - 비활성화   라디오#2
+
+
+1
+<p>
+2
+  <input type="radio" id="rdo" name="radio1" class="dews-ui-radio">
+3
+  <label for="rdo">라디오#1</label>
+4
+  <input type="radio" id="rdo1" name="radio1" class="dews-ui-radio" checked="checked">
+5
+  <label for="rdo1">라디오#2</label>
+6
+</p>
+7
+<p>
+8
+  <input type="radio" id="rdo2" name="radio2" class="dews-ui-radio" disabled="disabled">
+9
+  <label for="rdo2">라디오#1 - 비활성화</label>
+10
+  <input type="radio" id="rdo3" name="radio2" class="dews-ui-radio">
+11
+  <label for="rdo3">라디오#2</label>
+12
+</p>
+Label 없는 radio버튼
+      
+
+
+1
+<p>
+2
+  <input type="radio" id="rdo4" name="radio4" class="dews-ui-radio">
+3
+  <input type="radio" id="rdo5" name="radio4" class="dews-ui-radio" checked="checked">
+4
+  <input type="radio" id="rdo6" name="radio4" class="dews-ui-radio" disabled="disabled">
+5
+  <input type="radio" id="rdo7" name="radio4" class="dews-ui-radio" disabled="disabled" checked="checked">
+6
+</p>

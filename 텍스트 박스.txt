@@ -1,0 +1,408 @@
+텍스트박스dews-ui-textbox
+텍스트를 입력 받을 수 있는 영역을 만들어 사용할 수 있습니다.
+
+초기화 방법init
+HTML 초기화
+초기화
+
+input 태그에 dews-ui-textbox 클래스를 지정하여 사용합니다. ( ※ type 속성은 text, password만 사용 가능합니다.)
+
+textarea 태그에 dews-ui-textbox 클래스를 지정하여 멀티라인 입력 시 사용합니다.
+
+옵션
+
+placeholder 텍스트박스의 값이 비어있을시 보여주는 문구를 지정합니다.
+value 텍스트박스의 기본값을 지정합니다.
+상태
+required 필수입력사항 텍스트박스로 설정합니다.
+readonly 읽기전용 텍스트박스로 설정합니다.
+disabled 비활성화 텍스트박스로 설정합니다.
+text-status-error error 텍스트박스로 설정합니다.
+text-status-warning warning 텍스트박스로 설정합니다.
+text-status-success success 텍스트박스로 설정합니다.
+password 패스워드 텍스트박스로 설정합니다.
+사용 방법usage
+기본 사용법 - HTML
+
+
+
+HintText를 정의.
+
+
+Default 값을 설정.
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-textbox">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-textbox" placeholder="HintText를 정의.">
+6
+</p>
+7
+<p>
+8
+  <input type="text" class="dews-ui-textbox" value="Default 값을 설정.">
+9
+</p>
+상태 옵션 지정하는 방법
+
+required
+
+
+readonly
+
+
+disabled
+
+
+
+
+error
+
+
+warning
+
+
+success
+
+
+1
+<p>
+2
+  <input type="text" class="dews-ui-textbox required" value="required">
+3
+</p>
+4
+<p>
+5
+  <input type="text" class="dews-ui-textbox" readonly="readonly" value="readonly">
+6
+</p>
+7
+<p>
+8
+  <input type="text" class="dews-ui-textbox" disabled="disabled" value="disabled">
+9
+</p>
+10
+<p>
+11
+  <input type="password" class="dews-ui-textbox password">
+12
+</p>
+13
+<p>
+14
+  <input type="text" class="dews-ui-textbox text-status-error" value="error">
+15
+</p>
+16
+<p>
+17
+  <input type="text" class="dews-ui-textbox text-status-warning" value="warning">
+18
+</p>
+19
+<p>
+20
+  <input type="text" class="dews-ui-textbox text-status-success" value="success">
+21
+</p>
+멀티라인
+
+
+
+1
+<p>
+2
+  <textarea class="dews-ui-textbox"></textarea>
+3
+</p>
+4
+<script>dews.demo.source('textbox_manual','multiline');</script>
+읽기전용 설정/가져오기
+readonly() 를 사용하며 매개변수로는 true, false 가 있습니다.
+
+읽기전용 여부
+
+true 읽기전용으로 설정합니다.
+false 읽기전용을 해제합니다.
+
+
+  
+
+
+1
+<p>
+2
+  <input type="text" id="text4" class="dews-ui-textbox">
+3
+</p>
+4
+<p>
+5
+  <button id="btnSetReadonly" class="dews-ui-button">읽기전용 설정</button>
+6
+  <button id="btnRemoveReadonly" class="dews-ui-button">읽기전용 해제</button>
+7
+  <button id="btnReadonlyState" class="dews-ui-button">읽기전용 여부</button>
+8
+</p>
+9
+?
+10
+<script>
+11
+  dews.ready(function () {
+12
+    var self = this;
+13
+?
+14
+    self.$btnSetReadonly.on('click', function (e) {
+15
+      self.text4.readonly(true);
+16
+    });
+17
+    self.$btnRemoveReadonly.on('click', function (e) {
+18
+      self.text4.readonly(false);
+19
+    });
+20
+    self.$btnReadonlyState.on('click', function (e) {
+21
+      alert(self.text4.readonly());
+22
+    });
+23
+  });
+24
+</script>
+활성화 설정/가져오기
+enable() 를 사용하며 매개변수로는 true, false 가 있습니다.
+
+활성화 상태
+
+true 활성화 상태입니다.
+false 비활성화 상태입니다.
+
+
+  
+
+
+1
+<p>
+2
+  <input type="text" id="text5" class="dews-ui-textbox">
+3
+</p>
+4
+<p>
+5
+  <button id="btnSetEnable" class="dews-ui-button">활성화</button>
+6
+  <button id="btnSetDisable" class="dews-ui-button">비활성화</button>
+7
+  <button id="btnEnabledState" class="dews-ui-button">활성화 상태</button>
+8
+</p>
+9
+?
+10
+<script>
+11
+  dews.ready(function () {
+12
+    var self = this;
+13
+?
+14
+    self.$btnSetEnable.on('click', function (e) {
+15
+      self.text5.enable(true);
+16
+    });
+17
+    self.$btnSetDisable.on('click', function (e) {
+18
+      self.text5.enable(false);
+19
+    });
+20
+    self.$btnEnabledState.on('click', function (e) {
+21
+      alert(self.text5.enable());
+22
+    });
+23
+  });
+24
+</script>
+강제 너비 지정
+
+
+
+1
+<p>
+2
+  <input type="text" id="fixedsizetext" class="dews-ui-textbox">
+3
+</p>
+4
+?
+5
+<style scoped="">
+6
+  #fixedsizetext { width: 96px; }
+7
+</style>
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+함수 (Textbox) Functions
+text 텍스트 설정하기/가져오기
+text(value) 텍스트박스에 텍스트을 설정하거나 가져옵니다.
+
+파라미터
+
+value string 설정할 텍스트 ※ 생략하면 설정된 텍스트를 가져옵니다. 
+리턴 값
+
+설정된 텍스트
+
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.text1.text('Text'); //text1의 텍스트를 'Text'로 설정합니다.
+5
+  var text = self.text1.text(); //text1의 텍스트를 가져옵니다.
+6
+});
+readonly 읽기전용 여부의 설정 및 반환
+readonly(value) 읽기전용 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+value boolean 읽기전용 여부 ※ 생략하면 읽기전용 여부를 가져옵니다. 
+리턴 값
+
+읽기전용 여부
+
+true 읽기전용 상태입니다.
+false 읽기전용 해제상태입니다.
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.text1.readonly(true); //text1를 읽기전용으로 설정합니다.
+5
+  var readonly = self.text1.readonly(); //text1의 읽기전용 여부를 가져옵니다.
+6
+});
+enable 활성화 여부의 설정 및 반환
+enable(value) 활성화 여부를 설정하거나 가져옵니다.
+
+파라미터
+
+value boolean 활성화 여부 ※ 생략하면 활성화 여부를 가져옵니다. 
+리턴 값
+
+활성화 여부
+
+true 활성화 상태입니다.
+false 비활성화 상태입니다.
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.text1.enable(true); //text1를 활성화 상태로 설정합니다.
+5
+  var enable = self.text1.enable(); //text1의 활성화 여부를 가져옵니다.
+6
+});
+setMaxLength최대 길이 설정
+setMaxLength(length) 텍스트박스의 최대 입력 가능 글자수를 설정합니다.
+
+파라미터
+
+length number 최대 입력 가능 글자수
+
+1
+dews.ready(function () {
+2
+  var self = this;
+3
+?
+4
+  self.text1.setMaxLength(10); // 최대 입력 가능 글자수를 10개로 제한
+5
+});
+setState상태값에 따른 스타일 및 툴팁 적용
+setState(type, options) 파라미터로 넘어온 텍스트박스의 상태값에 따라 스타일 및 툴팁을 적용합니다.
+
+파라미터
+
+type string 설정할 상태값 ( * 설정 가능 값: error, success, warning )
+options string || object string: 툴팁에 띄울 메세지 object: 툴팁에 띄울 메세지 외에 다른 옵션값을 추가 할 때는 json 객체 형식으로 작성합니다. ( 현재 툴팁 이외 옵션값 없음.)
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.text1.setState('success', '툴팁에 띄울 메세지 입니다.'); // type 은 메세지 박스의 상태값을 설정합니다. ( 종류: error, waring, success)
+5
+});
+getState텍스트 박스의 설정된 상태값을 가져옵니다.
+getState() 텍스트 박스의 설정된 상태값을 가져옵니다.
+
+반환값
+
+state string 설정된 상태값 ( * 반환 값 종류: error, success, warning )
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.text1.getState(); ( 반환값 종류: error, waring, success )
+5
+});
+removeState텍스트 박스에 설정 된 상태값을 제거합니다.
+removeState() 텍스트 박스의 설정된 상태값을 제거합니다.
+
+
+1
+dews.ready(function () {
+2
+var self = this;
+3
+?
+4
+self.text1.removeState();
+5
+});

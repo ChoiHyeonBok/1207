@@ -1,436 +1,797 @@
-<div class='dews-ui-condition-panel'>
-    <ul class='required-area' >
+<div class="dews-ui-condition-panel">
+    <ul class="required-area">
         <li>
             <span>
-                <select class='dews-ui-dropdownlist basic' id='SEARCH_TYPE' name='SEARCH_TYPE' style='width:81px; margin-left:50px;'>
-                    <option value='1'>전체</option>
-                    <option value='2'>고객담당명</option>
-                    <option value='3'>고객사</option>
-                    <option value='4'>부서명</option>
-                    <option value='5'>직책</option>
-                    <option value='6'>직위</option>
+                <select class="dews-ui-dropdownlist basic" id="SEARCH_TYPE" name="SEARCH_TYPE" style="width:81px; margin-left:50px;">
+                <option value="1">전체</option>
+                <option value="2">고객담당명</option>
+                <option value="3">고객사</option>
+                <option value="4">부서명</option>
+                <option value="5">직책</option>
+                <option value="6">직위</option>
                 </select>
-                <input type='text' id='SEARCH_TEXT' name='SEARCH_TEXT' type='dews-ui-textbox' style='width:170px;'>     
+                <input type="text" class="dews-ui-textbox" id="SEARCH_TEXT" name="SEARCH_TEXT" style="width:170px;"/>
             </span>
         </li>
         <li>
-            <label class='dews-ui-multilingual'>권한정도</label>
-            <sapn>
-                <select class='dews-ui-dropdownlist bindingDropdown' id='OPTION_KEYMAN_AUTHASGN_CD' name='OPTION_KEYMAN_AUTHASGN_CD' data-dews-value-field='SYSDEF_CD' data-dws-text-field='SYSDEF_NM'>
-                </select>
-            </sapn>
+            <label class="dews-ui-multilingual">권한정도</label>
+            <span>
+                <select class="dews-ui-dropdownlist bindingDropdown" id="OPTION_KEYMAN_AUTHASGN_CD" name="OPTION_KEYMAN_AUTHASGN_CD" data-dews-value-field="SYSDEF_NM" data-dews-text-value="SYSDEF_NM"></select>
+            </span>
         </li>
         <li>
-            <label class='dews-ui-multilingual'></label>
+            <label class="dews-ui-multilingual"></label>
             <span>
-               <input type='checkbox' id='OPTION_MYCUSTOMER' class='dews-ui-checkbox'> 
-               <lable>내고객사</lable>
+                <input type="checkbox" id="OPTION_MYCUSTOMER" name="OPTION_MYCUSTOMER" class="dews-ui-checkbox">
+                <label>내고객사</label>
             </span>
         </li>
     </ul>
-    <ul class='optional-area'>
+    <ul class="optional-area">
         <li>
-            <label class='dews-ui-multilingual'>우호도</label>
+            <label class="dews-ui-multilingual">우호도</label>
             <span>
-                <select class='dews-ui-dropdownlist bindingDropdown' id='OPTION_KEYMAN_FRIENDSHIP_CD' name='OPTION_KEYMAN_FRIENDSHIP_CD' dews-data-value-field='SYSDEF_CD' dews-data-text-field='SYSDEF_CD'>    
+                <select class="dews-ui-dropdownlist bindingDropdown" id="OPTION_KEYMAN_FRIENDSHIP_CD" name="OPTION_KEYMAN_FRIENDSHIP_CD" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_CD">
                 </select>
             </span>
         </li>
         <li>
-            <label calss='dews-ui-multilingual'>사용여부</label>
+            <label class="dews-ui-multilingual">사용여부</label>
             <span>
-                <select class='dews-ui-dropdownlist basic' id='OPTION_USE_YN' name='OPTION_USE_YN'>
-                    <option value='1'>전체</option>
-                    <option value='2'>Yes</option>
-                    <option value='3'>No</option>
-                </select>
+                <select class="dews-ui-dropdownlist" id="OPTION_USE_YN" name="OPTION_USE_YN">
+                    <option value="0">전체</option>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                    </select>
             </span>
         </li>
     </ul>
 </div>
-
-<div class='dews-ui-container-panel' data-dews-fit-bottom='true' >
-        <div class='dews-container-item' data-dews-position='left' data-dews-width='300'>
-          <div id='CardList1' class='dews-ui-cardlist'></div>
-        </div>
-        <div class='dews-container-item' data-dews-position='normal'>
-          <div id='form_panel' class='dews-ui-form-panel'>
+<div class="dews-ui-container-panel" data-dews-fit-bottom="true">
+    <div class="dews-container-item" data-dews-position="left" data-dews-width="300">
+        <div class="dews-ui-cardlist" id=CardList1></div>
+    </div>
+    <div class="dews-container-item" data-dews-position="normal">
+        <div class="dews-ui-form-panel" id="form_panel">
             <ul>
-              <li>
-                <label>고객코드</label>
-                <span>
-                  <input id='KEYMAN_CD' name='KEYMAN_CD' type='text' class='dews-ui-textbox disabled' data-dews-bind-column='KEYMAN_CD' />
-                </span>
-              </li>
-              <li>
-                <label>고객담당명</label>
-                <span>
-                    <input id='KEYMAN_NM' name='KEYMAN_NM' type='text' class='dews-ui-textbox required' data-dews-bind-column='KEYMAN_NM' style='width: 103px; font-size: 12px;'/>
-                    <button type='button' id='CHECK_BTN' class='dews-ui-button'>중복확인</button>
-                </span>
-              </li>
-              <li>
-                  <label>고객사</label>
-                  <span>
-                    <select id='CUST_CD' name='CUST_CD' class='dews-ui-dropdownlist bindingDropdown required' data-dews-value-field='CUST_CD' data-dews-text-field='CUST_CD'>
-                    </select>
-                  </span>
-              </li>
-              <li>
-                  <label>직책</label>
-                  <span>
-                    <input type='text' id='KEYMAN_ODTY_NM' name='KEYMAN_ODTY_NM' class='dews-ui-textbox' data-dews-bind-column='KEYMAN_ODTY_NM'>
-                  </span>
-              </li>
-              <li>
+                <li>
+                    <label>고객코드</label>
+                    <span>
+                        <input type="text" class="dews-ui-textbox readonly" id="KEYMAN_CD" name="KEYMAN_CD" data-dews-bind-column="KEYMAN_CD"/>
+                    </span>
+                </li>
+                <li>
+                    <label>고객담당명</label>
+                    <span>
+                        <input type="text" class="dews-ui-textbox required" id="KEYMAN_NM" name="KEYMAN_NM" data-dews-bind-column="KEYMAN_NM" style="width:103px; font-size:12px;"/>
+                        <button class="dews-ui-button" id="CHECK_BUTTON">중복확인</button>
+                    </span>
+                </li>
+                <li>
+                    <label>고객사</label>
+                    <span>
+                        <select id="CUST_CD" name="CUST_CD" class="dews-ui-dropdownlist bindingDropdown required" data-dews-value-field="CUST_CD" data-dews-text-field="CUST_NM"></select>
+                    </span>
+                </li>
+                <li>
+                    <label>직책</label>
+                    <span>
+                        <input id="KEYMAN_ODTY_NM" name="KEYMAN_ODTY_NM" type="text" class="dews-ui-textbox" data-dews-bind-column="KEYMAN_ODTY_NM">
+                    </span>
+                </li>
+                <li>
                     <label>부서명</label>
                     <span>
-                      <input type='text' id='KEYMAN_DEPT_NM' name='KEYMAN_DEPT_NM' class='dews-ui-textbox' data-dews-bind-column='KEYMAN_DEPT_NM'>
+                        <input id="KEYMAN_PSTN_NM" name="KEYMAN_PSTN_NM" type="text" class="dews-ui-textbox" data-dews-bind-column="KEYMAN_PSTN_NM">
                     </span>
-              </li>
-              <li>
+                </li>
+                <li>
                     <label>직위</label>
                     <span>
-                        <input type='text' id='KEYMAN_PSTN_NM' name='KEYMAN_PSTN_NM' class='dews-ui-textbox' data-dews-bind-column='KEYMAN_PSTN_NM'>
+                        <input id="KEYMAN_ODTY_NM" name="KEYMAN_ODTY_NM" type="text" class="dews-ui-textbox" data-dews-bind-column="KEYMAN_ODTY_NM">
                     </span>
-              </li>
-              <li>
-                    <label>해당업무</label>
+                </li>
+                <li>
+                    <label>해당없무</label>
                     <span>
-                      <input type='text' id='KEYMAN_TSK_NM' name='KEYMAN_TSK_NM' class='dews-ui-textbox' data-dews-bind-column='KEYMAN_TSK_NM'>
+                        <input id="KEYMAN_TSK_NM" name="KEYMAN_TSK_NM" type="text" class="dews-ui-textbox" data-dews-bind-column="KEYMAN_TSK_NM">
                     </span>
-              </li>
-              <li>
+                </li>
+                <li>
                     <label>핸드폰</label>
                     <span>
-                        <input type='text' id='HP_NO' name='HP_NO' class='dews-ui-textbox' data-dews-bind-column='HP_NO' >
+                        <input id="HP_NO" name="HP_NO" type="text" class="dews-ui-textbox required" data-dews-bind-column="HP_NO">
                     </span>
-              </li>
-              <li>
-                  <label>권한정도</label>
-                  <span>
-                        <select id='KEYMAN_AUTHASGN_CD' name='KEYMAN_AUTHASGN_CD' class='dews-ui-dropdownlist bindingDropdown' data-dews-value-field='KEYMAN_AUTHASGN_CD' data-dews-text-field='KEYMAN_AUTHASGN_CD'>
-                        </select>
-                  </span>
-              </li>
-              <li>
+                </li>
+                <li>
+                    <label>권한정도</label>
+                    <span>
+                        <select id="KEYMAN_AUTHASGN_CD" name="KEYMAN_AUTHASGN_CD" class="dews-ui-dropdownlist bindingDropdown" data-dews-text-field="SYSDEF_CD" data-dews-value-field="SYSDEF_CD" data-dews-bind-column="KEYMAN_AUTHASGN_CD"></select>
+                    </span>
+                </li>
+                <li>
                     <label>전화번호</label>
                     <span>
-                        <input type='text' id='TEL_NO' name='TEL_NO' class='dews-ui-textbox' data-dews-bind-column='HP_NO' >
+                        <input id="TEL_NO" name="TEL_NO" class="dews-ui-textbox" type="text" data-dews-bind-column="TEL_NO">
                     </span>
-              </li>
-              <li>
+                </li>
+                <li>
                     <label>우호도</label>
                     <span>
-                        <select id='KEYMAN_FRIENDSHIP_CD' name='KEYMAN_FRIENDSHIP_CD' class='dews-ui-dropdownlist bindingDropdown' data-dews-value-field='KEYMAN_FRIENDSHIP_CD' data-dews-text-field='KEYMAN_FRIENDSHIP_CD'></select> 
+                        <select id="KEYMAN_FRIENDSHIP_CD" name="KEYMAN_FRIENDSHIP_CD" class="dews-ui-dropdownlist bindingDropdown" data-dews-text-field="SYSDEF_CD" data-dews-value-field="SYSDEF_CD" data-dews-bind-column="KEYMAN_FRIEDNSHIP"></select>
                     </span>
-              </li>
-              <li>
+                </li>
+                <li>
                     <label>이메일</label>
                     <span>
-                        <input type='text' id='EMAIL_NM' name='EMAIL_NM' class='dews-ui-textbox' data-dews-bind-column='EMAIL_NM' >
+                        <input id="EMAIL_NM" name="EMAIL_NM" type="text" class="dews-ui-textbox" data-dews-bind-column="EMAIL_NM"/>
                     </span>
-              </li>
-              <li class='col-2'>
-                  <label>주소</label>
-                  <span>
-                  <input type='text' id='POST_NO' name='POST_NO' class='dews-ui-zipcodepicker' data-dews-bind-column='true' data-dews-address-bind='BASE_ADDR'/>
-                  <input type='text' id='BASE_ADDR' name='BASE_ADDR' class='dews-ui-textbox' style='width:420px;' data-dews-bind-column='BASE_ADDR'/>
-                  </span>
-              </li>
-              <li class='col-2'>
-                  <label>상세주소</label>
-                  <span>
-                      <input type='text' id='DTL_ADDR' name='DTL_ADDR' class='dews-ui-textbox basic' data-dews-bind-column='true'/>
-                  </span>
-              </li>
-              <li>
-                  <label>등록일자</label>
-                  <span>
-                      <input type='text' id='INSERT_DTS' name='INSERT_DTS' class='dews-ui-textbox basic'/>
-                  </span>
-              </li>
-              <li>
-                  <label>사용여부</label>
-                  <span>
-                      <select id='USE_YN' name='USE_YN' class='dews-ui-dropdownlist' data-dews-bind-value='USE_YN'>
-                          <option value='1'>Yes</option>
-                          <option value='2'>No</option>
-                      </select>
-                  </span>
-              </li>
-            </ui>
+                </li>
+                <li class="col-2">
+                    <label>주소</label>
+                    <span>
+                        <input id="POST_NO" name="POST_NO" type="text" class="dews-ui-zipcodepicker" data-dews-address-bind="BASE_ADDR">
+                        <input id="BASE_ADDR" name="BASE_ADDR" type="text" class="dews-ui-textbox" style="width:420px" data-dews-bind-column="BASE_ADDR">
+                    </span>   
+                </li>
+                <li class="col-2">
+                    <label>상세주소</label>
+                    <span>
+                        <input id="DTL_ADDR" name="DTL_ADDR" type="text" class="dews-ui-textbox" data-dews-bind-column="DTL_ADDR"/>
+                    </span>
+                </li>
+                <li>
+                    <label>등록일자</label>
+                    <span>
+                        <input id="INSERT_DTS" name="INSERT_DTS" type="text" class="dews-ui-textbox readonly" data-dews-bind-column="INSERT_DTS"/>
+                    </span>
+                </li>
+                <li>
+                    <label>사용여부</label>
+                    <span>
+                        <select id="USE_YN" name="USE_YN" type="text" class="dews-ui-dropdownlist required" data-dews-bind-value="USE_YN">
+                            <option value="0">Yes</option>
+                            <option value="1">No</option>
+                        </select> 
+                    </span>
+                </li>
+            </ul>
         </div>
-             <div class='dews-button-group' style='float : right; width : 300px; z-index: 10; position: relative;'>
-             
-              </div>
-                <div class='dews-container-panel' data-dews-fit-bottom='true'>
-                    <div class='dews-container-item'>
-                        <div class='dews-ui-tab-panel sub'>
-                            <ul class='dews-tab-items'>
-                                <li id='TabID_additional' class='dews-tab-item' data-dews-title='부가정보'>
-                                <div class='dews-ui-form-panel'>
-                                    <ul>
-                                        <li>
-                                           <label>출신지</label>
-                                           <span>
-                                               <input type='text' id='TextBox22' name='TextBox22' class='dews-ui-textbox' data-dews-bind-column='true'/>
-                                           </span> 
-                                        </li>
-                                        <li>
+        <div class="dews-container-panel" data-dews-fit-bottom="true">
+                <div class="dews-container-item">
+                  <div class="dews-ui-tab-panel sub">
+                    <ul class="dews-tab-items">
+                      <li id="TabID_additional" class="dews-tab-item" data-dews-title="부가정보">
+                        <div class="dews-ui-form-panel">
+                            <ul>
+                                <li>
+                                    <label>출신지</label>
+                                            <span>
+                                              <input id="TextBox22" name="TextBox22" type="text" class="dews-ui-textbox basic" />
+                                            </span>
+                                          </li>
+                                          <li>
                                             <label>팩스번호</label>
                                             <span>
-                                                <input type='text' id='TextBox23' name='TextBox23' class='dews-ui-textbox' data-dews-bind-column='true'/>
+                                              <input id="TextBox23" name="TextBox23" type="text" class="dews-ui-textbox basic" />
                                             </span>
-                                        </li>
-                                        <li>
+                                          </li>
+                                          <li>
                                             <label>최종학교</label>
                                             <span>
-                                                <input type='text' id='TextBox24' name='TextBox24' class='dews-ui-textbox' data-dews-bind-column='true'/>
+                                              <input id="TextBox24" name="TextBox24" type="text" class="dews-ui-textbox basic" />
                                             </span>
-                                        </li>
-                                        <li>
+                                          </li>
+                                          <li>
                                             <label>개인이메일</label>
                                             <span>
-                                                <input type='text' id='TextBox25' name='TextBox25' class='dews-ui-textbox' data-dews-bind-column='treu'/>
+                                              <input id="TextBox25" name="TextBox25" type="text" class="dews-ui-textbox basic" />
                                             </span>
-                                        </li>
-                                        <li>
+                                          </li>
+                                          <li>
                                             <label>종교</label>
                                             <span>
-                                                <input type='text' id='TextBox26' name='TextBox26' class='dews-ui-textbox' data-dews-bind-column='true'/>
+                                              <input id="TextBox26" name="TextBox26" type="text" class="dews-ui-textbox basic" />
                                             </span>
-                                        </li>
-                                        <li>
+                                          </li>
+                                          <li>
                                             <label>생년월일</label>
                                             <span>
-                                                <input type='text' id='TextBox27' name='TextBox27' class='dews-ui-datepicker basic'/> 
+                                              <input id="TextBox27" name="TextBox27" type="text" class="dews-ui-datepicker basic" />
                                             </span>
-                                        </li>
-                                        <li class='col-2'>
+                                          </li>
+                                          <li class="col-2">
                                             <label>집주소</label>
                                             <span>
-                                                <input type='text' id='POST_NO_HOME' name='POST_NO_HOME' class='dews-ui-zipcodepicker' data-dews-bind-column='POST_NO_HOME' data-dews-address-bind='BASE_ADDR_HOME'/>
-                                                <input type='text' id='BASE_ADDR_HOME' name='BASE_ADDR_HOME' class='dews-ui-textbox' data-dews-bind-column='BASE_ADDR_HOME' style='width: 420px;'/>
+                                              <input id="POST_NO_HOME" name="POST_NO_HOME" type="text" class="dews-ui-zipcodepicker" data-dews-bind-column="POST_NO_HOME" data-dews-address-bind="BASE_ADDR_HOME"/>
+                                              <input id="BASE_ADDR_HOME" name="BASE_ADDR_HOME" type="text" class="dews-ui-textbox" style="width: 420px;" data-dews-bind-column="BASE_ADDR_HOME"/>
                                             </span>
-                                        </li>
-                                        <li class='col-2'>
+                                          </li>
+                                          <li class="col-2">
                                             <label>상세주소</label>
                                             <span>
-                                                <input type='text' id='DTL_ADDR_HOME' name='DTL_ADDR_HOME' class='dews-ui-textbox' data-dews-bind-column='DTL_ADDR_HOME'/>
+                                              <input id="TextBox28" name="TextBox28" type="text" class="dews-ui-textbox basic" />
                                             </span>
-                                        </li>
-                                    </ul>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </li>
+                      <li id="TabID_contact" class="dews-tab-item"  data-dews-title="접촉이력">
+                        <div class="dews-ui-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                            <div class="dews-container-item" data-dews-position="normal">
+                                <div id="Grid1" class="dews-ui-grid">
                                 </div>
-                            </li>
-                            <li id='TabID_contact' class='dews-tab-item' data-dews-title='접촉이력'>
-                                <div class='dews-ui-container-panel' style='min-width:0px;' data-dews-fit-bottom='true'>
-                                    <div class='dews-container-item' data-dews-position='normal'>
-                                            <div id='Grid1' class='dews-ui-grid'></div>
-                                    </div>
+                            </div>
+                        </div>
+                      </li>
+                      <li id="TabID_addtional" class="dews-tab-item"  data-dews-title="기회/수주"> 
+                        <div class="dews-ui-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                            <div class="dews-container-item" data-dews-position="normal">
+                                <div id="Grid2" class="dews-ui-grid">
+
                                 </div>
-                            </li>
-                            <li id='TabID_chance' class='dews-tab-item' data-dews-title='기회/수주'>
-                                <div class='dews-ui-container-panel' style='min-width:0px;' data-dews-fit-bottom='true'>
-                                    <div class='dews-container-item' data-dews-position='normal'>
-                                        <div id='Grid2' class='dews-ui-grid'></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id='TabID_marketing' class='dews-tab-item' data-dews-title='마케팅'>
-                                <div class='dews-ui-container-panel' style='min-width:0px;' data-dews-fit-bottom='true'>
-                                    <div class='dews-container-item' data-dews-position='normal'>
-                                        <div id='Grid3' class='dews-ui-grid'></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id='TabID_voc' class='dews-tab-item' data-dews-title='VOC'>
-                                <div class='dews-ui-container-panel' style='min-width:0px;' data-dews-fit-bottom='true'>
-                                    <div class='dews-container-item' data-dews-position='normal'>
-                                        <div id='Grid4' class='dews-ui-grid'></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id='TabID_opinion' class='dews-tab-item' data-dews-title='의견'>
-                                <div class='dews-ui-container-panel' style='overflow: visible;' data-dews-container-height='110' data-dews-fit-bottom='true'>
-                                    <div class='dews-container-item' data-dews-position='normal'>
-                                        <textarea id='DC_RMK_TEXT' class='dews-ui-textbox' style='width: 100%; height:150px'></textarea>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id='TabID_history' class='dews-tab-item' data-dews-title='히스토리'>
-                                <div class='dews-ui-container-panel' style='min-width:0px;' data-dews-fit-bottom='true'>
-                                    <div class='dews-container-item' data-dews-position='normal'>
-                                        <div id='Grid5' class='dews-ui-grid'></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li id='TabID_data' class='dews-tab-item' data-dews-title='관련자료' data-dews-fit-bottom='true'>
-                                <div id='multifileComponenet' class='dews-ui-multifile'></div>
-                            </li>
-                        </ul>
-                    </div>
+                            </div>
+                        </div> 
+                      </li>
+                      <li id="TabID_addtional" class="dews-tab-item"  data-dews-title="마케팅">
+                        <div class="dews-ui-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                            <div class="dews-container-item" data-dews-position="normal">
+                                <div id="Grid3" class="dews-ui-grid"></div>
+                            </div>
+                        </div>
+                      </li>
+                      <li id="TabID_addtional" class="dews-tab-item"  data-dews-title="VOC">
+                        <div class="dews-ui-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                            <div class="dews-container-item" data-dews-position="normal">
+                                <div id="Grid4" class="dews-ui-grid"></div>
+                            </div>
+                        </div>
+                      </li>
+                      <li id="TabID_opinion" class="dews-tab-item" data-dews-title="의견" data-dews-fit-bottom="true">
+                        <div class="dews-ui-container-panel" style="overflow: visible;" data-dews-container-height="110" data-dews-fit-bottom="true">
+                            <div class="dews-container-item" data-dews-position="normal">
+                                <textarea id="DC_RMK_TEXT" class="dews-ui-textbox" style="width: 100%; height:150px"></textarea>
+                            </div>
+                        </div>
+                      </li>
+                      <li id="TabID_history" class="dews-tab-item" data-dews-title="히스토리" data-dews-fit-bottom="true">
+                        <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                          <div class="dews-container-item" data-dews-position="normal">
+                            <div id="Grid5" class="dews-ui-grid"></div>
+                          </div>
+                        </div>
+                      </li>
+                      <li id="TabID_data" class="dews-tab-item" data-dews-title="관련자료" data-dews-fit-bottom="true">
+                        <div id="multifileComponent" class="dews-ui-multifile"></div>
+                      </li>
+                  </ul>
                 </div>
-           </div>
+            </div>
+        </div>           
     </div>
 </div>
 
 <style>
-    #content_CIDKYM00100 .dews-ui-condition ul>li>span>select.custom-dropdown-list {
-        margin-left:10px;
-        height:27px;
+    #content_CIDKYM00100 .dews-ui-condition-panel ul>li>span>select.custom-dropdown-list {
+      margin-left: 10px;
+      height: 27px;
     }
-</style>
-<script>
-    dews.ready(function(){
-        //변수 선언
-        var self = this;
-        var friendship, friendship_data;
-        var dcsmkauth, dcsmkauth_data;
-        var option_friendship, option_dcsmkauth;
-        var option_friendship_data = [];
-        var option_dcsmkauth_data = [];
-        var pending = false;
-        var pagingSize = 20;
-        var popup_select;
-        var customer, customer_data;
+  </style>
 
-        //초기값 설정
-        {
-            self.KEYMAN_CD.readonly(true);
-            self.INSERT_DTS.readonly(true);
-            self.Textbox22.text('경상북도 성주군');
-            self.Textbox23.text('033-4578-8521');
-            self.Textbox24.text('영남대학교 경영학과');
-            self.Textbox25.text('s1666@naver.com');
-            self.Textbox26.text('천주교');
-            self.Textbox27.value('19760825');
-            self.Textbox28.text('자양4동 63-7');
-            self.POST_NO_HOME.value('05084');
-            self.BASE_ADDR_HOME.text('서울 광진구 뚝섬로32길 38');
-            self.$save_opinion.hide();
+  <script>
+    dews.ready(function () {
+     
+
+
+      var self = this;
+      var dataSource1;
+      var dataSource2;
+      var dataSource3;
+      var dataSource4;
+      var dataSource5;
+    /*  {
+        self.TextBox22.text('경상북도 성주군');
+        self.TextBox23.text('033-4578-8521');
+        self.TextBox24.text('영남대학교 경영학과');
+        self.TextBox25.text('s1666@naver.com');
+        self.TextBox26.text('천주교');
+        self.TextBox27.value('19760825');
+        self.TextBox28.text('자양4동 63-7');
+        self.POST_NO_HOME.value('05084');
+        self.BASE_ADDR_HOME.text('서울 광진구 뚝섬로32길 38');
+        self.$save_opinion.hide();
+      }
+      
+      {
+        self.HP_NO.setMaxLength(20);
+        self.TEL_NO.setMaxLength(20);
+        self.EMAIL_NM.setMaxLength(50);
+        self.BASE_ADDR.setMaxLength(100);
+        self.DTL_ADDR.setMaxLength(100);
+        self.KEYMAN_PSTN_NM.setMaxLength(50);
+        self.KEYMAN_ODTY_NM.setMaxLength(50);
+        self.KEYMAN_TSK_NM.setMaxLength(50);
+      }*/
+
+      var dataSource = dews.ui.dataSource('CardList1',{
+        transport: {
+          read: {
+            url :dews.url.getApiUrl('CR', 'CustomerRelationshipManagementKYMService', dews.string.format('/cidcst00100_keyman_list'))
+          }
+        },
+        schema: {
+          model: {
+            id: 'KEYMAN_CD',
+            fields: [
+              { field: 'COMPANY_CD'  }, 
+              { field: 'KEYMAN_CD' }, 
+              { field: 'KEYMAN_NM' }, 
+              { field: 'CUST_CD' }, 
+              { field: 'CUST_NM' },
+              { field: 'KEYMAN_DEPT_NM' }, 
+              { field: 'KEYMAN_PSTN_NM' }, 
+              { field: 'KEYMAN_ODTY_NM' }, 
+              { field: 'KEYMAN_AUTHASGN_CD' }, 
+              { field: 'KEYMAN_FRIENDSHIP_CD' }, 
+              { field: 'KEYMAN_TSK_NM' }, 
+              { field: 'POST_NO' }, 
+              { field: 'BASE_ADDR' }, 
+              { field: 'DTL_ADDR' }, 
+              { field: 'HP_NO' }, 
+              { field: 'TEL_NO' }, 
+              { field: 'EMAIL_NM' }, 
+              { field: 'USE_YN' },
+              { field: 'INSERT_ID' }, 
+              { field: 'INSERT_DTS' }, 
+              { field: 'UPDATE_ID' }, 
+              { field: 'UPDATE_DTS' }
+            ]
+          }
         }
+      });
 
-        //유효성 검사(데이터 길이)
-        {
-            self.HP_NO.setMaxLength(20);
-            self.TEL_NO.setMaxLength(20);
-            self.EMAIL_NM.setMaxLength(50);
-            self.BASE_ADDR.setMaxLength(100);
-            self.DTL_ADDR.setMaxLength(100);
-            self.KEYMAN_PSTN_NM.setMaxLength(50);
-            self.KEYMAN_ODTY_NM.setMaxLength(50);
-            self.KEYMAN_TSK_NM.setMaxLength(50);
+      var card=dews.ui.cardlist(self.$CardList1,{
+        dataSource: dataSource,
+        height:300,
+        template:
+        '<div class="dews-cardlist-template">' +
+        '<div class="dews-cardlist-main-text">' +
+        '<p class="bold">#:data.KEYMAN_NM#</p>' +
+        '<p style="float: right;font-size:12px;">#:data.HP_NO#</p>'+
+        '</div>'+
+        '<div class="dews-cardlist-sub-text">' +
+              '<p>#: data.CUST_NM #/</p>' +
+              '<p>#: data.KEYMAN_PSTN_NM #</p>' +
+              '<p style="float: right;font-size: 12px;">#: data.EMAIL_NM #</p>' +
+        '</div>',
+        sort: [
+          { field: 'KEYMAN_NM', title: '고객담당명 정렬' },
+          { field: 'CUST_NM', title: '고객사명 정렬' }
+        ]
+      });
+
+      self.datasource1 = dews.ui.dataSource('dataSource1',{
+        grid: true,
+        transport : {
+          read: {
+            url: dews.url.getApiUrl('CR','CustomerRelationshipManagementKYMService',dews.string.format('/cidcst00100_keyman_list')),
+         }
+        },
+        schema: {
+          model: {
+            id: 'CUST_CD',    
+            fields: [         
+              { field: 'COMPANY_CD' },
+              { field: 'CUST_CD' },
+              { field: 'CUST_NM' },
+              { field: 'CUST_TP_CD' },
+              { field: 'CUST_TP_NM' },
+              { field: 'TRAN_ST_CD' },
+              { field: 'TRAN_ST_NM' },
+              { field: 'PARTNER_CSF_CD' },
+              { field: 'NATION_CD' },
+              { field: 'NATION_NM' },
+              { field: 'CEO_NM' },
+              { field: 'SUBO_NO' },
+              { field: 'CEO_RES_NO' },
+              { field: 'CEO_FRGNR_CD' },
+              { field: 'BIZC_NM' },
+              { field: 'BIZTP_NM' },
+              { field: 'POST_NO' },
+              { field: 'BASE_ADDR' },
+              { field: 'BASE2_ADDR' },
+              { field: 'TRAN_START_DT' },
+              { field: 'TRAN_END_DT' },
+              { field: 'CUST_ASGNR_TEL_NO' },
+              { field: 'CUST_ASGNR_FAX_NO' },
+              { field: 'PARTNER_URL' },
+              { field: 'COR_NO' },
+              { field: 'CRNC_CD' },
+              { field: 'CUST_GRP_CD' },
+              { field: 'CUST_SCL_CD' },
+              { field: 'RMK_DC' },
+              { field: 'PARTNER_CD' },
+              { field: 'USE_YN' },
+              { field: 'INSERT_ID' },
+              { field: 'INSERT_DTS' },
+              { field: 'UPDATE_ID' },
+              { field: 'UPDATE_DTS' }
+            ]
+          }
+        },
+        error: function (e) { // 에러메시지 출력
+          if (e) {
+            dews.error({
+              message: e.message,
+              error: e.error || ''
+            });
+          }
         }
+      });
 
-        //able/disable 함수
-        {
-            Query.fn.disable = function() {
-                this.addClass('disabled');
-                this.addClass('k-state-disabled');
-                return this;
-            };
+      {
 
-            jQuery.fn.able = function() {
-                this.removeClass('disabled');
-                this.removeClass('k-state-disabled');
-                return this;
-            };
+        dews.ui.mainbuttons.add.on('click', function (e) {
+          cardList.addRow();
+          self.$KEYMAN_NM.focus();
+        });
+      }
+      // 그리드는  데이터가 없으면 칼럼이 안 됨
+      self.dataSource1 = dews.ui.dataSource('dataSource1', {
+        grid: true,
+        data: [
+          {a:'2018-07-04', b:'서성천', c:'HRD종합지원1팀', d:'한국산업인력공단', e:'방문', f:'상품문의', g:'상품문의 및 관계강화'},
+          {a:'2018-07-15', b:'김진욱', c:'국내영업1팀', d:'(주)유니포인트', e:'유선', f:'견적협의', g:'관계강화'},
+          {a:'2018-08-01', b:'유하영', c:'국내영업2팀', d:'(주)유니포인트', e:'방문', f:'견적협의', g:'견적협의 및 관계강화'},
+          {a:'2018-08-04', b:'송훈섭', c:'상품지원1팀', d:'(주)유니온', e:'유선 및 방문', f:'견적협의', g:'견적협의'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
+              { field: 'f', editable: false, dataType: 'string' }, 
+              { field: 'g', editable: false, dataType: 'string' }
+            ]
+      
+          }
         }
+      });
 
-        //데이터소스 정의
-        var ds = dews.ui.dataSource('datasource_name',{
-            transport: {
-                read: {
-                    url: dews.url.getApiUrl('CR','CustomerRelationshipManagementKYMService','cidkym00100_keyman_list_paping'),
-                    data:function(){
-                        var checked;
-                        if(OPTION_MYCUSTOMER.checked==true){
-                            checked = '1'
-                        } else
-                        { checked = '0' };
-                        return {
-                            searchType : self.SEARCH_TYPE.value(),
-                            searchText : self.SEARCH_TEXT.text(),
-                            keyman_authasgn_cd : (self.OPTION_KEYMAN_AUTHASGN_CD.value() == ''?'0' : self.OPTION_KEYMAN_AUTHASGN_CD.value()),
-                            myCustomer : checked,
-                            keyman_friendship_cd : (self.OPTION_KEYMAN_FRIENDSHIP_CD.value() == ''?'0' : self.OPTION_KEYMAN_FRIENDSHIP_CD.value()),
-                            use_yn : self.OPTION_USE_YN.value(),
-                            sortType : 'KEYMAN_NM',
-                            startNum : 0,
-                            listCount : pagingSize,
-                            keyman_cd : (popup_select === undefined ? '' : popup_select.KEYMAN_CD)
-                        }
-                    }
-                }
-            },
-            schema: {
-                model : {
-                    id: 'KEYMAN_CD',
-                    fields: [
-                        {field: 'COMPANY_CD'},
-                        {field: 'KEYMAN_CD'},
-                        {field: 'KEYMAN_NM'},
-                        {field: 'CUST_CD'},
-                        {field: 'CUST_NM'},
-                        {field: 'KEYMAN_DEPT_NM'},
-                        {field: 'KEYMAN_ODTV_NM'},
-                        {field: 'KEYMAN_AUTHASGN_CD'},
-                        {field: 'KEYMAN_TSK_NM'},
-                        {field: 'POST_NO'},
-                        {field: 'BASE_ADDR'},
-                        {field: 'DTL_ADDR'},
-                        {field: 'HP_NO'},
-                        {field: 'TEL_NO'},
-                        {field: 'EMAIL_NM'},
-                        {field: 'USE_YN'},
-                        {field: 'INSERT_ID'},
-                        {field: 'INSERT_DTS'},
-                        {field: 'UPDATE_ID'},
-                        {field: 'UPDATE_DTS'},
-                    ]
-                }
-            },
-            error: function(e) {
-                if (e) {
-                    dews.error({
-                        message:e.message,
-                        error:e.error || ''
-                    });
-                }
-            } 
-    });
+      var grid = dews.ui.grid(self.$Grid1, {
+        dataSource: self.dataSource1,
+        selectable: true,
+        autoBind: true,
+        sortable : false,
+        checkable : false,
+        heigth:620,
+        noData: true,
+        noDataMessage: '검색 결과가 없습니다.',
+        columns: [
+          {
+            field: "a",
+            title: "활동일자",
+            width: 60
+          },
+          {
+            field: "b",
+            title: "영업담당",
+            width: 60
+          },
+          {
+            field: "c",
+            title: "부서",
+            width: 60
+          },
+          {
+            field: "d",
+            title: "고객사",
+            width: 60
+          },
+          {
+            field: "e",
+            title: "접촉유형",
+            width: 60
+          },
+          {
+            field: "f",
+            title: "활동목적",
+            width: 60
+          },
+          {
+            title: "g",
+            title: "제목",
+            width: 60
+          }
+        ]
+      });
 
-    {
-        dews.ui.mainbuttons.add.on('click',function(e){
-            cardList.addRow();
-            self.$KEYMAN_NM.focus();
-        });
+      self.dataSource2 = dews.ui.dataSource('dataSource2', {
+        grid: true,
+        data: [
+          {a:'한국전력 하반기 입찰', b:'국내 영업', c:'영업담당', d:'입찰/제안', e:'2018-10-25', f:'KRW', g:'1,200,400,000', h:'1,200,400,000'},
+          {a:'애터미 일본지사 제안', b:'해외 영업(일본)', c:'영업담당', d:'제안', e:'2018-11-20', f:'JPY', g:'23,500,000', h:'235,589,850'},
+          {a:'IBK 기업은행 입찰 입찰', b:'해외 영업(중국)', c:'영업담당', d:'입찰', e:'2019-01-05', f:'CNY', g:'3,240,000', h:'530,679,600'},
+          {a:'디트로이트 ERP시스템 입찰', b:'해외 영업(미국)', c:'영업담당', d:'입찰/제안', e:'2019-03-21', f:'USD', g:'900,000', h:'1,003,680,000'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
+              { field: 'f', editable: false, dataType: 'string' }, 
+              { field: 'g', editable: false, dataType: 'string' },
+              { field: 'h', editable: false, dataType: 'string' }
+            ]
+      
+          }
+        }
+      });
+ 
+      var grid = dews.ui.grid(self.$Grid2, {
+        dataSource: self.dataSource2,
+        selectable: true,
+        autoBind: true,
+        sortable : false,
+        checkable : false,
+        heigth:620,
+        noData: true,
+        noDataMessage: '검색 결과가 없습니다.',
+        columns: [
+          {
+            field: "a",
+            title: "프로젝트",
+            width: 60
+          },
+          {
+            field: "b",
+            title: "부서",
+            width: 60
+          },
+          {
+            field: "c",
+            title: "영업담당",
+            width: 60
+          },
+          {
+            field: "d",
+            title: "영업단계",
+            width: 60
+          },
+          {
+            field: "e",
+            title: "수주예정일",
+            width: 60
+          },
+          {
+            field: "f",
+            title: "통화",
+            width: 60
+          },
+          {
+            title: "g",
+            title: "수주예정[통화]",
+            width: 60
+          },
+          {
+            title: "h",
+            title: "수주예정[원화]",
+            width: 60
+          }
 
-        dews.ui.mainbuttons.search.click(function(){
-            pending = false;
-            ds.read();
-        });
+        ]
+      });
 
-        dews.ui.mainbuttons.print.click(function(e) {
-        });
+       self.dataSource3 = dews.ui.dataSource('dataSource3', {
+        grid: true,
+        data: [
+          {a:'DM201804001', b:'더존 eBP 솔루션 출시', c:'SMS', d:'국내영업1팀', e:'서성천', f:'2018-07-16'},
+          {a:'DM201805015', b:'더존 CRM 솔루션 출시', c:'SMS & e-mail', d:'국내영업2팀', e:'김상익', f:'2018-07-25'},
+          {a:'DM201806007', b:'더존 eBP 솔루션 출시', c:'e-mail', d:'해외영업1팀', e:'박정규', f:'2018-08-02'},
+          {a:'DM201807021', b:'더존 CRM 솔루션 출시', c:'SMS & e-mail', d:'해외영업2팀', e:'노경진', f:'2018-08-09'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
+              { field: 'f', editable: false, dataType: 'string' }
+            ]
+      
+          }
+        }
+      });
+      var grid = dews.ui.grid(self.$Grid3, {
+        dataSource: self.dataSource3,
+        selectable: true,
+        autoBind: true,
+        sortable : false,
+        checkable : false,
+        heigth:620,
+        noData: true,
+        noDataMessage: '검색 결과가 없습니다.',
+        columns: [
+          {
+            field: "a",
+            title: "DM ID",
+            width: 60
+          },
+          {
+            field: "b",
+            title: "DM 제목",
+            width: 60
+          },
+          {
+            field: "c",
+            title: "발송채널",
+            width: 60
+          },
+          {
+            field: "d",
+            title: "발송조직",
+            width: 60
+          },
+          {
+            field: "e",
+            title: "발송담당",
+            width: 60
+          },
+          {
+            field: "f",
+            title: "발송일자",
+            width: 60
+          }
+        ]
+      });
+     
+      self.dataSource4 = dews.ui.dataSource('dataSource4', {
+        grid: true,
+        data: [
+          {a:'2018-08-16 15:15', b:'(주)유니포인트', c:'김상익', d:'서성천', e:'구매상담(기존)', f:'추가 제품 구입관련 기능'}
+        
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
+              { field: 'f', editable: false, dataType: 'string' }
+            ]
+      
+          }
+        }
+      }); 
+      var grid = dews.ui.grid(self.$Grid4, {
+        dataSource: self.dataSource4,
+        selectable: true,
+        autoBind: true,
+        sortable : false,
+        checkable : false,
+        heigth:620,
+        noData: true,
+        noDataMessage: '검색 결과가 없습니다.',
+        columns: [
+          {
+            field: "a",
+            title: "상담일시",
+            width: 60
+          },
+          {
+            field: "b",
+            title: "고객사",
+            width: 60
+          },
+          {
+            field: "c",
+            title: "고객담당",
+            width: 60
+          },
+          {
+            field: "d",
+            title: "상담담당",
+            width: 60
+          },
+          {
+            field: "e",
+            title: "상담구분",
+            width: 60
+          },
+          {
+            field: "f",
+            title: "문의상세",
+            width: 60
+          }
+        ]
+      });
 
-        dews.ui.mainbuttons.save.on('click', function() {
-            if(isChanged()) {
-                saveData(true);
-            } else {
-                dews.alert(dews.localize.get('변경된 사항이 없습니다.','M0000056'),'warning');
-            }
-        });
-
-        dews.ui.mainbuttons.delete.hide();
-    }
-
-    {
-        self.$TabID_additional.on('click',function(e) {
-            self.$save_opinion.hide();
-        });
-    }
+      self.dataSource5 = dews.ui.dataSource('dataSource5', {
+        grid: true,
+        data: [
+          {a:'직위', b:'사원', c:'연구원', d:'박정규', e:'2018-07-25 13:23:28'},
+          {a:'권한정도', b:'실무담당자', c:'중간관리자', d:'박정규', e:'2018-08-05 12:33:18'},
+          {a:'우호도', b:'하', c:'중', d:'박정규', e:'2018-08-07 10:48:51'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
             
+            ]
+      
+          }
+        }
+      }); 
+
+      var grid = dews.ui.grid(self.$Grid5, {
+        dataSource: self.dataSource5,
+        selectable: true,
+        autoBind: true,
+        sortable : false,
+        checkable : false,
+        heigth:620,
+        noData: true,
+        noDataMessage: '검색 결과가 없습니다.',
+        columns: [
+          {
+            field: "a",
+            title: "변경항목",
+            width: 60
+          },
+          {
+            field: "b",
+            title: "변경 전",
+            width: 60
+          },
+          {
+            field: "c",
+            title: "변경 후",
+            width: 60
+          },
+          {
+            field: "d",
+            title: "변경자",
+            width: 60
+          },
+          {
+            field: "e",
+            title: "변경일시",
+            width: 60
+          }
+        ]
+      });
+      
+      {
+        self.TextBox22.text('경상북도 성주군');
+        self.TextBox23.text('033-4578-8521');
+        self.TextBox24.text('영남대학교 경영학과');
+        self.TextBox25.text('s1666@naver.com');
+        self.TextBox26.text('천주교');
+        self.TextBox27.value('19760825');
+        self.TextBox28.text('자양4동 63-7');
+        self.POST_NO_HOME.value('05084');
+        self.BASE_ADDR_HOME.text('서울 광진구 뚝섬로32길 38');
+      }
     });
-</script>
+
+  </script>

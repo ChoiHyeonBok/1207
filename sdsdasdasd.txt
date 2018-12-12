@@ -1,0 +1,1365 @@
+<!--
+  DEWS UI/UX IDE - Build Result - v1.5
+  # PageID: CIDKYM00100_DW_20.고객정보DB_20.고객담당등록_V0.9
+  # PageTitle: 고객담당등록
+  # Server: http://localhost:8080/
+-->
+
+<!-- 박영철 주임 디버깅 방법
+<input type="button" id="cc"> -->
+
+<div class="dews-ui-condition-panel">
+    <ul class="required-area">
+      <li>
+        <!-- <label class="dews-ui-multilingual"></label> -->
+        <span>
+          <select id="SEARCH_TYPE" name="SEARCH_TYPE" class="dews-ui-dropdownlist" style="width: 81px; margin-left: 50px;">
+            <option value="0">전체</option>
+            <option value="1">고객담당명</option>
+            <option value="2">고객사</option>
+            <option value="3">부서명</option>
+            <option value="4">직책</option>
+            <option value="5">직위</option>
+          </select>
+          <input id="SEARCH_TEXT" name="SEARCH_TEXT" type="text" class="dews-ui-textbox" style="width: 170px;" />
+        </span>
+      </li>
+      <li>
+        <label class="dews-ui-multilingual">권한정도</label>
+        <span>
+          <select id="OPTION_KEYMAN_AUTHASGN_CD" name="OPTION_KEYMAN_AUTHASGN_CD" class="dews-ui-dropdownlist bindingDropdown" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_NM">
+          </select>
+        </span>
+      </li>
+      <li>
+        <label class="dews-ui-multilingual"></label>
+        <span>
+          <!-- <input id="OPTION_MYCUSTOMER" type="checkbox" class="dews-ui-checkbox" checked="checked" /> -->
+          <input id="OPTION_MYCUSTOMER" type="checkbox" class="dews-ui-checkbox" />
+          <label>내고객사</label>
+        </span>
+      </li>
+    </ul>
+    <ul class="optional-area">
+      <li>
+        <label class="dews-ui-multilingual">우호도</label>
+        <span>
+          <select id="OPTION_KEYMAN_FRIENDSHIP_CD" name="OPTION_KEYMAN_FRIENDSHIP_CD" class="dews-ui-dropdownlist bindingDropdown" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_NM">
+          </select>
+        </span>
+      </li>
+      <li>
+        <label class="dews-ui-multilingual">사용여부</label>
+        <span>
+          <select id="OPTION_USE_YN" name="OPTION_USE_YN" class="dews-ui-dropdownlist" >
+            <option value="0">전체</option>
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
+          </select>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="dews-ui-container-panel" data-dews-fit-bottom="true" >
+    <div class="dews-container-item" data-dews-position="left" data-dews-width="300">
+      <div id="CardList1" class="dews-ui-cardlist"></div>
+    </div>
+    <div class="dews-container-item" data-dews-position="normal">
+      <div id="form_panel" class="dews-ui-form-panel">
+        <ul>
+          <li>
+            <label>고객코드</label>
+            <span>
+              <input id="KEYMAN_CD" name="KEYMAN_CD" type="text" class="dews-ui-textbox" data-dews-bind-column="KEYMAN_CD" />
+            </span>
+          </li>
+          <li>
+            <label>고객담당명</label>
+            <span>
+              <input id="KEYMAN_NM" name="KEYMAN_NM" type="text" class="dews-ui-textbox required" style="width: 103px; font-size: 12px;" data-dews-bind-column="KEYMAN_NM"/>
+              <button id="CHECK_BUTTON" class="dews-ui-button" >중복확인</button>
+            </span>
+          </li>
+          <li>
+            <label>고객사</label>
+            <span>
+              <!-- <input type="text" id="Codepicker1" name="Codepicker1" class="dews-ui-codepicker bindingCodepicker" data-dews-code-field="CD_TAX" data-dews-text-field="DC_CODE" data-dews-help-code="H_MA_COMPANY_S01" data-dews-help-size="medium" data-dews-help-params="" /> -->
+              <!-- <input type="text" id="CUST_CD" name="CUST_CD" class="dews-ui-codepicker bindingCodepicker" data-dews-code-field="CD_PARTNER" data-dews-text-field="CD_PARTNER" data-dews-help-code="H_MA_PARTNER_MST_S" data-dews-help-size="big" data-dews-help-params="" data-dews-bind-code="CUST_CD" data-dews-bind-text="CUST_NM" /> -->
+              <select id="CUST_CD" name="CUST_CD" class="dews-ui-dropdownlist bindingDropdown required" data-dews-value-field="CUST_CD" data-dews-text-field="CUST_NM">
+                <!-- <option value="CS201808000001">하늘상사 주식회사</option>
+                <option value="CS201808000002">사과상사 주식회사</option>
+                <option value="CS201808000003">가나다 상사</option>
+                <option value="CS201808000004">바다상사 주식회사</option>
+                <option value="CS201808000005">밀리세컨드</option>
+                <option value="CS201808000006">(주)강산</option>
+                <option value="CS201808000007">동대문밀리오레관리단</option>
+                <option value="CS201808000008">푸른보육경영</option>
+                <option value="CS201808000009">대신연계운영회</option>
+                <option value="CS201808000010">(주)유비원</option>
+                <option value="CS201808000011">케이비금융그룹</option>
+                <option value="CS201808000012">포인트파크</option> -->
+              </select>
+            </span>
+          </li>
+          <li>
+            <label>직책</label>
+            <span>
+              <input id="KEYMAN_ODTY_NM" name="KEYMAN_ODTY_NM" type="text" class="dews-ui-textbox basic" data-dews-bind-column="KEYMAN_ODTY_NM"/>
+            </span>
+          </li>
+          <li>
+            <label>부서명</label>
+            <span>
+              <input id="KEYMAN_DEPT_NM" name="KEYMAN_DEPT_NM" type="text" class="dews-ui-textbox basic" data-dews-bind-column="KEYMAN_DEPT_NM"/>
+            </span>
+          </li>
+          <li>
+            <label>직위</label>
+            <span>
+              <input id="KEYMAN_PSTN_NM" name="KEYMAN_PSTN_NM" type="text" class="dews-ui-textbox basic" data-dews-bind-column="KEYMAN_PSTN_NM"/>
+            </span>
+          </li>
+          <li>
+            <label>해당업무</label>
+            <span>
+              <input id="KEYMAN_TSK_NM" name="KEYMAN_TSK_NM" type="text" class="dews-ui-textbox basic" data-dews-bind-column="KEYMAN_TSK_NM"/>
+            </span>
+          </li>
+          <li>
+            <label>핸드폰</label>
+            <span>
+              <input id="HP_NO" name="HP_NO" type="text" class="dews-ui-textbox required" data-dews-bind-column="HP_NO"/>
+            </span>
+          </li>
+          <li>
+            <label>권한정도</label>
+            <span>
+              <select id="KEYMAN_AUTHASGN_CD" name="KEYMAN_AUTHASGN_CD" class="dews-ui-dropdownlist bindingDropdown" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_NM" data-dews-bind-value="KEYMAN_AUTHASGN_CD"></select>
+            </span>
+          </li>
+          <li>
+            <label>전화번호</label>
+            <span>
+              <input id="TEL_NO" name="TEL_NO" type="text" class="dews-ui-textbox basic" data-dews-bind-column="TEL_NO"/>
+            </span>
+          </li>
+          <li>
+            <label>우호도</label>
+            <span>
+              <select id="KEYMAN_FRIENDSHIP_CD" name="KEYMAN_FRIENDSHIP_CD" class="dews-ui-dropdownlist bindingDropdown" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_NM" data-dews-bind-value="KEYMAN_FRIENDSHIP_CD"></select>
+            </span>
+          </li>
+          <li>
+            <label>이메일</label>
+            <span>
+              <input id="EMAIL_NM" name="EMAIL_NM" type="text" class="dews-ui-textbox basic" data-dews-bind-column="EMAIL_NM"/>
+            </span>
+          </li>
+          <li class="col-2">
+            <label>주소</label>
+            <span>
+              <input id="POST_NO" name="POST_NO" type="text" class="dews-ui-zipcodepicker" data-dews-bind-column="POST_NO" data-dews-address-bind="BASE_ADDR"/>
+              <input id="BASE_ADDR" name="BASE_ADDR" type="text" class="dews-ui-textbox" style="width: 420px;" data-dews-bind-column="BASE_ADDR"/>
+            </span>
+          </li>
+          <li class="col-2">
+            <label>상세주소</label>
+            <span>
+              <input id="DTL_ADDR" name="DTL_ADDR" type="text" class="dews-ui-textbox basic" data-dews-bind-column="DTL_ADDR"/>
+            </span>
+          </li>
+          <li>
+            <label>등록일자</label>
+            <span>
+              <input id="INSERT_DTS" name="INSERT_DTS" type="text" class="dews-ui-textbox basic" />
+            </span>
+          </li>
+          <li>
+            <label>사용여부</label>
+            <span>
+              <select id="USE_YN" name="USE_YN" class="dews-ui-dropdownlist required" data-dews-bind-value="USE_YN">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
+              </select>
+            </span>
+          </li>
+        </ul>
+      </div>
+        <div class="dews-button-group" style="float : right; width : 300px; z-index: 10; position: relative;">
+          <button id="save_opinion" class="dews-ui-button">의견저장</button>
+        </div>
+      <div class="dews-container-panel" data-dews-fit-bottom="true">
+        <div class="dews-container-item">
+          <div class="dews-ui-tab-panel sub">
+            <ul class="dews-tab-items">
+              <li id="TabID_additional" class="dews-tab-item" data-dews-title="부가정보">
+                <div class="dews-ui-form-panel">
+                  <ul>
+                    <li>
+                      <label>출신지</label>
+                      <span>
+                        <input id="TextBox22" name="TextBox22" type="text" class="dews-ui-textbox basic" />
+                      </span>
+                    </li>
+                    <li>
+                      <label>팩스번호</label>
+                      <span>
+                        <input id="TextBox23" name="TextBox23" type="text" class="dews-ui-textbox basic" />
+                      </span>
+                    </li>
+                    <li>
+                      <label>최종학교</label>
+                      <span>
+                        <input id="TextBox24" name="TextBox24" type="text" class="dews-ui-textbox basic" />
+                      </span>
+                    </li>
+                    <li>
+                      <label>개인이메일</label>
+                      <span>
+                        <input id="TextBox25" name="TextBox25" type="text" class="dews-ui-textbox basic" />
+                      </span>
+                    </li>
+                    <li>
+                      <label>종교</label>
+                      <span>
+                        <input id="TextBox26" name="TextBox26" type="text" class="dews-ui-textbox basic" />
+                      </span>
+                    </li>
+                    <li>
+                      <label>생년월일</label>
+                      <span>
+                        <input id="TextBox27" name="TextBox27" type="text" class="dews-ui-datepicker basic" />
+                      </span>
+                    </li>
+                    <li class="col-2">
+                      <label>집주소</label>
+                      <span>
+                        <input id="POST_NO_HOME" name="POST_NO_HOME" type="text" class="dews-ui-zipcodepicker" data-dews-bind-column="POST_NO_HOME" data-dews-address-bind="BASE_ADDR_HOME"/>
+                        <input id="BASE_ADDR_HOME" name="BASE_ADDR_HOME" type="text" class="dews-ui-textbox" style="width: 420px;" data-dews-bind-column="BASE_ADDR_HOME"/>
+                      </span>
+                    </li>
+                    <li class="col-2">
+                      <label>상세주소</label>
+                      <span>
+                        <input id="TextBox28" name="TextBox28" type="text" class="dews-ui-textbox basic" />
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li id="TabID_contact" class="dews-tab-item" data-dews-title="접촉이력" data-dews-fit-bottom="true">
+                <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                  <div class="dews-container-item" data-dews-position="normal">
+                    <div id="Grid1" class="dews-ui-grid"></div>
+                  </div>
+                </div>
+              </li>
+              <li id="TabID_chance" class="dews-tab-item" data-dews-title="기회/수주" data-dews-fit-bottom="true">
+                <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                  <div class="dews-container-item" data-dews-position="normal">
+                    <div id="Grid2" class="dews-ui-grid"></div>
+                  </div>
+                </div>
+              </li>
+              <li id="TabID_marketing" class="dews-tab-item" data-dews-title="마케팅" data-dews-fit-bottom="true">
+                <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                  <div class="dews-container-item" data-dews-position="normal">
+                    <div id="Grid3" class="dews-ui-grid"></div>
+                  </div>
+                </div>
+              </li>
+              <li id="TabID_VOC" class="dews-tab-item" data-dews-title="VOC" data-dews-fit-bottom="true">
+                <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                  <div class="dews-container-item" data-dews-position="normal">
+                    <div id="Grid4" class="dews-ui-grid"></div>
+                  </div>
+                </div>
+              </li>
+              <li id="TabID_opinion" class="dews-tab-item" data-dews-title="의견" data-dews-fit-bottom="true">
+                <div class="dews-ui-container-panel" style="overflow: visible;" data-dews-container-height="110" data-dews-fit-bottom="true">
+                  <div class="dews-container-item" data-dews-position="normal">
+                    <textarea id="DC_RMK_TEXT" class="dews-ui-textbox" style="width: 100%; height:150px"></textarea>
+                  </div>
+                </div>
+              </li>
+              <li id="TabID_history" class="dews-tab-item" data-dews-title="히스토리" data-dews-fit-bottom="true">
+                <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                  <div class="dews-container-item" data-dews-position="normal">
+                    <div id="Grid5" class="dews-ui-grid"></div>
+                  </div>
+                </div>
+              </li>
+              <li id="TabID_data" class="dews-tab-item" data-dews-title="관련자료" data-dews-fit-bottom="true">
+                <!-- <div class="dews-container-panel" style="min-width:0px;" data-dews-fit-bottom="true">
+                  <div class="dews-container-item" data-dews-position="normal"> -->
+                    <div id="multifileComponent" class="dews-ui-multifile"></div>
+                  <!-- </div>
+                </div> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    #content_CIDKYM00100 .dews-ui-condition-panel ul>li>span>select.custom-dropdown-list {
+      margin-left: 10px;
+      height: 27px;
+    }
+  </style>
+  <script>
+    dews.ready(function () {
+      //변수 설정
+      var self = this;
+      var friendship, friendship_data;
+      var dcsmkauth, dcsmkauth_data;
+      var option_friendship, option_dcsmkauth;
+      var option_friendship_data = [];
+      var option_dcsmkauth_data = [];
+      var pending = false;
+      var pagingSize = 20;
+      var popup_select;
+      var customer, customer_data;
+  
+      //초기값 설정
+      {
+        self.KEYMAN_CD.readonly(true);
+        self.INSERT_DTS.readonly(true);
+        self.TextBox22.text('경상북도 성주군');
+        self.TextBox23.text('033-4578-8521');
+        self.TextBox24.text('영남대학교 경영학과');
+        self.TextBox25.text('s1666@naver.com');
+        self.TextBox26.text('천주교');
+        self.TextBox27.value('19760825');
+        self.TextBox28.text('자양4동 63-7');
+        self.POST_NO_HOME.value('05084');
+        self.BASE_ADDR_HOME.text('서울 광진구 뚝섬로32길 38');
+        self.$save_opinion.hide();
+      }
+      
+      //유효성 검사(데이터길이)
+      {
+        self.HP_NO.setMaxLength(20);
+        self.TEL_NO.setMaxLength(20);
+        self.EMAIL_NM.setMaxLength(50);
+        self.BASE_ADDR.setMaxLength(100);
+        self.DTL_ADDR.setMaxLength(100);
+        self.KEYMAN_PSTN_NM.setMaxLength(50);
+        self.KEYMAN_ODTY_NM.setMaxLength(50);
+        self.KEYMAN_TSK_NM.setMaxLength(50);
+      }
+      
+      
+      //able/disable 함수
+      {
+        jQuery.fn.disable = function() {
+          this.addClass('disabled');
+          this.addClass('k-state-disabled');
+          return this;
+        };
+    
+        jQuery.fn.able = function() {
+          this.removeClass('disabled');
+          this.removeClass('k-state-disabled');
+          return this;
+        };
+      }
+    
+      //마스터 데이터 소스
+      var ds = dews.ui.dataSource('datasource_name', {
+        transport: {
+          read: {
+            url: dews.url.getApiUrl('CR', 'CustomerRelationshipManagementKYMService', 'cidkym00100_keyman_list_paging'),
+            data:function(){
+              var checked;
+              if(OPTION_MYCUSTOMER.checked==true){
+                checked = '1'
+              } else
+              { checked = '0' };
+              return{
+                searchType : self.SEARCH_TYPE.value(),
+                searchText : self.SEARCH_TEXT.text(),
+                keyman_authasgn_cd : ( self.OPTION_KEYMAN_AUTHASGN_CD.value() == '' ? '0' : self.OPTION_KEYMAN_AUTHASGN_CD.value() ),
+                myCustomer : checked,
+                keyman_friendship_cd : ( self.OPTION_KEYMAN_FRIENDSHIP_CD.value() == '' ? '0' : self.OPTION_KEYMAN_FRIENDSHIP_CD.value() ),
+                use_yn : self.OPTION_USE_YN.value(),
+                sortType : 'KEYMAN_NM',
+                startNum : 0,
+                listCount : pagingSize,
+                keyman_cd : ( popup_select === undefined ? '' : popup_select.KEYMAN_CD )
+                } 
+            }
+          }
+        },
+        schema: {
+          model: {
+            id: 'KEYMAN_CD',
+            fields: [
+              { field: 'COMPANY_CD'  }, 
+              { field: 'KEYMAN_CD' }, 
+              { field: 'KEYMAN_NM' }, 
+              { field: 'CUST_CD' }, 
+              { field: 'CUST_NM' },
+              { field: 'KEYMAN_DEPT_NM' }, 
+              { field: 'KEYMAN_PSTN_NM' }, 
+              { field: 'KEYMAN_ODTY_NM' }, 
+              { field: 'KEYMAN_AUTHASGN_CD' }, 
+              { field: 'KEYMAN_FRIENDSHIP_CD' }, 
+              { field: 'KEYMAN_TSK_NM' }, 
+              { field: 'POST_NO' }, 
+              { field: 'BASE_ADDR' }, 
+              { field: 'DTL_ADDR' }, 
+              { field: 'HP_NO' }, 
+              { field: 'TEL_NO' }, 
+              { field: 'EMAIL_NM' }, 
+              { field: 'USE_YN' },
+              { field: 'INSERT_ID' }, 
+              { field: 'INSERT_DTS' }, 
+              { field: 'UPDATE_ID' }, 
+              { field: 'UPDATE_DTS' }
+            ]
+          }
+        },
+        error: function (e) {
+          if (e) {
+            dews.error({
+              message: e.message,
+              error: e.error || ''
+            });
+          }
+        }
+      });
+  
+      //메인버튼 이벤트
+      {
+        //메인버튼 '추가' 클릭이벤트
+        dews.ui.mainbuttons.add.on('click', function (e) {
+          cardList.addRow();
+          self.$KEYMAN_NM.focus();
+        });
+    
+        //메인버튼 '조회' 클릭이벤트
+        dews.ui.mainbuttons.search.click(function() {
+          pending = false;//페이징 활성화
+          ds.read();
+        });
+    
+        //메인버튼 '인쇄' 클릭이벤트
+        dews.ui.mainbuttons.print.click(function (e) {
+        });
+    
+        //메인버튼 '저장' 클릭이벤트
+        dews.ui.mainbuttons.save.on('click', function () {
+          if (isChanged()) {
+            saveData(true);
+          } else {
+            dews.alert(dews.localize.get('변경된 사항이 없습니다.', 'M0000056'), 'warning');
+          }
+        });
+    
+        //메인버튼 '삭제' 버튼 숨김
+        dews.ui.mainbuttons.delete.hide();
+      }   
+
+      //탭 버튼 클릭 이벤트
+      {
+        self.$TabID_additional.on('click', function(e) {
+          self.$save_opinion.hide();
+        });
+
+        self.$TabID_contact.on('click', function(e) {
+          self.$save_opinion.hide();
+        });
+        
+        self.$TabID_chance.on('click', function(e) {
+          self.$save_opinion.hide();
+        });
+
+        self.$TabID_marketing.on('click', function(e) {
+          self.$save_opinion.hide();
+        });
+
+        self.$TabID_VOC.on('click', function(e) {
+          self.$save_opinion.hide();
+        });
+
+        self.$TabID_opinion.on('click', function(e) {
+          self.$save_opinion.show();
+        });
+
+        self.$TabID_history.on('click', function(e) {
+          self.$save_opinion.hide();
+        });
+
+        self.$TabID_data.on('click', function(e) {
+          self.$save_opinion.hide();
+        });
+      }
+      
+
+  
+      //카드리스트 정의
+      var cardList = dews.ui.cardlist(self.$CardList1, {
+        dataSource: ds,
+        template: 
+          '<div class="dews-cardlist-template">' +
+            '<div class="dews-cardlist-main-text">' +
+              '<p class="bold">#: data.KEYMAN_NM #</p>' +
+              '<p style="float: right;font-size: 12px;">#: data.HP_NO #</p>' +
+            '</div>' +
+            '<div class="dews-cardlist-sub-text">' +
+              '<p>#: data.CUST_NM #/</p>' +
+              '<p>#: data.KEYMAN_PSTN_NM #</p>' +
+              '<p style="float: right;font-size: 12px;">#: data.EMAIL_NM #</p>' +
+            '</div>' +
+            // '<div class="dews-cardlist-right-text">' +
+            //   '<p>#: data.KEYMAN_CD #</p>' +
+            // '</div>' +
+          '</div>',
+        sort: [
+          { field: 'KEYMAN_NM', title: '고객담당명 정렬' },
+          { field: 'CUST_NM', title: '고객사명 정렬' }
+        ],
+        //카드리스트 change 이벤트
+        change: function (e) {
+          selected = e.row.index;
+          if (e.cardlist.getRowState(selected) != 'added') {
+            $('#CHECK_BUTTON').disable();
+          } else {
+            $('#CHECK_BUTTON').able();
+          }
+          cardList.bindPanel(self.form_panel);
+          var row = cardList.select();
+          var item = cardList.dataItem(row);
+          (typeof row === 'undefined') ? '' : self.INSERT_DTS.text(dews.date.format(item.INSERT_DTS, 'D'))
+        }, 
+        //카드리스트 데이터 바인딩 이벤트
+        dataBound: function (e) {
+        },
+  
+        //카드리스트 추가 이벤트
+        rowAdd: function (e) {
+          e.row.data.KEYMAN_CD = 'Auto';
+          e.row.data.KEYMAN_AUTHASGN_CD = '1';
+          e.row.data.KEYMAN_FRIENDSHIP_CD = '1';
+          e.row.data.USE_YN = 'Y';
+        },
+      });
+  
+      self.$CardList1.find('.k-grid-content').on("scroll", function (e) {
+        var scroll = e.target;
+        if (Math.ceil(scroll.scrollTop) == scroll.scrollHeight - scroll.offsetHeight) {
+          if (pending == false) {
+            pending = true;
+            appendPage(scroll);
+          }
+        }
+      });
+  
+      //스크롤 이벤트 함수
+      function appendPage(scroll) {
+        dews.ui.loading.show();
+        var checked;
+          if(OPTION_MYCUSTOMER.checked==true){
+            checked = '1'
+          } else
+          { checked = '0' };
+        dews.api.get(dews.url.getApiUrl('CR', 'CustomerRelationshipManagementKYMService',
+          'cidkym00100_keyman_list_paging'), {
+            data:{
+                searchType : self.SEARCH_TYPE.value(),
+                searchText : self.SEARCH_TEXT.text(),
+                keyman_authasgn_cd : ( self.OPTION_KEYMAN_AUTHASGN_CD.value() == '' ? '0' : self.OPTION_KEYMAN_AUTHASGN_CD.value() ),
+                myCustomer : checked,
+                keyman_friendship_cd : ( self.OPTION_KEYMAN_FRIENDSHIP_CD.value() == '' ? '0' : self.OPTION_KEYMAN_FRIENDSHIP_CD.value() ),
+                use_yn : self.OPTION_USE_YN.value(),
+                sortType : 'KEYMAN_NM',
+                startNum : self.CardList1.options.dataSource.data().length + 1,
+                listCount : pagingSize,
+                keyman_cd : ( popup_select === undefined ? '' : popup_select.KEYMAN_CD )
+            }
+          })
+          .done(function (data) {
+  
+            var prev = scroll.scrollTop;
+            self.CardList1.options.dataSource.pushInsert(self.CardList1.options.dataSource.data().length + 1, data);
+            scroll.scrollTop = prev;
+  
+            dews.ui.loading.hide();
+          })
+          .fail(function (xhr, status, error) {
+            dews.ui.loading.hide();
+            dews.error(error || dews.localize.get(dews.localize.get('작업이 실패하였습니다.', 'M0000055')));
+          })
+          .always(function () {
+            pending = false;
+          });
+      }
+  
+  
+      //폼패널 > 카드리스트 바인딩
+      self.form_panel.on('change', function(e){
+        self.form_panel.bindTo(cardList);
+        //cardList.setValue(cardList.select(), 'CUST_CD', '5000');      
+        if(!self.EMAIL_NM.text() == '')
+          emailCheck(self.EMAIL_NM.text());
+  
+        if(!self.HP_NO.text() == '')
+          self.HP_NO.text(formatMobile(self.HP_NO.text()));
+          
+        if(!self.TEL_NO.text() == '')
+          self.TEL_NO.text(formatPhone(self.TEL_NO.text()));
+          
+      })
+      
+      
+  
+      
+      function canSave() {
+        return true;
+      };
+  
+      function isChanged() {
+        if (canSave() && ds.getDirtyDataCount() > 0)
+          return true;
+        else
+          return false;
+      };
+  
+      function verify() {
+        var ret = null;
+        var items = ds.data();
+        for (var i = 0; i < items.length; i++) {
+           if (!items[i].KEYMAN_NM) {
+            ret = self.form_panel.validate({ tooltip: true, message: dews.localize.get('필수값을 입력해 주십시오.', 'M0000293') });
+            break;
+          } else if (!items[i].HP_NO) {
+            ret = self.form_panel.validate({ tooltip: true, message: dews.localize.get('필수값을 입력해 주십시오.', 'M0000293') });
+            break;
+          }
+        }
+        return ret;
+      };
+  
+      function saveData(showDialog) {
+        var ret = verify();
+  
+        if (ret == null) {
+          ds.batchSave(dews.url.getApiUrl('CR', 'CustomerRelationshipManagementKYMService', dews.string.format('cidkym00100_keyman_save'))).done(function (data) {
+            dews.ui.snackbar.ok(dews.localize.get("저장이 완료되었습니다.", 'M0000021'));
+          }).fail(function (message) {
+            dews.error(message);
+          })
+        }
+        else {
+          if (ret[0] == undefined) {
+            return false;
+          } else {
+            dews.alert(ret[0], "warning").done(function () {
+              dewself.cardList.select(ret[1]);
+              return false;
+            })
+          }
+        }
+      };
+  
+  
+      // 우호도 초기화
+      {
+        dews.api.get(dews.url.getApiUrl('CR', 'CustomerRelationshipManagementKYMService', dews.string.format('cidkym00100_ma_codedtl_friendship')),
+          { async: false }).
+          done(function (data) {
+            friendship_data = data;
+            if (data.length > 0) {
+              option_friendship_data.push({
+                SYSDEF_CD: "0", SYSDEF_NM: "전체"
+              })
+              for (var idx = 0; idx < data.length; idx++) {
+                option_friendship_data.push({
+                  SYSDEF_CD: data[idx]["SYSDEF_CD"],
+                  SYSDEF_NM: data[idx]["SYSDEF_NM"]
+                })
+              }
+            }
+          });
+    
+        friendship = dews.ui.dropdownlist(self.$KEYMAN_FRIENDSHIP_CD);
+        friendship.setDataSource(friendship_data);
+        option_friendship = dews.ui.dropdownlist(self.$OPTION_KEYMAN_FRIENDSHIP_CD);
+        option_friendship.setDataSource(option_friendship_data);
+      }
+      
+  
+      // 권한정도 초기화
+      {
+        dews.api.get(dews.url.getApiUrl('CR', 'CustomerRelationshipManagementKYMService', dews.string.format('cidkym00100_ma_codedtl_dcsmkauth')),
+          { async: false }).
+          done(function (data) {
+            dcsmkauth_data = data;
+            if (data.length > 0) {
+              option_dcsmkauth_data.push({
+                SYSDEF_CD: "0", SYSDEF_NM: "전체"
+              })
+              for (var idx = 0; idx < data.length; idx++) {
+                option_dcsmkauth_data.push({
+                  SYSDEF_CD: data[idx]["SYSDEF_CD"],
+                  SYSDEF_NM: data[idx]["SYSDEF_NM"]
+                })
+              }
+            }
+          });
+        dcsmkauth = dews.ui.dropdownlist(self.$KEYMAN_AUTHASGN_CD);
+        dcsmkauth.setDataSource(dcsmkauth_data);
+        option_dcsmkauth = dews.ui.dropdownlist(self.$OPTION_KEYMAN_AUTHASGN_CD);
+        option_dcsmkauth.setDataSource(option_dcsmkauth_data);
+      }
+      
+  
+      // 고객사 초기화
+      {
+        dews.api.get(dews.url.getApiUrl('CR', 'CustomerRelationshipManagementKYMService', dews.string.format('cidkym00100_customer_list')),
+          { async: false }).
+          done(function (data) {
+            customer_data = data;
+          });
+        customer = dews.ui.dropdownlist(self.$CUST_CD);
+        customer.setDataSource(customer_data);
+      }
+      
+        
+      //닫기
+      self.closing.on(function (e) {
+        if (ds.getDirtyDataCount() > 0) {
+          return dews.confirm(dews.localize.get('저장하지 않은 데이터가 있습니다.', 'M0000024') + '\n' + dews.localize.get('닫기를 계속하시겠습니까?', 'M0000052'), "ico2")
+            .no(function () {
+              e.preventDefault();
+            }).promise();
+        }
+      });
+  
+      //중복확인 버튼 이벤트
+      $('#CHECK_BUTTON').on("click", function (e){
+        var ret = verify_duplicate();
+  
+        if(ret==null){
+            dews.api.get(dews.url.getApiUrl('CR', 'CustomerRelationshipManagementKYMService', dews.string.format('cidkym00100_keyman_duplicate_checking')),
+            { async: false,
+            data: {
+              keyman_nm: self.KEYMAN_NM.text(),
+              cust_cd: self.CUST_CD.value(),
+              hp_no: self.HP_NO.text()
+            }
+          }).
+          done(function (data) {
+            if(data.length > 0){
+              var initData = {
+                KEYMAN_NM: self.KEYMAN_NM.text(),
+                CUST_CD: self.CUST_CD.value(),
+                HP_NO: self.HP_NO.text()
+              };
+  
+              var duplicateCheckDialog = dews.ui.dialog("CIDKYM00100_POP1", {
+                url: "/view/CR/CIDKYM00100_POP1",
+                title: "고객담당 중복확인",
+                initData: initData,
+                size: "large",
+                ok: function(data) {
+                  popup_select = data
+                  pending = true;//페이징 막기
+                  ds.read();
+                  popup_select.KEYMAN_CD = ''
+                },
+                cancel: function(){
+                  //dews.alert("cancel 함수", "info");
+                }
+              })
+  
+              duplicateCheckDialog.open();
+            } else {
+              dews.alert("등록가능한 고객담당 입니다.", "info");
+            }
+  
+          });
+        }
+      });
+        
+      //중복확인 버튼 검증
+      function verify_duplicate() {
+        var ret = null;
+        var items = ds.data();
+        for (var i = 0; i < items.length; i++) {
+          if (!items[i].KEYMAN_NM) {
+            ret = self.form_panel.validate({ tooltip: true, message: dews.localize.get('필수값을 입력해 주십시오.', 'M0000293') });
+            break;
+          } else if (!items[i].HP_NO) {
+            ret = self.form_panel.validate({ tooltip: true, message: dews.localize.get('필수값을 입력해 주십시오.', 'M0000293') });
+            break;
+          } else if (!items[i].CUST_CD) {
+            ret = self.form_panel.validate({ tooltip: true, message: dews.localize.get('필수값을 입력해 주십시오.', 'M0000293') });
+            break;
+          }
+        }
+        return ret;
+      };
+  
+  
+    var fileDataSource = dews.ui.dataSource('multifile', {
+        // transport: {
+        //     read: {
+        //         url: dews.url.getApiUrl('FI', 'MyService', 'MultiFile')
+        //     }
+        // },
+        schema: {
+            model: {
+                id: 'UID',
+                fields: [
+                    {field: 'UID'},
+                    {field: 'FILENAME'},
+                    {field: 'EXTENSION'},
+                    {field: 'FILESIZE'}
+                ]
+            }
+        }
+      }); 
+  
+      var multifile = dews.ui.multifile(self.$multifileComponent, {
+      dataSource: fileDataSource,
+      upload: {
+          use: true,
+          url: '/upload/file',
+          button: {
+              disabled: false,
+              visible: true
+          }
+      },
+      download: {
+          use: true,
+          url: '/download/file',
+          tempUrl: '/download/tempfile',
+          param: 'key',
+          button: {
+              disabled: false,
+              visible: true
+          }
+      },
+      deleted: {
+          button: {
+              disabled: false,
+              visible: true
+          }
+      },
+      token: {
+          use: true,
+          url: '/auth/temporary/token',
+          param: 'token'
+      },
+      binding: {
+          fileKey: 'UID',
+          filename: 'FILENAME',
+          extension: 'EXTENSION',
+          size: 'FILESIZE'       
+      },
+      filters: [ '.pdf', '.png', '.jpg', 'image/*', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ],
+      //multifileWidth: 100,
+      contentsHeight: 10
+    });
+  
+  
+      //접촉 이력 더미 데이터소스(그리드는 데이터 소스가 없으면 컬럼설정이 안됨))
+      self.dataSource1 = dews.ui.dataSource('dataSource1', {
+        grid: true,
+        data: [
+          {a:'2018-07-04', b:'서성천', c:'HRD종합지원1팀', d:'한국산업인력공단', e:'방문', f:'상품문의', g:'상품문의 및 관계강화'},
+          {a:'2018-07-15', b:'김진욱', c:'국내영업1팀', d:'(주)유니포인트', e:'유선', f:'견적협의', g:'관계강화'},
+          {a:'2018-08-01', b:'유하영', c:'국내영업2팀', d:'(주)유니포인트', e:'방문', f:'견적협의', g:'견적협의 및 관계강화'},
+          {a:'2018-08-04', b:'송훈섭', c:'상품지원1팀', d:'(주)유니온', e:'유선 및 방문', f:'견적협의', g:'견적협의'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
+              { field: 'f', editable: false, dataType: 'string' }, 
+              { field: 'g', editable: false, dataType: 'string' }
+            ]
+      
+          }
+        }
+      });
+      //접촉 이력 더미 데이터소스 기반 컬럼 설정
+      dews.ui.grid(self.$Grid1, {
+        dataSource: self.dataSource1,
+        editable: true,
+        selectable: true,
+        sortable: false,
+        checkable: false,
+        height: 620,
+        columns: [
+          {
+            field: 'a',
+            title: '활동일자',
+            width: 60
+          },
+          {
+            field: 'b',
+            title: '영업담당',
+            width: 60
+          },
+          {
+            field: 'c',
+            title: '부서',
+            width: 60
+          },
+          {
+            field: 'd',
+            title: '고객사',
+            width: 60
+          },
+          {
+            field: 'e',
+            title: '접촉유형',
+            width: 60
+          },
+          {
+            field: 'f',
+            title: '활동목적',
+            width: 60
+          },
+          {
+            field: 'g',
+            title: '제목',
+            width: 60
+          }
+        ],
+        fixed: {
+          colCount: 0,
+          rightColCount: 0
+        }
+      });
+  
+      //기회/수주 더미 데이터소스(그리드는 데이터 소스가 없으면 컬럼설정이 안됨))
+      self.dataSource2 = dews.ui.dataSource('dataSource2', {
+        grid: true,
+        data: [
+          {a:'한국전력 하반기 입찰', b:'국내 영업', c:'영업담당', d:'입찰/제안', e:'2018-10-25', f:'KRW', g:'1,200,400,000', h:'1,200,400,000'},
+          {a:'애터미 일본지사 제안', b:'해외 영업(일본)', c:'영업담당', d:'제안', e:'2018-11-20', f:'JPY', g:'23,500,000', h:'235,589,850'},
+          {a:'IBK 기업은행 입찰 입찰', b:'해외 영업(중국)', c:'영업담당', d:'입찰', e:'2019-01-05', f:'CNY', g:'3,240,000', h:'530,679,600'},
+          {a:'디트로이트 ERP시스템 입찰', b:'해외 영업(미국)', c:'영업담당', d:'입찰/제안', e:'2019-03-21', f:'USD', g:'900,000', h:'1,003,680,000'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
+              { field: 'f', editable: false, dataType: 'string' }, 
+              { field: 'g', editable: false, dataType: 'string' },
+              { field: 'h', editable: false, dataType: 'string' }
+            ]
+      
+          }
+        }
+      });
+      //기회/수주 더미 데이터소스 기반 컬럼 설정
+      dews.ui.grid(self.$Grid2, {
+        dataSource: self.dataSource2,
+        editable: true,
+        selectable: true,
+        sortable: false,
+        checkable: false,
+        height: 620,
+        columns: [
+          {
+            field: 'a',
+            title: '프로젝트',
+            width: 60
+          },
+          {
+            field: 'b',
+            title: '부서',
+            width: 60
+          },
+          {
+            field: 'c',
+            title: '영업담당',
+            width: 60
+          },
+          {
+            field: 'd',
+            title: '영업단계',
+            width: 60
+          },
+          {
+            field: 'e',
+            title: '수주예정일',
+            width: 60
+          },
+          {
+            field: 'f',
+            title: '통화',
+            width: 60
+          },
+          {
+            field: 'g',
+            title: '수주예정[통화]',
+            align: 'right',
+            width: 60
+          },
+          {
+            field: 'h',
+            title: '수주예정[원화]',
+            align: 'right',
+            width: 60
+          }
+        ],
+        fixed: {
+          colCount: 0,
+          rightColCount: 0
+        }
+      });
+  
+      //마케팅 더미 데이터소스(그리드는 데이터 소스가 없으면 컬럼설정이 안됨))
+      self.dataSource3 = dews.ui.dataSource('dataSource3', {
+        grid: true,
+        data: [
+          {a:'DM201804001', b:'더존 eBP 솔루션 출시', c:'SMS', d:'국내영업1팀', e:'서성천', f:'2018-07-16'},
+          {a:'DM201805015', b:'더존 CRM 솔루션 출시', c:'SMS & e-mail', d:'국내영업2팀', e:'김상익', f:'2018-07-25'},
+          {a:'DM201806007', b:'더존 eBP 솔루션 출시', c:'e-mail', d:'해외영업1팀', e:'박정규', f:'2018-08-02'},
+          {a:'DM201807021', b:'더존 CRM 솔루션 출시', c:'SMS & e-mail', d:'해외영업2팀', e:'노경진', f:'2018-08-09'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
+              { field: 'f', editable: false, dataType: 'string' }
+            ]
+      
+          }
+        }
+      });
+      //마케팅 더미 데이터소스 기반 컬럼 설정
+      dews.ui.grid(self.$Grid3, {
+        dataSource: self.dataSource3,
+        editable: true,
+        selectable: true,
+        sortable: false,
+        checkable: false,
+        height: 620,
+        columns: [
+          {
+            field: 'a',
+            title: 'DM ID',
+            width: 60
+          },
+          {
+            field: 'b',
+            title: 'DM 제목',
+            width: 60
+          },
+          {
+            field: 'c',
+            title: '발송채널',
+            width: 60
+          },
+          {
+            field: 'd',
+            title: '발송조직',
+            width: 60
+          },
+          {
+            field: 'e',
+            title: '발송담당',
+            width: 60
+          },
+          {
+            field: 'f',
+            title: '발송일자',
+            width: 60
+          }
+        ],
+        fixed: {
+          colCount: 0,
+          rightColCount: 0
+        }
+      });
+  
+    //VOC 더미 데이터소스(그리드는 데이터 소스가 없으면 컬럼설정이 안됨))
+    self.dataSource4 = dews.ui.dataSource('dataSource4', {
+        grid: true,
+        data: [
+          {a:'2018-08-16 15:15', b:'(주)유니포인트', c:'김상익', d:'서성천', e:'구매상담(기존)', f:'추가 제품 구입관련 기능'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }, 
+              { field: 'f', editable: false, dataType: 'string' }
+            ]
+      
+          }
+        }
+      });
+      //VOC 더미 데이터소스 기반 컬럼 설정
+      dews.ui.grid(self.$Grid4, {
+        dataSource: self.dataSource4,
+        editable: true,
+        selectable: true,
+        sortable: false,
+        checkable: false,
+        height: 620,
+        columns: [
+          {
+            field: 'a',
+            title: '상담일시',
+            width: 60
+          },
+          {
+            field: 'b',
+            title: '고객사',
+            width: 60
+          },
+          {
+            field: 'c',
+            title: '고객담당',
+            width: 60
+          },
+          {
+            field: 'd',
+            title: '상담담당',
+            width: 60
+          },
+          {
+            field: 'e',
+            title: '상담구분',
+            width: 60
+          },
+          {
+            field: 'f',
+            title: '문의상세',
+            width: 60
+          }
+        ],
+        fixed: {
+          colCount: 0,
+          rightColCount: 0
+        }
+      });
+  
+      //히스토리 더미 데이터소스(그리드는 데이터 소스가 없으면 컬럼설정이 안됨))
+      self.dataSource5 = dews.ui.dataSource('dataSource5', {
+        grid: true,
+        data: [
+          {a:'직위', b:'사원', c:'연구원', d:'박정규', e:'2018-07-25 13:23:28'},
+          {a:'권한정도', b:'실무담당자', c:'중간관리자', d:'박정규', e:'2018-08-05 12:33:18'},
+          {a:'우호도', b:'하', c:'중', d:'박정규', e:'2018-08-07 10:48:51'}
+        ],
+        schema: {
+          model: {
+            id: 'a',
+            fields: [
+              { field: 'a', editable: false, dataType: 'string' }, 
+              { field: 'b', editable: false, dataType: 'string' }, 
+              { field: 'c', editable: false, dataType: 'string' }, 
+              { field: 'd', editable: false, dataType: 'string' }, 
+              { field: 'e', editable: false, dataType: 'string' }
+            ]
+      
+          }
+        }
+      });
+      //히스토리 더미 데이터소스 기반 컬럼 설정
+      dews.ui.grid(self.$Grid5, {
+        dataSource: self.dataSource5,
+        editable: true,
+        selectable: true,
+        sortable: false,
+        checkable: true,
+        height: 620,
+        columns: [
+          {
+            field: 'a',
+            title: '변경항목',
+            width: 60
+          },
+          {
+            field: 'b',
+            title: '변경 전',
+            width: 60
+          },
+          {
+            field: 'c',
+            title: '변경 후',
+            width: 60
+          },
+          {
+            field: 'd',
+            title: '변경자',
+            width: 60
+          },
+          {
+            field: 'e',
+            title: '변경일시',
+            width: 60
+          }
+        ],
+        fixed: {
+          colCount: 0,
+          rightColCount: 0
+        }
+      });
+  
+      
+  
+      // // 박영철주임 디버깅 방법
+      // $('#cc').on('click', function(e){
+      //   console.log('cc');
+      //   cardList;
+      //   ds;
+      //   JSON.stringify(ds.getDirtyData());
+      // });
+      
+      //이메일 형식 체크
+      function emailCheck(email) {
+        var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/; 
+        if(exptext.test(email) == false) {
+            // 이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식이 아닐경우
+            // alert("이메일형식이 올바르지 않습니다.");
+            dews.alert(dews.localize.get('이메일형식이 올바르지 않습니다.', 'M0000056'), 'warning');
+            return false; 
+        }
+        return true;
+      }
+  
+      //특수문자 여부 체크
+      function checkSpecial(str) {
+        var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+        if (special_pattern.test(str) == true) {
+          return 0;
+        } else {
+          return -1;
+        } 
+      }
+  
+      //전화번호 포맷으로 변환
+      function formatPhone(phoneNum) {
+        if(isPhone(phoneNum)) {
+          var rtnNum;
+          var regExp =/(02)([0-9]{3,4})([0-9]{4})$/; 
+          var myArray;
+          if(regExp.test(phoneNum)){
+            myArray = regExp.exec(phoneNum); 
+            rtnNum = myArray[1]+'-' + myArray[2]+'-'+myArray[3]; 
+            return rtnNum;
+          } else {
+            regExp =/(0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/; 
+            if(regExp.test(phoneNum)){
+              myArray = regExp.exec(phoneNum);
+              rtnNum = myArray[1]+'-'+myArray[2]+'-'+myArray[3]; 
+              return rtnNum;
+            } else {
+              return phoneNum;
+            }
+          }
+        } else {
+          return phoneNum;
+        }
+      }
+      
+      //핸드폰번호 포맷으로 변환
+      function formatMobile(phoneNum) { 
+        if(isMobile(phoneNum)) {
+          var rtnNum;
+          var regExp =/(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/; 
+          var myArray;
+          if(regExp.test(phoneNum)){
+            myArray = regExp.exec(phoneNum);
+            rtnNum = myArray[1]+'-'+myArray[2]+'-'+myArray[3];
+            return rtnNum;
+          } else {
+            return phoneNum;
+          }
+        } else {
+          return phoneNum;
+        }
+      }
+  
+      //전화번호 형식 체크
+      function isPhone(phoneNum) {
+        //var regExp =/(02|0[3-9]{1}[0-9]{1})[1-9]{1}[0-9]{2,3}[0-9]{4}$/; 
+        var regExp =/(02)([0-9]{3,4})([0-9]{4})$/;
+        var regExp2 =/(02)-([0-9]{3,4})-([0-9]{4})$/;
+        var myArray;
+        if(regExp2.test(phoneNum)){
+          myArray = regExp2.exec(phoneNum); 
+          return true;
+        }
+  
+        if(regExp.test(phoneNum)){
+          myArray = regExp.exec(phoneNum); 
+          return true;
+        } else {
+          regExp =/(0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/; 
+          regExp2 =/(0[3-9]{1}[0-9]{1})-([0-9]{3,4})-([0-9]{4})$/; 
+          if(regExp2.test(phoneNum)){
+            myArray = regExp2.exec(phoneNum); 
+            return true;
+          }
+  
+          if(regExp.test(phoneNum)){
+            myArray = regExp.exec(phoneNum); 
+            return true;
+          } else {
+            dews.alert(dews.localize.get('전화번호 형식이 올바르지 않습니다.', 'M0000056'), 'warning');
+            return false;
+          }
+        }
+      }
+  
+      //핸드폰번호 형식 체크
+      function isMobile(phoneNum) {
+        var regExp =/(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+        var regExp2 =/(01[016789])-([1-9]{1}[0-9]{2,3})-([0-9]{4})$/;
+        var myArray;
+        if(regExp2.test(phoneNum)){
+          myArray = regExp2.exec(phoneNum); 
+          return true;
+        }
+  
+        if(regExp.test(phoneNum)){
+          myArray = regExp.exec(phoneNum); 
+          return true;
+        } else {
+          dews.alert(dews.localize.get('핸드폰번호 형식이 올바르지 않습니다.', 'M0000056'), 'warning');
+          return false;
+        }
+      }
+      
+      //페이지 초기값 처리(다른페이지에서 호출될때)
+      if(dews.ui.page.initialData !== undefined){
+        popup_select = dews.ui.page.initialData;
+        ds.read();
+        popup_select.KEYMAN_CD = ''
+      }
+    //# sourceURL=CIDKYM00100.js
+    })
+    
+  </script>

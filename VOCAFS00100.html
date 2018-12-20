@@ -1,0 +1,136 @@
+<!--
+  DEWS UI/UX IDE - Build Result - v1.5
+  # PageID: CIDCST00100_DW_20.고객정보DB_13.활동실적_V0.99
+  # PageTitle: 활동실적등록
+  # Server: http://localhost:8080/
+-->
+<div class="dews-ui-condition-panel" >
+  <ul class="required-area">
+    <li>
+      <label class="dews-ui-multilingual">고객사</label>
+      <span>
+        <input id="SEARCH_COMPANY" type="text" name="고객사" data-dews-help-title="회사조회" class="dews-ui-codepicker" data-dews-code-field="PARTNER_CD" data-dews-text-field="PARTNER_NM"
+        data-dews-help-code="H_MA_PARTNER_MST_S" data-dews-help-size="big" data-dews-help-params=""/>
+      </span>
+    </li>
+    <li>
+      <label class="dews-ui-multilingual"></label>
+      <span>
+        <input id="SEARCH_FLAG_MY_CUSTOMER" type="checkbox" class="dews-ui-checkbox" />
+        <label>내고객사</label>
+      </span>
+    </li>
+    <li>
+      <label class="dews-ui-multilingual">검색어</label>
+      <span>
+        <input id="SEARCH_TEXT" name="고객명검색어" type="text" class="dews-ui-textbox" style="width: 380px;"/>
+      </span>
+    </li>
+  </ul>
+</div>
+<div class="dews-ui-container-panel" style="overflow: visible;">
+  <div class="dews-container-item" data-dews-position="normal">
+      <div id="CUST_GRID" class="dews-ui-grid"></div>
+  </div>
+</div>
+<div class="dews-dialog-button-group bottom" style="text-align: center;">
+  <button id="btnSave" class="dews-ui-button">조회</button>
+  <button id="btnClose" class="dews-ui-button">닫기</button>
+</div>
+<style>
+  
+</style>
+<script>
+  dews.ready(function () {
+    var self = this;
+    var dialog = dews.ui.dialog(self.$content.prop("id"));
+    //var today = new Date();
+    var ds_cust;
+    var grid_cust;
+
+    ds_cust = dews.ui.dataSource('dataSource', {
+      grid : true,
+      data : [
+        {
+          COMPANY_NM: '하늘전자', KEYMAN_NM: '강호동',KEYMAN_CD: '차장',  KEYMAN_DEPT_NM: 'CRM개밭팀', USE_YN: 'Y'
+        },
+        {
+          COMPANY_NM: '하늘전자', KEYMAN_NM: '이승철',KEYMAN_CD: '차장',  KEYMAN_DEPT_NM: 'CRM개밭팀', USE_YN: 'N'
+        },
+      ],
+      schema : {
+        model : {
+          fields : [
+            { field: 'COMPANY_NM', editable: false, dataType: 'string' },
+            { field: 'KEYMAN_NM', editable: false, dataType: 'string' },
+            { field: 'KEYMAN_CD', editable: false, dataType: 'string' },
+            { field: 'KEYMAN_DEPT_NM', editable: false, dataType: 'string' },
+            { field: 'USE_YN', editable: false, dataType: 'string' },
+          ]
+        }
+      }
+    });
+
+    grid_cust = dews.ui.grid(self.$CUST_GRID, {
+      dataSource : ds_cust,
+      rowNo: true,
+      selectable : true,
+      sortable : false,
+      autoBind : true,
+      checkable : false,
+      height : 400,
+      columns : [
+         {
+            field: 'COMPANY_NM',
+            title: '고객사명',
+            width: 40
+          },
+          {
+            field: 'KEYMAN_NM',
+            title: '고객명',
+            width: 70
+          },
+          {
+            field: 'KEYMAN_CD',
+            title: '직급',
+            width: 50
+          },
+          {
+            field: 'KEYMAN_DEPT_NM',
+            title: '부서명',
+            width: 70
+          },
+          {
+            field: 'USE_YN',
+            title: '사용여부',
+            width: 60
+          }
+      ],
+      fixed : {
+        colCount : 0,
+        rightColCount : 0
+      },
+    });
+    
+    function searchData() {
+      ds_cust.read();
+    };
+
+    self.$btnClose.on('click', function(e) {
+      self.close();
+    });
+
+    self.$btnSave.on('click',function(e){
+      var grid , rowData, selected;
+      grid = self.grid_cust;
+      selected = grid.select();
+      rowData = grid.dataItems(selected);
+      thisDialog.ok(rowData);
+      //dialog.ok(grid_cust.dataItem(grid_cust.select()));
+    });
+
+
+    
+
+  });
+</script>

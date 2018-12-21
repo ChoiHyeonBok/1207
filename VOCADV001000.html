@@ -7,19 +7,21 @@
 
 <div class="dews-ui-condition-panel" data-dews-columns="5">
   <ul class="required-area">
-    <li style="width:320px">
+    <li class="col-2" style="margin-left : 30px">
       <span>
         <select id="SEARCH_TP" name="검색조건" class="dews-ui-dropdownlist 기본" style="width: 100px;">
           <option value="0">전체</option>
           <option value="1">고객담당</option>
           <option value="2">고객사</option>
+          <option value="3">상담조직</option>
           <option value="4">상담담당</option>
+          <option value="5">조치부서</option>
           <option value="6">조치담당</option>
         </select>
         <input id="SEARCH_TEXT" type="text" class="dews-ui-textbox" style="width: 180px;" />
       </span>
     </li>
-    <li style="width:320px">
+    <li class="col-2" style="margin-left : 30px">
       <span>
         <select id="SEARCH_PERIOD_TP" name="검색기간타입" class="dews-ui-dropdownlist 기본" style="width: 100px;">
           <option value="0">등록일자</option>
@@ -27,22 +29,17 @@
         <span id="SEARCH_PERIOD" class="dews-ui-periodpicker 기본" style="width: 180px;"></span>
       </span>
     </li>
-    <li style="width:320px">
+    <li style="margin-left : 30px">
       <label class="dews-ui-multilingual">진행상태</label>
       <span>
         <select id="SEARCH_PRGR_ST" name="진행상태" class="dews-ui-dropdownlist basic">
           <option value="0">전체</option>
           <option value="1">조치요청</option>
-          <option value="2">상담완료</option>
+          <option value="2">조지접수</option>
           <option value="3">조치완료</option>
         </select>
       </span>
     </li>
-    <span>
-        <div class="dews-button-group" style="float: right;">
-          <button id="BTN_REQUEST" class="dews-ui-button">조치요청</button>
-        </div>
-    </span>
   </ul>
 </div>
 <div id="COUNSEL_GRID" class="dews-ui-grid"></div>
@@ -50,62 +47,74 @@
   <div class="dews-container-item" data-dews-position="left" data-dews-width="650">
     <div class="dews-button-group" style="text-align: right;">
       <h2 class="dews-ui-title">상담고객 정보 </h2>
-      <button id="BTN_KEYMAN_SEARCH" class="dews-ui-button">고객검색</button>
     </div>
-    <div id="form_panel" class="dews-ui-form-panel" data-dews-label-width="70" data-dews-item-width="300" data-dews-columns="2">
+    <div class="dews-ui-form-panel" data-dews-label-width="70" data-dews-item-width="300" data-dews-columns="2">
       <ul>
         <li>
-          <label>고객사명</label>
+          <label>상담고객</label>
           <span>
-            <input id="COUNSEL_CUST" name="고객사명" type="text" data-dews-bind-column="COUNSEL_CUST" class="dews-ui-textbox basic required"/>
+            <input id="COUNSEL_KEYMAN" name="상담고객" type="text" class="dews-ui-codepicker required"
+            data-dews-code-field="EMP_NO " data-dews-text-field="KOR_NM" data-dews-help-code="H_HR_EMP_MST_S" data-dews-help-size="big"
+            data-dews-help-params="" data-dews-bind-text="KEYMAN_NM"/>   
           </span>
         </li>
         <li>
-          <label>사업자번호</label>
+          <label>고객사 </label>
           <span>
-            <input id="COUNSEL_KEYMAN_TEL_NO" name="사업자번호" type="text" data-dews-bind-column="COUNSEL_KEYMAN_TEL_NO" class="dews-ui-textbox basic" />
-          </span>
-        </li>
-        <li>
-          <label>고객명</label>
-          <span>
-            <input id="COUNSEL_KEYMAN" name="고객명" type="text" data-dews-bind-column="COUNSEL_KEYMAN" class="dews-ui-textbox basic" />
+            <input id="COUNSEL_CUST" name="고객사" type="text" class="dews-ui-codepicker required"
+            data-dews-code-field="BANK_CD" data-dews-text-field="BANK_NM" data-dews-help-code="H_CI_BANK_MST_S01"
+            data-dews-help-custom="false" data-dews-help-size="medium" data-dews-ajax="true" data-dews-help-params=""
+            data-dews-help-title="고객사 찾기" data-dews-bind-text="KEYMAN_NM"/>
           </span>
         </li>
         <li>
           <label>전화번호</label>
           <span>
-            <input id="COUNSEL_KEYMAN_CEL_NO" name="상담고객전화번호" type="text" data-dews-bind-column="COUNSEL_KEYMAN_TEL_NO" class="dews-ui-textbox basic" />
+            <input id="COUNSEL_KEYMAN_TEL_NO" name="상담고객전화번호" type="text" data-dews-bind-column="COUNSEL_KEYMAN_TEL_NO" class="dews-ui-textbox basic" />
+          </span>
+        </li>
+        <li>
+          <label>핸드폰</label>
+          <span>
+            <input id="COUNSEL_KEYMAN_CEL_NO" name="상담고객핸드폰" type="text" data-dews-bind-column="COUNSEL_KEYMAN_CEL_NO" class="dews-ui-textbox basic" />
+          </span>
+        </li>
+        <li class="col-2">
+          <label>이메일</label>
+          <span>
+            <input id="COUNSEL_KEYMAN_EMAIL_NM" name="상담고객이메일" type="text" data-dews-bind-column="COUNSEL_KEYMAN_EMAIL_NM" class="dews-ui-textbox basic" style="width:480px"/>
           </span>
         </li>
       </ul>
     </div>
     <div class="dews-button-group" style="text-align: right;">
       <h2 class="dews-ui-title">고객담당정보</h2>
+      <button id="BTN_KEYMAN_CN" class="dews-ui-button">고객담당 연결</button>
+      <button id="BTN_CUST_ADD" class="dews-ui-button">고객사등록</button>
       <button id="BTN_KEYMAN_ADD" class="dews-ui-button">고객담당등록</button>
     </div>
-    <div class="dews-ui-form-panel" data-dews-label-width="70" data-dews-item-width="300" data-dews-columns="2" style="height:110px">
+    <div id="form_panel" class="dews-ui-form-panel" data-dews-label-width="70" data-dews-item-width="300" data-dews-columns="2" style="height:110px">
       <ul>
         <li>
-          <label>고객사명</label> 
+          <label>고객담당</label> 
           <span>
-            <input id="CUST_NM" name="고객사명" type="text" data-dews-bind-column="CUST_NM" class="dews-ui-textbox required" />
+            <input id="KEYMAN_NM" name="고객담당" type="text" class="dews-ui-textbox required" />
           </span>
         </li>
         <li>
-          <label>사업자번호</label>
+          <label>고객사 </label>
           <span>
-            <input id="TEL_NO" name="사업자번호" type="text" data-dews-bind-column="TEL_NO" class="dews-ui-textbox basic" />
+            <input id="CUST_NM" name="고객사" type="text" class="dews-ui-textbox basic" />
           </span>
         </li>
         <li>
-          <label>고객담당명</label>
+          <label>전화번호</label>
           <span>
-            <input id="KEYMAN_NM" name="고객담당명" type="text" data-dews-bind-column="KEYMAN_NM" class="dews-ui-textbox basic" />
+            <input id="TEL_NO" name="전화번호" type="text" class="dews-ui-textbox basic" />
           </span>
         </li>
         <li>
-          <label>핸드폰번호</label>
+          <label>핸드폰</label>
           <span>
             <input id="HP_NO" name="핸드폰" type="text" data-dews-bind-column="HP_NO" class="dews-ui-textbox basic" />
           </span>
@@ -122,26 +131,50 @@
   <div class="dews-container-item" data-dews-position="normal"  data-dews-width="302.3">
     <div class="dews-button-group" style="text-align: right;">
       <h2 class="dews-ui-title">상담내용</h2>
-      <button id="BTN_COMPLETE" class="dews-ui-button">조치 및 상담완료</button>
+      <button id="BTN_REQUEST" class="dews-ui-button">조치요청</button>
+      <button id="BTN_COMPLETE" class="dews-ui-button">조치완료</button>
     </div>
     <div class="dews-ui-form-panel" data-dews-columns="2">
       <ul>
         <li>
           <label>상담유형</label>
           <span>
-            <select id="COUNSEL_TP_CD" name="상담유형" class="dews-ui-dropdownlist">
+            <select id="COUNSEL_TP_CD" name="상담유형" class="dews-ui-dropdownlist required">
               <option value="0">구매문의</option>
             </select>
           </span>
         </li>
         <li>
-          <label>조치담당자</label>
+          <label>등록일시</label>
           <span>
-            <input id="TRMT_EMP_NM" name="조치담당자" type="text" class="dews-ui-codepicker" 
-              data-dews-code-field="EMP_NO" data-dews-text-field="KOR_NM" data-dews-help-code="H_HR_EMP_MST_S11"
-              data-dews-bind-code="TRMT_EMP_CD" data-dews-bind-text="TRMT_EMP_NM" 
-              data-dews-help-custom="false" data-dews-help-size="medium" data-dews-ajax="true" data-dews-help-params=""
-              data-dews-help-title="조치자 찾기"/>
+            <input id="INSERT_DTS" name="등록일시" type="text" class="dews-ui-textbox basic" />
+          </span>
+        </li>
+        <li>
+          <label>상담담당</label>
+          <span>
+            <input id="COUNSEL_RSPT_EMP" name="상담담당" type="text" data-dews-bind-column="COUNSEL_RSPT_EMP_NO" class="dews-ui-textbox basic" />
+          </span>
+        </li>
+        <li>
+          <label>상담부서</label>
+          <span>
+            <input id="COUNSEL_DEPT_CD" name="상담부서" type="text" data-dews-bind-column="COUNSEL_DEPT_CD" class="dews-ui-textbox basic" />
+          </span>
+        </li>
+        <li>
+          <label>조치부서</label>
+          <span>
+            <input id="TRMT_DEPT" name="조치부서" type="text" class="dews-ui-codepicker basic" 
+            data-dews-code-field="DEPT_CD" data-dews-text-field="DEPT_NM" data-dews-help-code="H_MA_DEPT_MST_S"
+            data-dews-help-custom="false" data-dews-help-size="medium" data-dews-ajax="true" data-dews-help-params=""
+            data-dews-help-title="부서 찾기"/>
+          </span>
+        </li>
+        <li>
+          <label>진행상태</label>
+          <span>
+            <input id="PRGR_ST_NM" name="진행상태" type="text" data-dews-bind-column="PRGR_ST_NM" class="dews-ui-textbox basic" />
           </span>
         </li>
       </ul>
@@ -167,6 +200,13 @@
     <div class="dews-ui-tab-panel">
       <ul class="dews-tab-items">
         <li class="dews-tab-item" data-dews-title="상담이력">
+          <div class="dews-button-group" style="text-align: right;">
+            <label>조회기준 : </label>
+            <input type="radio" class="dews-ui-radio" />
+            <label>상담고객</label>
+            <input type="radio" class="dews-ui-radio" />
+            <label>고객사</label>
+          </div>
           <div id="COUNCEL_RECODE_GRID" class="dews-ui-grid"></div>
         </li>
         <li class="dews-tab-item" data-dews-title="A/S 이력" >
@@ -185,22 +225,38 @@
 </div>
 
 <script>
-  dews.ready(function(){
+  dews.ready(function () {
     var self = this;
-    var counsel_grid; 
-    var counsel_grid_db; // 그리드와 데이터소스를 담기 위한 변수
     var today = new Date();
+    var counsel_grid;
+    var counsel_grid_db;
+    var add_check = true;
     var ds_proc_st;
-    
-   
-    {
-      self.COUNSEL_CUST.setMaxLength(10);  
-      self.COUNSEL_KEYMAN_TEL_NO.setMaxLength(20);
-      self.COUNSEL_KEYMAN.setMaxLength(10);
-      self.COUNSEL_KEYMAN_CEL_NO.setMaxLength(20);
-    
-    }
 
+    /* 입력할 때 데이터길이 제한 */
+    {
+      self.COUNSEL_KEYMAN_TEL_NO.setMaxLength(20);  
+      self.COUNSEL_KEYMAN_CEL_NO.setMaxLength(20);
+      self.COUNSEL_KEYMAN_EMAIL_NM.setMaxLength(30);
+      self.TEL_NO.setMaxLength(20);
+      self.HP_NO.setMaxLength(20);
+      self.EMAIL_NM.setMaxLength(30);
+
+
+     
+    }
+          
+    
+
+
+    /*메인버튼 활성화 여부*/
+    {
+      // dews.ui.mainbuttons.delete.show();
+      /*기타 메인버튼 비활성화*/
+      dews.ui.mainbuttons.approval.hide(); // 결제
+      dews.ui.mainbuttons.print.hide(); // 인쇄
+    }
+    /* 검색조건 초기화 */
     {
       var beforDate = new Date(today);
       beforDate.setFullYear(beforDate.getFullYear() - 1);
@@ -208,69 +264,8 @@
       self.SEARCH_PERIOD.setStartDate(getDate(yearago, 'yyyyMMdd'));
       self.SEARCH_PERIOD.setEndDate(getDate(today, 'yyyyMMdd'));
     }
-
-    ds_proc_st = dews.ui.dataSource('ds_proc_st', {
-      data : [
-        { value : 0, text : "조치요청" },
-        { value : 1, text : "조치완료" }
-      ]
-    });
-
-    var councel_file_data = dews.ui.dataSource('multi', {
-      // data: [
-      //   // { UID: '1234', FILENAME: '가라', EXTENSION: '.jpg', FILESIZE: '125' }
-      // ],
-      schema: {
-        model: {
-          id: 'MF_EMP',
-          fields: [
-            { field: 'UID' },
-            { field: 'FILENAME' },
-            { field: 'EXTENSION' },
-            { field: 'FILESIZE' }
-          ]
-        }
-      }
-    });
-
-    function getDate(date, dateType) {
-      String.prototype.string = function (len) { var s = '', i = 0; while (i++ < len) { s += this; } return s; };
-      String.prototype.zf = function (len) { return "0".string(len - this.length) + this; };
-      Number.prototype.zf = function (len) { return this.toString().zf(len); };
-      if (!this.valueOf()) return " ";
-      var weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
-      var d = date;
-      return dateType.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function ($1) {
-        switch ($1) {
-          case "yyyy": return d.getFullYear();
-          case "yy": return (d.getFullYear() % 1000).zf(2);
-          case "MM": return (d.getMonth() + 1).zf(2);
-          case "dd": return d.getDate().zf(2);
-          case "E": return weekName[d.getDay()];
-          case "HH": return d.getHours().zf(2);
-          case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
-          case "mm": return d.getMinutes().zf(2);
-          case "ss": return d.getSeconds().zf(2);
-          case "a/p": return d.getHours() < 12 ? "오전" : "오후";
-          default: return $1;
-        }
-      });
-    }
-
-    var councel_file_grid = dews.ui.multifile(self.$COUNSEL_FILE_GRID, {
-      dataSource: councel_file_data,
-      download: {
-        use: true
-      },
-      binding: {
-        fileKey: 'UID',
-        filename: 'FILENAME',
-        extension: 'EXTENSION',
-        size: 'SIZE',
-      },
-      contentsHeight: 4
-    });
-    counsel_grid_db = dews.ui.dataSource('counsel_grid_db', {
+    
+    counsel_grid_db  = dews.ui.dataSource('counsel_grid_db', {
       grid: true,
       schema: {
         model: {
@@ -290,71 +285,37 @@
             { field: 'COUNSEL_TXT', editable: false, dataType: 'string' },           // 상담내용
             { field: 'COUNSEL_RSPT_EMP_NO', editable: false, dataType: 'string' },   // 상담담당사원번호
             { field: 'COUNSEL_RSPT_EMP_NM', editable: false, dataType: 'string' },   // 상담담당사원명
-            //{ field: 'COUNSEL_DEPT_CD', editable: false, dataType: 'string' },       // 상담부서코드
-            //{ field: 'COUNSEL_DEPT_NM', editable: false, dataType: 'string' },       // 상담부서명
-            //{ field: 'TRMT_DEPT_CD', editable: false, dataType: 'string' },          // 조치부서코드
-            //{ field: 'TRMT_DEPT_NM', editable: false, dataType: 'string' },          // 조치부서명
+            { field: 'COUNSEL_DEPT_CD', editable: false, dataType: 'string' },       // 상담부서코드
+            { field: 'COUNSEL_DEPT_NM', editable: false, dataType: 'string' },       // 상담부서명
+            { field: 'TRMT_DEPT_CD', editable: false, dataType: 'string' },          // 조치부서코드
+            { field: 'TRMT_DEPT_NM', editable: false, dataType: 'string' },          // 조치부서명
             { field: 'TRMT_EMP_CD', editable: false, dataType: 'string' },           // 조치사원코드
             { field: 'TRMT_EMP_NM', editable: false, dataType: 'string' },           // 조치사원명
-            { field: 'PRGR_ST_CD', editable: false, dataType: 'string' },            // 진행상태코드
-            { field: 'PRGR_ST_NM', editable : false, dataType: 'string' },            // 진행상태명
+            { field: 'PRGR_ST_CD', editable: true, dataType: 'string' },            // 진행상태코드
+            { field: 'PRGR_ST_NM', editable: true, dataType: 'string' },            // 진행상태명
             { field: 'USE_YN', editable: false, dataType: 'string' },                // 사용여부
           ]
+    
         }
       },
       data: [
         {
-          COMPANY_CD: "5000", COUNSEL_CD: "CNS2018081001", COUNSEL_DTS: "2018-08-20 13:33:43", KEYMAN_NM: "이철민", CUST_CD: "CUS2018080001",
-          CUST_NM: "하늘상사(주)", CUST_TEL_NO: "02-789-1258", CUST_CEL_NO: "02-785-4578", CUST_EMAIL_NM: "e-mail@mail.com", KEYMAN_CD: "2018080704567",
-          COUNSEL_TP_CD: "0", COUNSEL_TP_NM: "구매문의", COUNSEL_TXT: "조치해주세요", COUNSEL_RSPT_EMP_NO: "CID201345478", COUNSEL_RSPT_EMP_NM: "김성민", COUNSEL_DEPT_CD: "DEP201345478",
-          COUNSEL_DEPT_NM: "상담1팀", TRMT_DEPT_CD: "45127845", TRMT_DEPT_NM: "조치1팀", PRGR_ST_CD: "PR123456789", PRGR_ST_NM: "조치요청", USE_YN: "Y",
+          COMPANY_CD:"5000",COUNSEL_CD:"CNS2018081001",COUNSEL_DTS:"2018-08-20 13:33:43",KEYMAN_NM:"이철민",CUST_CD:"CUS2018080001",
+          CUST_NM:"하늘상사(주)",CUST_TEL_NO:"02-789-1258",CUST_CEL_NO:"02-785-4578",CUST_EMAIL_NM:"e-mail@mail.com",KEYMAN_CD:"2018080704567",
+          COUNSEL_TP_CD:"0",COUNSEL_TP_NM:"구매문의",COUNSEL_TXT:"조치해주세요",COUNSEL_RSPT_EMP_NO:"CID201345478",COUNSEL_RSPT_EMP_NM:"김성민",COUNSEL_DEPT_CD:"DEP201345478",
+          COUNSEL_DEPT_NM:"상담1팀",TRMT_DEPT_CD:"45127845",TRMT_DEPT_NM:"조치1팀",PRGR_ST_CD:"조치요청",PRGR_ST_NM:"조치요청",USE_YN:"Y",
           TRMT_EMP_CD:"EMP01010001",TRMT_EMP_NM:"이상민"
         },
-      ]
-    });
-
-    counsel_grid_db = dews.ui.dataSource('counsel_grid_db',{
-      grid: true,
-      schema: {
-        model: {
-          fields: [
-            { field: 'COMPANY_CD', editable: false, dataType: 'string' },            // 회사코드
-            { field: 'COUNSEL_CD', editable: false, dataType: 'string' },            // 상담코드
-            { field: 'COUNSEL_DTS', editable: false, dataType: 'string' },           // 상담일시
-            { field: 'KEYMAN_NM', editable: false, dataType: 'string' },             // 상담고객담당명
-            { field: 'CUST_CD', editable: false, dataType: 'string' },               // 고객사코드
-            { field: 'CUST_NM', editable: false, dataType: 'string' },               // 상담고객사명
-            { field: 'CUST_TEL_NO', editable: false, dataType: 'string' },           // 상담고객전화번호
-            { field: 'CUST_CEL_NO', editable: false, dataType: 'string' },           // 상담고객핸드폰번호
-            { field: 'CUST_EMAIL_NM', editable: false, dataType: 'string' },         // 상담고객이메일명
-            { field: 'KEYMAN_CD', editable: false, dataType: 'string' },             // 고객담당코드
-            { field: 'COUNSEL_TP_CD', editable: false, dataType: 'string' },         // 상담유형코드
-            { field: 'COUNSEL_TP_NM', editable: false, dataType: 'string' },         // 상담유형명
-            { field: 'COUNSEL_TXT', editable: false, dataType: 'string' },           // 상담내용
-            { field: 'COUNSEL_RSPT_EMP_NO', editable: false, dataType: 'string' },   // 상담담당사원번호
-            { field: 'COUNSEL_RSPT_EMP_NM', editable: false, dataType: 'string' },   // 상담담당사원명
-            //{ field: 'COUNSEL_DEPT_CD', editable: false, dataType: 'string' },       // 상담부서코드
-            //{ field: 'COUNSEL_DEPT_NM', editable: false, dataType: 'string' },       // 상담부서명
-            //{ field: 'TRMT_DEPT_CD', editable: false, dataType: 'string' },          // 조치부서코드
-            //{ field: 'TRMT_DEPT_NM', editable: false, dataType: 'string' },          // 조치부서명
-            { field: 'TRMT_EMP_CD', editable: false, dataType: 'string' },           // 조치사원코드
-            { field: 'TRMT_EMP_NM', editable: false, dataType: 'string' },           // 조치사원명
-            { field: 'PRGR_ST_CD', editable: false, dataType: 'string' },            // 진행상태코드
-            { field: 'PRGR_ST_NM', editable : false, dataType: 'string' },            // 진행상태명
-            { field: 'USE_YN', editable: false, dataType: 'string' },                // 사용여부
-          ]
-        }
-      },
-      data: [
         {
-          COMPANY_CD: "5000", COUNSEL_CD: "CNS2018081001", COUNSEL_DTS: "2018-08-20 13:33:43", KEYMAN_NM: "이철민", CUST_CD: "CUS2018080001",
-          CUST_NM: "하늘상사(주)", CUST_TEL_NO: "02-789-1258", CUST_CEL_NO: "02-785-4578", CUST_EMAIL_NM: "e-mail@mail.com", KEYMAN_CD: "2018080704567",
-          COUNSEL_TP_CD: "0", COUNSEL_TP_NM: "구매문의", COUNSEL_TXT: "조치해주세요", COUNSEL_RSPT_EMP_NO: "CID201345478", COUNSEL_RSPT_EMP_NM: "김성민",
-          PRGR_ST_CD: "PR123456789", PRGR_ST_NM: "조치요청", USE_YN: "Y",TRMT_EMP_CD:"EMP01010001",TRMT_EMP_NM:"이상민"
+          COMPANY_CD:"5000",COUNSEL_CD:"CNS2018081123",COUNSEL_DTS:"2018-08-21 11:12:43",KEYMAN_NM:"이강민",CUST_CD:"CUS2018080001",
+          CUST_NM:"대한상사(주)",CUST_TEL_NO:"02-321-7845",CUST_CEL_NO:"010-3210-4681",CUST_EMAIL_NM:"e-mail@mail.co.kr",KEYMAN_CD:"2018080701234",
+          COUNSEL_TP_CD:"0",COUNSEL_TP_NM:"구매문의",COUNSEL_TXT:"문의답변해주세요",COUNSEL_RSPT_EMP_NO:"CID2013454562",COUNSEL_RSPT_EMP_NM:"김유찬",COUNSEL_DEPT_CD:"DEP201344578",
+          COUNSEL_DEPT_NM:"상담2팀",TRMT_DEPT_CD:"4512455",TRMT_DEPT_NM:"조치2팀",PRGR_ST_CD:"조치요청",PRGR_ST_NM:"조치요청",USE_YN:"Y",
+          TRMT_EMP_CD:"EMP01010003",TRMT_EMP_NM:"강호동"
         },
-      ]
-    });
-    
+      ],
+     
+   });
     self.세부상담이력 = dews.ui.dataSource('세부상담이력', {
       grid: true,
       schema: {
@@ -375,10 +336,10 @@
             { field: 'COUNSEL_TXT', editable: false, dataType: 'string' },           // 상담내용
             { field: 'COUNSEL_RSPT_EMP_NO', editable: false, dataType: 'string' },   // 상담담당사원번호
             { field: 'COUNSEL_RSPT_EMP_NM', editable: false, dataType: 'string' },   // 상담담당사원명
-            //{ field: 'COUNSEL_DEPT_CD', editable: false, dataType: 'string' },       // 상담부서코드
-            //{ field: 'COUNSEL_DEPT_NM', editable: false, dataType: 'string' },       // 상담부서명
-            //{ field: 'TRMT_DEPT_CD', editable: false, dataType: 'string' },          // 조치부서코드
-            //{ field: 'TRMT_DEPT_NM', editable: false, dataType: 'string' },          // 조치부서명
+            { field: 'COUNSEL_DEPT_CD', editable: false, dataType: 'string' },       // 상담부서코드
+            { field: 'COUNSEL_DEPT_NM', editable: false, dataType: 'string' },       // 상담부서명
+            { field: 'TRMT_DEPT_CD', editable: false, dataType: 'string' },          // 조치부서코드
+            { field: 'TRMT_DEPT_NM', editable: false, dataType: 'string' },          // 조치부서명
             { field: 'TRMT_EMP_CD', editable: false, dataType: 'string' },           // 조치사원코드
             { field: 'TRMT_EMP_NM', editable: false, dataType: 'string' },           // 조치사원명
             { field: 'PRGR_ST_CD', editable: false, dataType: 'string' },            // 진행상태코드
@@ -391,12 +352,12 @@
         {
           COMPANY_CD: "5000", COUNSEL_CD: "CNS2018081001", COUNSEL_DTS: "2018-08-20 13:33:43", KEYMAN_NM: "이철민", CUST_CD: "CUS2018080001",
           CUST_NM: "하늘상사(주)", CUST_TEL_NO: "02-789-1258", CUST_CEL_NO: "02-785-4578", CUST_EMAIL_NM: "e-mail@mail.com", KEYMAN_CD: "2018080704567",
-          COUNSEL_TP_CD: "0", COUNSEL_TP_NM: "구매문의", COUNSEL_TXT: "조치해주세요", COUNSEL_RSPT_EMP_NO: "CID201345478", COUNSEL_RSPT_EMP_NM: "김성민",
-          PRGR_ST_CD: "PR123456789", PRGR_ST_NM: "조치요청", USE_YN: "Y",TRMT_EMP_CD:"EMP01010001",TRMT_EMP_NM:"이상민"
+          COUNSEL_TP_CD: "0", COUNSEL_TP_NM: "구매문의", COUNSEL_TXT: "조치해주세요", COUNSEL_RSPT_EMP_NO: "CID201345478", COUNSEL_RSPT_EMP_NM: "김성민", COUNSEL_DEPT_CD: "DEP201345478",
+          COUNSEL_DEPT_NM: "상담1팀", TRMT_DEPT_CD: "45127845", TRMT_DEPT_NM: "조치1팀", PRGR_ST_CD: "PR123456789", PRGR_ST_NM: "조치요청", USE_YN: "Y",
+          TRMT_EMP_CD:"EMP01010001",TRMT_EMP_NM:"이상민"
         },
       ]
     });
-
     self.AS이력  = dews.ui.dataSource('AS이력 ', {
       grid: true,
       schema: {
@@ -452,6 +413,16 @@
       },
       data: []
     });
+    
+    ds_proc_st = dews.ui.dataSource('ds_proc_st', {
+      data : [
+        { value : 0, text : "조치요청" },
+        { value : 1, text : "조치완료" }
+      ]
+    });
+
+
+    {    
     counsel_grid = dews.ui.grid(self.$COUNSEL_GRID, {
       dataSource: counsel_grid_db,
       sortable: false,
@@ -462,13 +433,13 @@
       columns: [
         {
           field: 'COUNSEL_DTS',
-          title: '상담일시',
-          width: 80
+          title: '상담일시 ',
+          width: 60
         },
         {
           field: 'KEYMAN_NM',
           title: '상담고객',
-          width: 40
+          width: 60
         },
         {
           field: 'CUST_NM',
@@ -492,6 +463,11 @@
           width: 60
         },
         {
+          field: 'TRMT_DEPT_NM',
+          title: '조치부서',
+          width: 60
+        },
+        {
           field: 'TRMT_EMP_NM',
           title: '조치담당',
           width: 60
@@ -499,6 +475,15 @@
         {
           field: 'PRGR_ST_CD',
           title: '진행상태',
+          editor :{
+            type : 'combo',
+            dataSource : ds_proc_st,
+            dataValueField : 'value',
+            dataTextField : 'text',
+            editable : function(e) {
+              return true;
+            }
+          },
           width: 60
         }
       ],
@@ -509,17 +494,25 @@
       clicked: function(e) {
         bindData(e.row.data, 'N');
       },
-      rowAdd: function(e){
-        counsel_grid.setCellValue(e.row.index, 'COUNSEL_DTS', getDate(today, 'yyyy-MM-dd HH:mm:ss'));
-        counsel_grid.setCellValue(e.row.index, 'KEYMAN_NM', self.COUNSEL_KEYMAN.text());
-        counsel_grid.setCellValue(e.row.index, 'CUST_NM', self.COUNSEL_CUST.text());
-        counsel_grid.setCellValue(e.row.index, 'COUNSEL_TP_CD', self.COUNSEL_TP_CD.value());
-        counsel_grid.setCellValue(e.row.index, 'TRMT_EMP_CD', self.TRMT_EMP_CD.code());
+      rowAdd: function(e){    
+        counsel_grid.setCellValue(e.row.index, 'COUNSEL_DTS', getDate(today,'yyyy-MM-dd HH:mm:ss'));
+        counsel_grid.setCellValue(e.row.index, 'KEYMAN_NM', self.KEYMAN_NM.text());
+        counsel_grid.setCellValue(e.row.index, 'CUST_NM', self.CUST_NM.text());
+        counsel_grid.setCellValue(e.row.index, 'COUNSEL_TP_NM', self.COUNSEL_TP_NM.value());
+        counsel_grid.setCellValue(e.row.index, 'COUNSEL_TXT', self.DM_OTLN_TXT.texts());
+        counsel_grid.setCellValue(e.row.index, 'COUNSEL_RSPT_EMP_NM' , self.COUNSEL_RSPT_EMP_NM.text());
+        counsel_grid.setCellValue(e.row.index, 'TRMT_DEPT', self.TRMT_DEPT.text());
         counsel_grid.setCellValue(e.row.index, 'TRMT_EMP_NM', self.TRMT_EMP_NM.text());
+        counsel_grid.setCellValue(e.row.index, 'PRGR_ST_CD', ds_proc_st[0].value);
         counsel_grid.commitCell();
       }
     });
 
+    
+    
+
+    //counsel_grid.setDetail(counsel_grid_db);
+  }
     dews.ui.grid(self.$COUNCEL_RECODE_GRID, {
       dataSource: self.세부상담이력,
       sortable: false,
@@ -559,6 +552,11 @@
           width: 60
         },
         {
+          field: 'TRMT_DEPT_NM',
+          title: '조치부서 ',
+          width: 60
+        },
+        {
           field: 'TRMT_EMP_NM',
           title: '조치담당',
           width: 60
@@ -574,7 +572,7 @@
         rightColCount: 0
       }
     });
-
+    
     dews.ui.grid(self.$AS_RECODE_GRID, {
       dataSource: self.AS이력,
       sortable: false,
@@ -749,52 +747,271 @@
         rightColCount: 0
       }
     });
-
+    
+    var councel_file_data = dews.ui.dataSource('multi', {
+      // data: [
+      //   // { UID: '1234', FILENAME: '가라', EXTENSION: '.jpg', FILESIZE: '125' }
+      // ],
+      schema: {
+        model: {
+          id: 'MF_EMP',
+          fields: [
+            { field: 'UID' },
+            { field: 'FILENAME' },
+            { field: 'EXTENSION' },
+            { field: 'FILESIZE' }
+          ]
+        }
+      }
+    });
+    var councel_file_grid = dews.ui.multifile(self.$COUNSEL_FILE_GRID, {
+      dataSource: councel_file_data,
+      download: {
+        use: true
+      },
+      binding: {
+        fileKey: 'UID',
+        filename: 'FILENAME',
+        extension: 'EXTENSION',
+        size: 'SIZE',
+      },
+      contentsHeight: 4
+    });
+    /**/
     function bindData(item){
+      // 상담고객 정보
+      var counsel_keyman_data = { COUNSEL_KEYMAN_CD: item.KEYMAN_CD, COUNSEL_KEYMAN_NM: item.KEYMAN_NM }
+      self.COUNSEL_KEYMAN.setData(counsel_keyman_data);
+      var counsel_cust_data = { COUNSEL_CUST_CD: item.CUST_CD, COUNSEL_CUST_NM: item.CUST_NM }
+      self.COUNSEL_CUST.setData(counsel_cust_data);
+      self.COUNSEL_KEYMAN_TEL_NO.text(item.CUST_TEL_NO)
+      self.COUNSEL_KEYMAN_CEL_NO.text(item.CUST_CEL_NO)
+      self.COUNSEL_KEYMAN_EMAIL_NM.text(item.CUST_EMAIL_NM)
       // 고객담당정보 
+      self.KEYMAN_NM.text(item.KEYMAN_NM);
       self.CUST_NM.text(item.CUST_NM);
       self.TEL_NO.text(item.CUST_TEL_NO);
-      self.KEYMAN_NM.text(item.KEYMAN_NM);
       self.HP_NO.text(item.CUST_CEL_NO);
       self.EMAIL_NM.text(item.CUST_EMAIL_NM);
       // 상담내용  // COUNSEL_TP_CD INSERT_DTS COUNSEL_RSPT_EMP COUNSEL_DEPT_CD TRMT_DEPT_CD PRGR_ST_CD
       self.COUNSEL_TP_CD.value(item.COUNSEL_TP_CD);
+      self.INSERT_DTS.text(item.COUNSEL_DTS);
+      self.COUNSEL_RSPT_EMP.text(item.COUNSEL_RSPT_EMP_NM)
+      self.COUNSEL_DEPT_CD.text(item.COUNSEL_DEPT_NM)
+      var trmt_dept_data = { TRMT_DEPT_CD: item.TRMT_DEPT_CD, TRMT_DEPT_NM: item.TRMT_DEPT_NM }
+      self.TRMT_DEPT.setData(trmt_dept_data);
       self.PRGR_ST_NM.text(item.PRGR_ST_NM);
-      self.TRMT_EMP_NM.text(item.TRMT_EMP_NM);
       self.DM_OTLN_TXT.text(item.COUNSEL_TXT);
     }
 
+   
+    /*유틸*/
+    function getDate(date, dateType) {
+      String.prototype.string = function (len) { var s = '', i = 0; while (i++ < len) { s += this; } return s; };
+      String.prototype.zf = function (len) { return "0".string(len - this.length) + this; };
+      Number.prototype.zf = function (len) { return this.toString().zf(len); };
+      if (!this.valueOf()) return " ";
+      var weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+      var d = date;
+      return dateType.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function ($1) {
+        switch ($1) {
+          case "yyyy": return d.getFullYear();
+          case "yy": return (d.getFullYear() % 1000).zf(2);
+          case "MM": return (d.getMonth() + 1).zf(2);
+          case "dd": return d.getDate().zf(2);
+          case "E": return weekName[d.getDay()];
+          case "HH": return d.getHours().zf(2);
+          case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
+          case "mm": return d.getMinutes().zf(2);
+          case "ss": return d.getSeconds().zf(2);
+          case "a/p": return d.getHours() < 12 ? "오전" : "오후";
+          default: return $1;
+        }
+      });
+    }
+/*
+    //권한 체크 시 필요
+    function canSave() {
+        return true;
+      };
+
+    
+    // 그리드 리스트에서 값이 바뀌었는지 확인
+    function isChanged() {
+        if (canSave() && counsel_grid.getDirtyDataCount() > 0)
+          return true;
+        else
+          return false;
+    };
+      
+    function saveData(showDialog){
+      var ret = verify();
+      var currentRow = counsel_grid.select();
+
+      if(ret === null){ // 유효성 검사에서 문제가 없을 시
+        counsel_grid_db.batchSave(dews.url.getApiUrl('CR','',''),
+          counsel_grid // 그리드 리스트와 데이터 소스를 불러와
+        ).done(function(data){ // 아무런 문제없이 성공 시 저장 완료 메시지 출력
+          dews.ui.snackbar.ok('저장이 완료되었습니다.').done(function () {
+          });
+        }).fail(function(message, status, error){ // 실패 시 에러 메세지 출력
+          dews.error({message : message});
+        });
+      }
+    }
+*/
+
+    
+    /* 추가 메인버튼 */
     dews.ui.mainbuttons.add.click(function(e){
-      
-      /* 고객 담당 정보 */
-      self.KEYMAN_NM.text("");
-      self.CUST_NM.text("");
-      self.TEL_NO.text("");
-      self.HP_NO.text("");
-      self.EMAIL_NM.text("");
-
-      /* 상담 내용 */
-      self.COUNSEL_TP_CD.value(null);
-      self.PRGR_ST_NM.text("");
-      self.DM_OTLN_TXT.text("");
-
-      self.CUST_NM.text.focus();
-    });
-
-    self.$BTN_KEYMAN_SEARCH.on('click',function(){
-      self.form_panel.validate({tooltip:true, message: '필수입력 항목을 입력하세요 .'});
-
-    });
-
-    /* event handler */
-
-    dews.ui.mainbuttons.save.on('click',function(e){
-      counsel_grid.addRow();
       counsel_grid.commitCell();
-      
+      if(add_check) {
+        counsel_grid.addRow();
+        //add_check = false;
+      }else{
+        dews.ui.snacbar.warning('변경된 사항이 없어서 저장할 수 없습니다.');
+      }
     });
-  });  
 
+    /* 조회 메인버튼 */
+    dews.ui.mainbuttons.search.click(function (){
+      counsel_grid.commitCell();
+      pending = false;
+      //counsel_grid_db.read();
+      counsel_grid.select(0);
+    });
+    
+    function saveData() {
+  
+      dews.ui.snackbar.ok('저장이 완료되었습니다.').done(function(){
+      });
+     
+      
+        //dews.ui.snackbar.info(dews.localize.get('변경된 사항이 없습니다.', "M0000021"));
+      
+    }
+
+    /* 저장 메인버튼 */
+    dews.ui.mainbuttons.save.on('click',function(){
+     /*if(isChanged()){
+        saveData(true);
+        dews.alert(dews.localize.get('저장이 완료됐습니다.', 'M0000056'), 'success');
+      } else {
+        dews.alert(dews.localize.get('변경된 사항이 없습니다.', 'M0000056'), 'warning');
+      }*/
+      counsel_grid.commitCell(); // 그리드 내 수정 중인 행의 값을 커밋하고 수정을 종료
+      savaData();
+    });
+      
+
+
+    /* 조회 메인버튼 */
+     dews.ui.mainbuttons.search.on('click', function (e) {
+      counsel_grid_db.read();
+    });
+
+     /* 조치요청 버튼 */
+    self.$BTN_REQUEST.on('click', function(e){
+      counsel_grid.setCellValue(counsel_grid.select(), 'PRGR_ST_CD', "0");
+      self.PRGR_ST_NM.value("조치요청");
+      //counsel_grid_db.data([{PRGR_ST_NM:"조치요청"}]);
+      counsel_grid.read();
+      //counsel_grid.commitCell();
+      //var counsel_grid = self.COUNSEL_GRID;
+      //counsel_grid.setCellValue(counsel_grid.select(),'PRGR_ST_NM','조치요청');
+    });
+
+    /* 조치완료 버튼 */
+    self.$BTN_COMPLETE.on('click', function(e){
+      counsel_grid.setCellValue(counsel_grid.select(), 'PRGR_ST_CD', "1");
+      //counsel_grid_db.data([{PRGR_ST_NM:"조치완료"}]);
+      counsel_grid_db.PRGR_ST_NM.value("조치완료");
+      counsel_grid.read();
+     // counsel_grid.commitCell();
+      //counsel_grid.setCellValue(counsel_grid.select(),'PRGR_ST_NM','조치완료');
+    });
+
+    /* function svaeData() {
+      dews.api.batchSave() {
+        console.log(data);
+      }).fail(function(message) {
+        console.log(message);
+      });
+    }*/
+
+    /* 고객사 등록 */
+    self.$BTN_CUST_ADD.click(function () {
+      dews.ui.openMenu('CR', 'CIDCST00100');
+    });
+
+    /* 고객담당 연결 버튼 검증 */
+    function verify_duplicate() {
+      var ret = null;
+       var items = counsel_grid.dataItems;
+       for (var i = 0; i < items.length; i++) {
+         if (!items[i].KEYMAN_NM) {
+          ret = self.form_panel.validate({ tooltip: true, message: dews.localize.get('필수값을 입력해 주십시오.', 'M0000293') });
+           break;
+         } else if (!items[i].CUST_NM) {
+            ret = self.form_panel.validate({ tooltip: true, message: dews.localize.get('필수값을 입력해 주십시오.', 'M0000293') });
+            break;
+          }
+        }
+        return ret;
+      };
+
+    /* 고객담당연결 등록 */
+    self.$BTN_KEYMAN_CN.on('click', function (e) {
+      var flag = false;
+      var item = counsel_grid;
+      var items = item.dataItems;
+      //var ret = verify_duplicate();
+      //self.KEYMAN_NM.text(item.getCellValue(0,"KEYMAN_NM"));
+    
+      for(var i = 0; i < items.length+1; i++){
+        if(item.getCellValue(i,"KEYMAN_NM") == self.KEYMAN_NM.text()){
+          self.KEYMAN_NM.text(item.KEYMAN_NM);
+          self.CUST_NM.text(item.getCellValue(i,"CUST_NM"));
+          self.TEL_NO.text(item.getCellValue(i,"CUST_TEL_NO"));
+          self.HP_NO.text(item.getCellValue(i,"CUST_CEL_NO"));
+          self.EMAIL_NM.text(item.getCellValue(i,"CUST_EMAIL_NM"));
+          flag = true;
+        }
+      }
+      if(!flag){
+        dews.alert('조건에 해당하는 데이터가 없습니다.', "warning"); 
+      }
+   });
+/*
+      if (self.KEYMAN_NM.text()=="" && self.CUST_NM.text()=="") {
+        /*var Dialog = dews.ui.dialog("VOCAFS00100", {
+          url: "/view/CR/VOCAFS00100",
+          title: "부서사람 찾기",
+          size: 'extra',
+          buttons: 'applyAndClose',
+          ok: function (data) {
+            self.KEYMAN_NM.text(data.KEYMAN_NM);
+            counsel_grid.setValue(e.row.data)
+          },
+          cancel: function () {
+          }
+          
+        });
+        
+        dews.alert("정보가 입력되지 않았습니다.","error");
+      } else if(self.KEYMAN_NM.text() ==""){
+        dews.alert('고객등록을 해 주세요.', "error");
+      } else if(self.CUST_NM.text() == ""){
+        dews.alert('고객사를 등록 해 주세요.',"error");
+      } else{
+          for(var i = 0; i < item.length; i++){
+            if(item[i].KEYMAN_NM.text() === self.KEYMAN_NM.text()){
+              dews.alert('기존 고객입니다.',"error");
+            }
+          }
+        }*/
+   
+});
   //# sourceURL=preview/<%= TEMP_DIR %>/상담접수및이관.js
 </script>
 
